@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="京都府南丹市美山町とデンマーク・グリブスコウ市の教育環境比較調査（NPO法人 森の教育プロジェクト）のWeb版。概要からテーマ、本編・資料へと3層で読めます。">
+<meta property="og:title" content="美山 × デンマーク 教育調査">
+<meta property="og:description" content="子どもたちの未来と持続可能な学校づくりをともに考える — 美山町×デンマーク教育環境比較調査">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<title>美山 × デンマーク 教育調査</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Outfit:wght@500;600;800&display=swap">
+<style>
+/* Layout: 3 layers stacked like sheets. L1 概要（ポップ・大きな数字）→ L2 テーマ（色帯＋グラフ）→ L3 本編・資料（読み物・表）。黄＝美山、青＝デンマーク、ミント＝共通 */
+:root{
+  --bg:#FFFBF2; --surface:#FFFFFF; --sunk:#F5EFE1; --ink:#1E2A4A; --ink-2:#56607A; --line:#E7DFCC;
+  --mi:#FFCF2E; --dk:#3FB8F0; --both:#4FD1A8; --coral:#FF6B4A; --on-accent:#1E2A4A;
+  --lilac:#C7B6FF; --mi-soft:#FFF1C2; --dk-soft:#DDF2FC; --both-soft:#D7F5EA; --coral-soft:#FFE6DE;
+  --neu:#D9D2C1; --neg:#B9C3D6;
+  --f-pop:'Zen Maru Gothic','Hiragino Maru Gothic ProN','BIZ UDPGothic',sans-serif;
+  --f-read:'Zen Kaku Gothic New','Hiragino Sans','Yu Gothic',sans-serif;
+  --f-num:'Outfit','Zen Maru Gothic',system-ui,sans-serif;
+  --blend:multiply;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121A2E; --surface:#1A2440; --sunk:#0E1526; --ink:#F6F0E2; --ink-2:#AEB6CB; --line:#2B3657;
+  --mi:#FFCF2E; --dk:#3FB8F0; --both:#4FD1A8; --coral:#FF7C5E; --on-accent:#1E2A4A;
+  --mi-soft:#3A3217; --dk-soft:#14344A; --both-soft:#123A30; --coral-soft:#43251F;
+  --neu:#46506C; --neg:#33405F; --blend:screen; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121A2E; --surface:#1A2440; --sunk:#0E1526; --ink:#F6F0E2; --ink-2:#AEB6CB; --line:#2B3657;
+  --mi:#FFCF2E; --dk:#3FB8F0; --both:#4FD1A8; --coral:#FF7C5E; --on-accent:#1E2A4A;
+  --mi-soft:#3A3217; --dk-soft:#14344A; --both-soft:#123A30; --coral-soft:#43251F;
+  --neu:#46506C; --neg:#33405F; --blend:screen; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-pop);font-weight:500;font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--dk);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-num);font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:900;line-height:1.35}
+p{margin:0}
+.mi{color:var(--on-accent);background:var(--mi)} .dk{color:var(--on-accent);background:var(--dk)} .both{color:var(--on-accent);background:var(--both)}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 12px;font-weight:700;font-size:13px;white-space:nowrap}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;min-height:60px;flex-wrap:wrap;padding-block:8px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:15px;line-height:1.2}
+.brand .dots{position:relative;width:34px;height:24px;flex:none}
+.brand .dots i{position:absolute;top:0;width:24px;height:24px;border-radius:50%;mix-blend-mode:var(--blend)}
+.brand .dots i:first-child{left:0;background:var(--mi)} .brand .dots i:last-child{left:10px;background:var(--dk)}
+.brand small{display:block;font-family:var(--f-num);font-weight:600;font-size:10px;letter-spacing:.14em;color:var(--ink-2)}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav a{text-decoration:none;font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px}
+.nav a:hover{background:var(--sunk)}
+.nav a[aria-current="true"]{background:var(--ink);color:var(--bg)}
+.depth{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2)}
+.depth .lv{display:flex;flex-direction:column;gap:2px}
+.depth .lv span{display:block;height:4px;border-radius:2px;background:var(--line);transition:background .3s,width .3s}
+.depth .lv span:nth-child(1){width:26px}.depth .lv span:nth-child(2){width:20px;margin-left:3px}.depth .lv span:nth-child(3){width:14px;margin-left:6px}
+.depth[data-d="1"] .lv span:nth-child(1),.depth[data-d="2"] .lv span:nth-child(-n+2),.depth[data-d="3"] .lv span{background:var(--ink)}
+@media (max-width:720px){.depth{display:none}.nav{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap}.nav a{flex:none}}
+
+/* crumbs */
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--ink-2);padding-block:18px 0}
+.crumbs a{text-decoration:none;font-weight:700}.crumbs a:hover{text-decoration:underline}
+.crumbs .sep{opacity:.5}
+.layer-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-num);font-weight:800;font-size:11px;letter-spacing:.12em;border:1.5px solid currentColor;border-radius:999px;padding:1px 10px}
+
+/* view transition */
+#view{min-height:60vh}
+.enter{animation:rise .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{transform:translateY(18px) scale(.985);opacity:.4}to{transform:none;opacity:1}}
+
+/* HOME hero */
+.hero{position:relative;overflow:hidden;padding-block:56px 40px}
+.hero .circles{position:absolute;right:-60px;top:-40px;width:520px;height:440px;pointer-events:none}
+.hero .circles i{position:absolute;border-radius:50%;mix-blend-mode:var(--blend);opacity:.95}
+.hero .circles i:nth-child(1){width:300px;height:300px;left:40px;top:40px;background:var(--mi)}
+.hero .circles i:nth-child(2){width:260px;height:260px;left:220px;top:10px;background:var(--dk)}
+.hero .circles i:nth-child(3){width:220px;height:220px;left:170px;top:210px;background:var(--both)}
+.hero .circles b{position:absolute;font-family:var(--f-pop);font-weight:900;font-size:22px;color:var(--on-accent)}
+.hero-inner{position:relative;display:flex;flex-direction:column;gap:22px;max-width:640px}
+.hero h1{font-size:clamp(30px,5.4vw,54px);line-height:1.3}
+.hero .sub{font-weight:700;font-size:clamp(16px,2vw,19px)}
+.hero .pair{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-weight:900;font-size:18px}
+@media (max-width:720px){.hero .circles{right:-220px;top:-90px;opacity:.55}}
+.voices97{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:8px}
+.v97{background:var(--surface);border-radius:22px;padding:14px 16px;display:flex;flex-direction:column;gap:2px;border:1px solid var(--line)}
+.v97 .n{font-family:var(--f-num);font-weight:800;font-size:38px;line-height:1}
+.v97 .n small{font-family:var(--f-pop);font-size:14px;margin-left:2px}
+.v97 .l{font-size:13px;font-weight:700}
+.v97 .bar{height:6px;border-radius:3px;margin-bottom:6px}
+@media (max-width:820px){.voices97{grid-template-columns:repeat(2,minmax(0,1fr))}.v97:last-child{grid-column:1/-1}}
+
+section.band{padding-block:56px}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:26px}
+.sec-head h2{font-size:clamp(24px,3.4vw,34px)}
+.sec-head p{color:var(--ink-2);max-width:62ch}
+
+/* findings */
+.finds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.finds{grid-template-columns:1fr}}
+.find{position:relative;display:flex;flex-direction:column;gap:12px;text-decoration:none;background:var(--surface);border-radius:28px;padding:24px;border:1px solid var(--line);transition:transform .2s}
+.find:hover{transform:translateY(-3px)}
+.find .k{position:absolute;right:18px;top:14px;font-family:var(--f-num);font-weight:800;font-size:56px;line-height:1;color:var(--line)}
+.find .vs{display:flex;gap:18px;align-items:flex-end}
+.find .vs div{display:flex;flex-direction:column}
+.find .big{font-family:var(--f-num);font-weight:800;font-size:46px;line-height:1}
+.find .big small{font-size:18px}
+.find .who{font-size:12px;font-weight:700}
+.find .q{font-weight:900;font-size:17px;line-height:1.55}
+.find .note{color:var(--ink-2);font-size:14px}
+.go{display:inline-flex;align-items:center;gap:6px;font-weight:900;font-size:14px}
+.go::after{content:"→";font-family:var(--f-num)}
+
+/* themes grid */
+.themes{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.tcard{grid-column:span 2;display:flex;flex-direction:column;gap:10px;text-decoration:none;border-radius:28px;padding:22px 22px 20px;color:var(--on-accent);min-height:220px;position:relative;overflow:hidden;transition:transform .2s}
+.tcard:hover{transform:translateY(-3px)}
+.tcard:nth-child(4),.tcard:nth-child(5){grid-column:span 3}
+.tcard .ring{position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;border-radius:50%;border:18px solid rgba(255,255,255,.35)}
+.tcard h3{font-size:22px}
+.tcard .stat{font-family:var(--f-num);font-weight:800;font-size:40px;line-height:1;margin-top:auto}
+.tcard .stat small{font-family:var(--f-pop);font-size:14px;font-weight:700;margin-left:6px}
+.tcard p{font-size:14px;font-weight:700;max-width:34ch}
+@media (max-width:900px){.themes{grid-template-columns:1fr}.tcard,.tcard:nth-child(4),.tcard:nth-child(5){grid-column:auto;min-height:0}}
+
+/* layers diagram */
+.layers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;position:relative}
+.layer{position:relative;padding:22px;border-radius:28px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.layer:nth-child(2){transform:translateY(18px);margin-left:-14px;box-shadow:-10px 0 0 -2px var(--bg)}
+.layer:nth-child(3){transform:translateY(36px);margin-left:-14px;box-shadow:-10px 0 0 -2px var(--bg)}
+.layer h3{font-size:20px}
+.layer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.layer li a{text-decoration:none;font-weight:700;display:flex;justify-content:space-between;gap:10px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.layer li a:hover{color:var(--coral)}
+.layer li .num{color:var(--ink-2);font-weight:600}
+@media (max-width:900px){.layers{grid-template-columns:1fr;gap:12px}.layer:nth-child(n){transform:none;margin-left:0;box-shadow:none}}
+
+/* charts */
+.chart{background:var(--surface);border-radius:24px;border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.chart h4{margin:0;font-weight:900;font-size:16px;line-height:1.5}
+.chart .cap{font-size:12px;color:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;font-weight:700}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dumb{display:flex;flex-direction:column;gap:2px}
+.drow{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr);gap:12px;align-items:center;padding:6px 8px;border-radius:12px}
+.drow.dkwin{background:var(--sunk)}
+.drow .lab{font-size:14px;font-weight:700;line-height:1.45}
+.drow .lab .qn{font-family:var(--f-num);font-weight:800;font-size:11px;color:var(--ink-2);margin-right:6px}
+.track{position:relative;height:30px}
+.track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.track .span{position:absolute;top:calc(50% - 3px);height:6px;border-radius:3px;background:var(--neu)}
+.track .dot{position:absolute;top:calc(50% - 8px);width:16px;height:16px;margin-left:-8px;border-radius:50%;border:2px solid var(--surface)}
+.track .val{position:absolute;top:-2px;font-family:var(--f-num);font-weight:700;font-size:12px;white-space:nowrap}
+.axis{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr);gap:12px;padding:0 8px;font-family:var(--f-num);font-size:11px;color:var(--ink-2)}
+.axis div:last-child{display:flex;justify-content:space-between}
+@media (max-width:640px){.drow,.axis{grid-template-columns:1fr;gap:2px}.axis div:first-child{display:none}}
+.pbars{display:flex;flex-direction:column;gap:14px}
+.pb .lab{font-size:14px;font-weight:700;line-height:1.5;margin-bottom:4px}
+.pb .row{display:grid;grid-template-columns:5.5em minmax(0,1fr) 3.6em;gap:8px;align-items:center;font-size:12px}
+.pb .row .who{font-weight:700;color:var(--ink-2)}
+.pb .row .b{height:14px;border-radius:7px;background:var(--sunk);overflow:hidden}
+.pb .row .b i{display:block;height:100%;border-radius:7px}
+.pb .row .v{font-family:var(--f-num);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.pb.hot{background:var(--coral-soft);border-radius:14px;padding:8px 10px;margin:0 -10px}
+.lk{display:flex;flex-direction:column;gap:12px}
+.lkrow .lab{font-size:14px;font-weight:700;line-height:1.5;margin-bottom:4px}
+.lkbar{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:8px;align-items:center;font-size:12px;margin-top:3px}
+.lkbar .who{font-weight:700;color:var(--ink-2)}
+.seg{display:flex;height:22px;border-radius:11px;overflow:hidden;background:var(--sunk)}
+.seg i{display:flex;align-items:center;justify-content:center;font-style:normal;font-family:var(--f-num);font-weight:700;font-size:11px;color:var(--on-accent);min-width:0;overflow:hidden;white-space:nowrap}
+.seg i.neu{background:var(--neu);color:var(--ink)} .seg i.neg{background:var(--neg);color:var(--ink)}
+.slope{width:100%;height:auto;display:block}
+.slope text{font-family:var(--f-pop);font-weight:700}
+
+/* theme page */
+.tband{color:var(--on-accent);padding-block:40px 44px;position:relative;overflow:hidden}
+.tband .ring{position:absolute;right:-80px;top:-60px;width:320px;height:320px;border-radius:50%;border:44px solid rgba(255,255,255,.3)}
+.tband .wrap{display:flex;flex-direction:column;gap:14px;position:relative}
+.tband h1{font-size:clamp(28px,4.4vw,44px)}
+.tband .head{font-weight:900;font-size:clamp(18px,2.4vw,24px);line-height:1.5;max-width:30em}
+.tband .stats{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-end;margin-top:6px}
+.tband .stats div{display:flex;flex-direction:column}
+.tband .stats .big{font-family:var(--f-num);font-weight:800;font-size:clamp(44px,7vw,72px);line-height:1}
+.tband .stats .big small{font-size:.4em}
+.tband .stats .who{font-weight:900;font-size:14px}
+.tbody{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;padding-block:32px}
+.tbody > *{min-width:0}.tbody > .full{grid-column:1/-1}
+@media (max-width:900px){.tbody{grid-template-columns:1fr}}
+.prose{display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.95;max-width:40em}
+.prose strong{font-weight:900;background:linear-gradient(transparent 62%,var(--mi-soft) 0)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.fact{background:var(--dk-soft);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:2px}
+.fact .n{font-family:var(--f-num);font-weight:800;font-size:30px;line-height:1.1}
+.fact .n small{font-family:var(--f-pop);font-size:13px;margin-left:2px}
+.fact .l{font-size:13px;font-weight:700;line-height:1.4}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.quote{border-radius:26px 26px 26px 6px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;font-weight:700;line-height:1.75}
+.quote.mi{background:var(--mi-soft);color:var(--ink)} .quote.dk{background:var(--dk-soft);color:var(--ink)}
+.quote .src{font-size:12px;font-weight:700;color:var(--ink-2)}
+.quote .en{font-family:var(--f-num);font-weight:500;font-size:13px;color:var(--ink-2)}
+.compare2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare2 > div{border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.compare2 h5{margin:0;font-size:15px;font-weight:900}
+.compare2 ul{margin:0;padding-left:1.1em;font-size:14px;line-height:1.7}
+@media (max-width:640px){.compare2{grid-template-columns:1fr}}
+
+/* deeper panel */
+.deeper{margin-block:12px 40px;border-radius:32px;background:var(--ink);color:var(--bg);padding:28px;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden}
+.deeper::before{content:"";position:absolute;inset:auto -40px -60px auto;width:200px;height:200px;border-radius:50%;border:30px solid color-mix(in srgb,var(--bg) 12%,transparent)}
+.deeper h3{font-size:22px}
+.deeper .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;position:relative}
+.deeper a{display:flex;flex-direction:column;gap:6px;text-decoration:none;background:color-mix(in srgb,var(--bg) 8%,transparent);border:1px solid color-mix(in srgb,var(--bg) 22%,transparent);border-radius:20px;padding:14px 16px;transition:background .2s}
+.deeper a:hover{background:color-mix(in srgb,var(--bg) 16%,transparent)}
+.deeper a .t{font-weight:900;font-size:15px;line-height:1.5}
+.deeper a .d{font-size:13px;opacity:.8;line-height:1.6}
+.deeper a .layer-tag{align-self:flex-start;opacity:.9}
+.tnav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:48px}
+.tnav a{text-decoration:none;font-weight:900;padding:10px 18px;border-radius:999px;border:2px solid var(--ink)}
+.tnav a:hover{background:var(--ink);color:var(--bg)}
+
+/* report reader */
+.reader{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;padding-block:28px 60px}
+@media (max-width:900px){.reader{grid-template-columns:1fr;gap:16px}}
+.toc{position:sticky;top:84px;align-self:start;display:flex;flex-direction:column;gap:2px;font-size:14px;max-height:calc(100vh - 100px);overflow:auto}
+.toc a{text-decoration:none;padding:6px 12px;border-radius:12px;font-weight:700;line-height:1.45}
+.toc a:hover{background:var(--sunk)}
+.toc a[aria-current="true"]{background:var(--both-soft)}
+.toc .grp{font-family:var(--f-num);font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--ink-2);padding:12px 12px 4px}
+@media (max-width:900px){.toc{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;gap:6px}.toc a{border:1px solid var(--line)}.toc .grp{width:100%;padding:4px 0}}
+.doc{font-family:var(--f-read);font-weight:400;font-size:16.5px;line-height:2.05;display:flex;flex-direction:column;gap:18px;max-width:42em;min-width:0}
+.doc .chhead{display:flex;flex-direction:column;gap:6px;padding-bottom:18px;border-bottom:3px solid var(--both);margin-bottom:6px}
+.doc .chhead .no{font-family:var(--f-pop);font-weight:900;font-size:14px;color:var(--ink-2)}
+.doc .chhead h1{font-family:var(--f-pop);font-size:clamp(26px,3.6vw,36px)}
+.doc .chhead .lead{font-family:var(--f-pop);font-weight:700;color:var(--ink-2)}
+.doc h2{font-family:var(--f-pop);font-size:21px;margin-top:22px;scroll-margin-top:90px}
+.doc h3{font-family:var(--f-pop);font-size:17px;margin-top:8px;scroll-margin-top:90px}
+.doc p{text-indent:1em}
+.doc .box{background:var(--sunk);border-radius:18px;padding:14px 18px;font-size:14.5px;line-height:1.9}
+.doc .box p{text-indent:0}
+.doc .fixnote{font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.tbl{overflow-x:auto;border-radius:18px;border:1px solid var(--line);background:var(--surface)}
+.tbl table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px;line-height:1.7;font-family:var(--f-read)}
+.tbl th,.tbl td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.tbl thead th{font-family:var(--f-pop);font-weight:900;font-size:13px;background:var(--sunk)}
+.tbl tbody th{font-family:var(--f-pop);font-weight:700;width:9em}
+.tbl tr:last-child td,.tbl tr:last-child th{border-bottom:0}
+.tbl .c-mi{border-top:4px solid var(--mi)} .tbl .c-dk{border-top:4px solid var(--dk)}
+.chnav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:24px;font-family:var(--f-pop)}
+.chnav a{text-decoration:none;font-weight:900;padding:10px 16px;border-radius:16px;background:var(--sunk);max-width:100%}
+.chnav a small{display:block;font-size:11px;color:var(--ink-2)}
+.doc a.xref{font-family:var(--f-pop);font-weight:700;font-size:13px;text-decoration:none;background:var(--both-soft);border-radius:999px;padding:1px 10px;white-space:nowrap}
+
+/* resources pages */
+.page-head{display:flex;flex-direction:column;gap:10px;padding-block:22px 18px}
+.page-head h1{font-size:clamp(26px,3.8vw,38px)}
+.page-head p{color:var(--ink-2);max-width:62ch}
+.filters{position:sticky;top:61px;z-index:5;background:var(--bg);display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;padding-block:12px;border-bottom:1px solid var(--line)}
+.seg-ctl{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px}
+.seg-ctl button{border:0;background:none;color:var(--ink);font:inherit;font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px;cursor:pointer}
+.seg-ctl button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.search{flex:1 1 200px;min-width:0;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 16px;font:inherit;font-size:14px}
+.count{font-family:var(--f-num);font-weight:700;font-size:13px;color:var(--ink-2)}
+.vgroup{padding-block:22px 6px;display:flex;flex-direction:column;gap:14px}
+.vgroup > h2{font-size:20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.vsec h3{font-size:16px;margin:8px 0 10px;line-height:1.5}
+.vlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.vitem{background:var(--surface);border:1px solid var(--line);border-radius:20px 20px 20px 6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;font-family:var(--f-read);font-size:15px;line-height:1.85;white-space:pre-line;min-width:0;overflow-wrap:anywhere}
+.vitem.mi{border-top:5px solid var(--mi);background:var(--surface);color:var(--ink)} .vitem.dk{border-top:5px solid var(--dk);background:var(--surface);color:var(--ink)}
+.vitem .en{font-family:var(--f-num);font-size:13.5px;line-height:1.6;color:var(--ink-2);white-space:normal}
+.vitem .tr{font-size:11px;font-family:var(--f-pop);font-weight:700;color:var(--ink-2)}
+.vnote{font-size:12.5px;color:var(--ink-2);margin-top:8px}
+mark{background:var(--mi);color:var(--on-accent);border-radius:3px;padding:0 2px}
+.empty{padding:40px 0;color:var(--ink-2);font-weight:700}
+.qa{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:130px}
+.qa .q{font-weight:900;font-size:16px;line-height:1.6;display:flex;gap:10px}
+.qa .q b{flex:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--f-num);font-size:13px}
+.qa .a{font-family:var(--f-read);font-size:15.5px;line-height:1.95}
+.qa .en{border-left:3px solid var(--dk);padding-left:14px;font-family:var(--f-num);font-size:14px;line-height:1.7;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+.qa .en .eq{font-weight:600;color:var(--ink)}
+.itopic{display:flex;flex-direction:column;gap:12px;padding-block:14px}
+.itopic h3{font-family:var(--f-num);font-weight:800;font-size:15px;letter-spacing:.04em;color:var(--ink-2)}
+.datagrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding-block:20px}
+.datagrid .full{grid-column:1/-1}
+@media (max-width:900px){.datagrid{grid-template-columns:1fr}}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding-block:20px 50px}
+.gl{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.gl h3{font-size:18px}
+.gl p{font-family:var(--f-read);font-size:15px;line-height:1.9}
+.gl .src{font-size:12px;color:var(--ink-2);overflow-wrap:anywhere}
+.authors{display:flex;gap:24px;flex-wrap:wrap}
+.author{display:flex;gap:14px;align-items:center;font-weight:900;font-size:18px}
+.author img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:5px solid var(--mi)}
+.author:nth-child(2) img{border-color:var(--dk)}
+.callout{background:var(--both-soft);border-radius:24px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;font-size:14.5px;line-height:1.85}
+.callout h4{margin:0;font-size:15px;font-weight:900}
+
+/* next / footer */
+.next3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.next3 > div{border-radius:26px;padding:20px;display:flex;flex-direction:column;gap:10px;color:var(--on-accent)}
+.next3 h3{font-size:20px}
+.next3 ul{margin:0;padding-left:1.1em;font-weight:700;font-size:14.5px;line-height:1.75}
+@media (max-width:820px){.next3{grid-template-columns:1fr}}
+.mirror{margin-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border:2px dashed var(--ink);border-radius:26px;padding:16px 20px;font-weight:900}
+.foot{background:var(--both);color:var(--on-accent);padding-block:48px;margin-top:40px;position:relative;overflow:hidden}
+.foot .wrap{display:flex;flex-direction:column;gap:20px;position:relative}
+.foot h2{font-size:clamp(28px,4vw,40px)}
+.foot .rart{font-family:var(--f-num);font-weight:800;font-size:clamp(28px,4vw,40px);line-height:1.1}
+.foot .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-end;font-size:14px}
+.foot .cta{display:inline-flex;align-items:center;gap:8px;background:var(--on-accent);color:#FFFBF2;text-decoration:none;font-weight:900;padding:12px 22px;border-radius:999px;align-self:flex-start}
+.foot .c1{position:absolute;right:-60px;top:-70px;width:240px;height:240px;border-radius:50%;background:var(--mi);mix-blend-mode:multiply}
+.foot .c2{position:absolute;right:110px;top:-50px;width:180px;height:180px;border-radius:50%;background:var(--dk);mix-blend-mode:multiply}
+.fine{font-size:12.5px;color:var(--ink-2);line-height:1.8}
+.nav a.lang{border:1.5px solid var(--line)}
+.pfig{margin:18px 0 0}.pimg{position:relative}.pfig img{display:block;width:100%;height:clamp(200px,34vw,380px);object-fit:cover;object-position:50% 37%;border-radius:28px}.pfig figcaption{font-size:12.5px;color:var(--ink-2);margin-top:8px}
+.pfig .plabel{z-index:1;position:absolute;left:24px;bottom:-26px;background:var(--both);color:var(--on-accent);border-radius:18px;padding:10px 22px;display:flex;align-items:baseline;gap:12px}
+.pfig .plabel b{font-weight:900;font-size:clamp(22px,3vw,30px);line-height:1.2}
+.pfig .plabel span{font-family:var(--f-num);font-weight:800;font-size:12px;letter-spacing:.16em}
+.pfig .pdots{position:absolute;right:28px;bottom:-18px;width:62px;height:40px}
+.pfig .pdots i{position:absolute;top:0;width:40px;height:40px;border-radius:50%;mix-blend-mode:var(--blend)}
+.pfig .pdots i:first-child{right:0;background:var(--mi)}.pfig .pdots i:last-child{right:22px;width:28px;height:28px;top:6px;background:var(--dk)}
+.pfig figcaption{margin-top:10px;padding-left:min(320px,45%);padding-right:84px;text-align:right}
+.pfig + .reader,.wrap:has(.pfig)+.reader{padding-top:40px}
+.doc .pq{background:var(--mi-soft);border-radius:18px;padding:14px 20px;font-family:var(--f-pop);font-weight:700;font-size:17px;line-height:1.85}
+.doc .pq p{text-indent:0}
+.intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center}
+.intro .ph{position:relative;display:block}
+.intro .ph img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 37%;border-radius:28px;max-width:100%}
+.intro .ph .plabel{position:absolute;left:18px;bottom:-18px;background:var(--both);color:var(--on-accent);border-radius:16px;padding:8px 18px;display:flex;align-items:baseline;gap:10px}
+.intro .ph .plabel b{font-weight:900;font-size:22px}.intro .ph .plabel span{font-family:var(--f-num);font-weight:800;font-size:11px;letter-spacing:.16em}
+.intro .tx{display:flex;flex-direction:column;gap:16px;min-width:0}
+.intro .lq{font-weight:900;font-size:clamp(18px,2.2vw,22px);line-height:1.7;text-wrap:pretty}
+.intro .qq{background:var(--mi-soft);border-radius:16px;padding:10px 16px;font-weight:700;font-size:15px;line-height:1.75}
+.intro .au{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-weight:900;font-size:15px}
+.intro .au span{display:flex;align-items:center;gap:8px}
+.intro .au img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:3px solid var(--mi)}
+.intro .au span:nth-of-type(3) img{border-color:var(--dk)}
+.btn{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:900;font-size:15px;padding:11px 22px;border-radius:999px}
+.btn::after{content:"→";font-family:var(--f-num)}
+@media (max-width:820px){.intro{grid-template-columns:1fr;gap:34px}}
+@media (max-width:640px){.pfig figcaption{padding:36px 0 0;text-align:left}}
+.toggle-theme{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:15px;flex:none}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="dots" aria-hidden="true"><i></i><i></i></span><span>美山 × デンマーク<small>EDUCATION FIELD REPORT 2026</small></span></a>
+    <nav class="nav" aria-label="メイン">
+      <a href="#top" data-n="top">概要</a>
+      <a href="#yutori" data-n="theme">テーマ</a>
+      <a href="#report" data-n="report">本編</a>
+      <a href="#voices" data-n="voices">自由記述</a>
+      <a href="#interview" data-n="interview">インタビュー</a>
+      <a href="#data" data-n="data">データ</a>
+      <a href="en/index.html" class="lang" lang="en" onclick="this.href='en/index.html'+location.hash">English</a>
+    </nav>
+    <div class="depth" data-d="1" aria-live="polite"><span class="lv" aria-hidden="true"><span></span><span></span><span></span></span><span id="depthLabel">概要</span></div>
+  </div>
+</header>
+<main id="view"></main>
+
+<script>
+window.SITE={"likert": {"teacher": {"nMi": 15, "nDk": 23, "rows": [{"q": 1, "text": "生徒一人ひとりの心理的・身体的な幸福度や充足度を十分に把握できている", "short": "子どもの心身の状態の把握", "mi": [5, 5, 5], "dk": [13, 6, 4], "note": null}, {"q": 2, "text": "生徒の幸福度や充実度を支えるアプローチや支援体制が機能している", "short": "子どもを支える支援体制", "mi": [7, 6, 2], "dk": [6, 11, 6], "note": null}, {"q": 3, "text": "生徒が自ら「参加」し、主体的に「対話」を行う学びの場が十分に確保されている", "short": "参加・対話の場の確保", "mi": [12, 3, 0], "dk": [16, 3, 4], "note": null}, {"q": 4, "text": "生徒の意見を反映させる意思決定の仕組みが整っている", "short": "意見を反映する仕組み", "mi": [9, 4, 2], "dk": [14, 8, 1], "note": "※デンマーク版の回答データにはQ4の回答列が2列あり、2列目で集計しています。1列目で集計すると肯定56.5%（13名）・中立39.1%（9名）・否定4.3%（1名）。"}, {"q": 5, "text": "定期考査以外で、多角的に評価する方法や工夫が導入されている", "short": "多角的な評価の工夫", "mi": [12, 2, 1], "dk": [16, 3, 4], "note": null}, {"q": 6, "text": "生徒が主体的に授業に参加できる工夫・雰囲気作りができている", "short": "主体的に参加できる雰囲気", "mi": [12, 3, 0], "dk": [9, 7, 7], "note": null}, {"q": 7, "text": "地域住民やコミュニティとの双方向の関わりが十分に行われている", "short": "地域との双方向の関わり", "mi": [13, 2, 0], "dk": [10, 8, 5], "note": null}, {"q": 8, "text": "地域住民や保護者の意見が反映されやすい環境（開かれた組織体制）が整っている", "short": "開かれた組織体制", "mi": [12, 1, 2], "dk": [12, 7, 4], "note": null}, {"q": 9, "text": "地域の固有な資源（文化・歴史・自然）が教育カリキュラムに効果的に取り入れられている", "short": "地域資源の教材活用", "mi": [13, 1, 1], "dk": [17, 3, 3], "note": null}, {"q": 10, "text": "生徒が地域課題解決のプロジェクトやボランティア活動に参加できる仕組みが整っている", "short": "地域課題に参加する仕組み", "mi": [6, 3, 6], "dk": [9, 12, 2], "note": null}, {"q": 11, "text": "教職員間の協力やチーム体制が十分に機能している", "short": "教職員のチーム体制", "mi": [13, 1, 1], "dk": [15, 6, 2], "note": null}, {"q": 12, "text": "新しい教育理念の実践に取り組む時間的・精神的な余裕がある", "short": "新しいことに取り組むゆとり", "mi": [0, 7, 8], "dk": [7, 6, 10], "note": null}, {"q": 13, "text": "外部との調整役や事務補助などのサポートスタッフ・支援体制は十分である", "short": "サポート・支援体制", "mi": [10, 2, 3], "dk": [11, 10, 2], "note": null}]}, "parent": {"nMi": 26, "nDk": 27, "rows": [{"q": 1, "text": "学校の方針や重要な決定に対して、意見を伝えたり対話したりする機会が十分にある", "short": "意見・対話の機会が十分ある", "mi": [11, 9, 6], "dk": [21, 4, 2], "rev": false, "note": null}, {"q": 2, "text": "子どもの様子や心身の健康、学校生活について先生と気軽に情報共有・相談ができている", "short": "先生と気軽に相談できる", "mi": [16, 5, 5], "dk": [26, 0, 1], "rev": false, "note": null}, {"q": 3, "text": "先生方が忙しすぎて子どもに対する余裕がないと感じることがある", "short": "先生が忙しすぎると感じる", "mi": [6, 9, 11], "dk": [5, 7, 15], "rev": true, "note": "※低いほど良い問い"}, {"q": 4, "text": "学校は「協調性」よりも一人ひとりの「個性や自己表現」を尊重している", "short": "協調性より個性を尊重", "mi": [9, 11, 6], "dk": [12, 9, 6], "rev": false, "note": null}, {"q": 5, "text": "テストの点数だけでなく「多角的な成果」で、明確な基準のもと公平に評価している", "short": "多角的な成果で公平に評価", "mi": [14, 11, 1], "dk": [17, 8, 2], "rev": false, "note": null}]}}, "multi": {"q6": {"nMi": 26, "nDk": 27, "hot": "学校の方針や日頃の様子が見えにくく、意見・相談の窓口や機会が不十分", "note": "出典：付録A 表A-2・A-5。美山の「その他」4名のうち1名は記述なし（「。」のみ）。記述は付録B。", "rows": [{"label": "学校の方針や日頃の様子が見えにくく、意見・相談の窓口や機会が不十分", "mi": 7, "dk": 1}, {"label": "不登校・発達の特性・多文化背景など、多様なニーズへの支援・対応が不十分", "mi": 7, "dk": 9}, {"label": "先生方が日々の業務に追われ、子どもとじっくり向き合う時間や余裕がない", "mi": 5, "dk": 7}, {"label": "学校と家庭・地域の間で、育みたい力や教育方針に対する意識のズレがある", "mi": 4, "dk": 2}, {"label": "特に課題があるとは感じない", "mi": 6, "dk": 11}, {"label": "その他", "mi": 4, "dk": 3}]}, "q7": {"nMi": 26, "nDk": 27, "note": "出典：付録A 表A-3・A-6。美山の「その他」の記述：生きる術／自己解決力／知徳体の素養と成長への意欲。", "rows": [{"label": "自分らしく生きる力・自己肯定感", "short": "自己肯定感", "mi": 11, "dk": 6}, {"label": "自分の意見を持ち、表現する力", "short": "表現する力", "mi": 11, "dk": 10}, {"label": "失敗を恐れずに挑戦する力・しなやかさ", "short": "挑戦する力", "mi": 9, "dk": 5}, {"label": "他者と協力・協働する力", "short": "協働する力", "mi": 8, "dk": 8}, {"label": "社会のルールを守る規範意識", "short": "規範意識", "mi": 3, "dk": 8}, {"label": "高い学力・知識", "short": "学力・知識", "mi": 3, "dk": 16}, {"label": "その他", "short": "その他", "mi": 3, "dk": 0}]}, "q14": {"nMi": 15, "nDk": 23, "note": "出典：付録A 表A-8・A-11。美山の「その他」1名の記述は付録B。デンマークの1名は「???」と回答（集計対象外）。", "rows": [{"label": "生徒会や委員会などを通じた、生徒の意見の吸い上げ（意思決定への参画）", "mi": 11, "dk": 6}, {"label": "地域住民や企業を招いた特別授業・連携行事の実施", "mi": 8, "dk": 5}, {"label": "地域課題をテーマにした探究学習やボランティア活動への参加", "mi": 8, "dk": 4}, {"label": "日常的な面談や相談体制の強化（生徒のウェルビーイング向上）", "mi": 6, "dk": 13}, {"label": "定期考査以外の多角的な評価の導入", "mi": 4, "dk": 6}, {"label": "その他", "mi": 1, "dk": 0}]}, "q15": {"nMi": 15, "nDk": 23, "note": "出典：付録A 表A-9・A-12。「その他」の記述：僻地であるがゆえの不自由さ／社会の大きな変化に学校現場の理解やスキル、マインドチェンジが追いついていない（美山）、政府は教育制度や経済などにもっと力を注ぐべき（デンマーク）。", "rows": [{"label": "日々の業務やカリキュラム消化に追われ、新しいことに取り組む時間がない", "mi": 13, "dk": 19}, {"label": "学校側と地域側（保護者・住民）の間で、教育に対する意識のズレがある", "mi": 1, "dk": 8}, {"label": "生徒の多様なニーズに対する評価や支援の具体的なノウハウが足りない", "mi": 3, "dk": 5}, {"label": "地域や外部企業との連絡・調整をする人員や窓口が不足している", "mi": 3, "dk": 0}, {"label": "その他", "mi": 2, "dk": 1}]}}, "voices": [{"id": "B-1", "region": "mi", "role": "parent", "n": 26, "title": "B-1 美山町（日本） 保護者（N=26）", "sections": [{"no": 1, "title": "学校との対話や先生との関わりについて（Q1〜Q3関連）", "items": [{"ja": "電話ではなく連絡できるメールやアプリなどがあればもっと気軽に連絡をとりあえるのでは？"}, {"ja": "小学校でも教科担任制を導入して、先生が子供から離れる時間を確保すること。予約を取り戻すための時間を確保してほしい。学校への連絡は連絡ノートを使いますが、子供が出すのを忘れたり、子供のことでも本人に知られたくない内容はそこに書きにくい…となると伝えにくいという状態になってしまっていると思います。"}, {"ja": "家庭訪問や二者面談はあるが、それ以外に話す機会がなく(こちらから話にいけば話はできるとは思うがそこまでするのも遠慮してしまう)、もう少し普段思ってること、困ってることなどを気軽に話せたらよいなと思う。"}, {"ja": "美山小学校と美山中学校。先生と保護者との関わり方が極端に違いすぎる。まず、面談。小学校は気さくに話進む。普段の先生の言葉。子供たちにも保護者にも同じような気がする。でも、中学校はマニュアルすぎる話がほとんど。全ての先生ではないが、こどもに言わせてる感あり。面談は顔みて話してほしい。20分ほどしか時間ないのに画面みて進められたら 話にならん。"}, {"ja": "PTAという名前だけの学校からの接触が強く感じられ、PTAより子供と向き合う教育がもう少し欲しく思います。"}, {"ja": "対話が必要そうな時はすぐに学校へ足を運ぶ、もしくは電話をして情報を得ているので、必要最低限の対話はできていると思います。学校側の対応も良い方だと思っています。ただ見るからに先生方が忙しそうなので、その皺寄せは子供達への対応や時間割に出ているのではとも思いますが。。。"}, {"ja": "Q3については、子どもから聞いた話にはなるが、授業で分からない所があった時、先生に聞きに行ったが、後で…と言われる事が何度かあったり、少し先生の機嫌が悪そうで話しかけにくい時があった。"}, {"ja": "働き方改革と言われると、先生も大変なのでは？と思うとこれくらいの相談はやめておこう、と思ってしまうことがある"}, {"ja": "先生の業務や学校の目指すところへの保護者の理解度が人によって異なる（理解したいという度合いも異なるし、学校に求めることの多さも様々）相互理解が必要"}, {"ja": "先生方は子たちの日々を見てもらうことと英気養う時間を大切にしてもらいたいので、保護者対応は最小限でよいかと思う。ただ、任意で保護者が学校や子たちのために活動する機会・窓口はあるとよい。"}], "note": ""}, {"no": 2, "title": "個性・協調性の尊重や評価の方法について（Q4〜Q5関連）", "items": [{"ja": "小学校は全体評価と感じるが、中学校はそうではないように感じる。"}, {"ja": "運動ができる子は、運動会や持久走大会など、目立つ、わかりやすく評価されますが、運動が苦手な子たちにとってはやりたくない、苦手、できないことをたくさんの人の前でやらなくてはいけないという場でもあります。またそういった子が、他で評価されるかといえば、勉強面での評価は運動会のように大きく分かりやすいものではないので、どうしても自己評価も下がってしまいがちだと感じています。それぞれの得意を評価してあげられる、目に見える形にしてあげる、というような取り組みがあればいいのになぁと思います。"}, {"ja": "その点についてはあまりわかってないので、逆に学校としてどのような対応をしているのか詳しく知りたい。"}, {"ja": "そもそも先生と生徒という関係性で、且つ、学校生活の中だけで子ども一人ひとりの個性を「評価をする」ということ自体が無意味だし無茶だと思います。テストの採点ならばもちろん数値化は出来ますが、内申書というのは本当に難しいですね。"}, {"ja": "人と話すのが苦手な子ですが、本人が話すまで待ってくださったり、担任の先生ではなく、本人が話しやすい先生に話してもらうようにしてくださり、子ども自身も、何か言いたい事があっても話せないから聞いてもらえないという半分諦めのような態度から一変し、先生に相談しにいくようになったので、良かったです。"}, {"ja": "発達特性グレーの子がいますが、学校生活様々な場面で、押し付けず、気持ちを尊重してくださっていると感じます。一見すると問題がある行動にも、必ず理由があると理解してくださっています。そのため、子どもも生き生きと過ごしています。漢字が苦手ですが、通級指導の先生と担任の先生とで、漢字テストを記述式から選択式にして点を取れるようにしてはどうか？と言ってくださっています。"}, {"ja": "美山小学校に限っていえば、少人数のため個別の子どもたちの特性や性格を普段から理解してもらっているように思う"}, {"ja": "美山は少人数なので個別をよく見てくれていると思う。周りに合わせるというより、それぞれを尊重しあったり、自由と秩序の折り合いがどんな現状なのか、評価の仕組みがどうなっているのか分からない。"}, {"ja": "個性の尊重ももちろん大切ですが学校では集団生活、気の合う合わない人とも過ごしていく協調性を学ぶ場だと思うのであまりにも個々を主とした教育方針になることは避けたいと感じます。今の美山小学校ではもちろん一人一人も大切にして頂いているし、縦横での協調性も育まれとてもありがたく感じています。"}], "note": ""}, {"no": 3, "title": "Q6「最も大きな課題」で「その他」を選んだ方の記述", "items": [{"ja": "保育所→小学校、小学校→中学校と子どもの特徴や個性や行事等の連携があまりなくまた一からスタートと言う感じがする。"}, {"ja": "先生の働き方に関しては、課題を感じます。1人ひとりとじっくりと向きあってくださっているので、設問が難しい。。"}, {"ja": "時間割が詰め詰めで、子供たちの選択が全くないため、自主性や責任意識も、創造性も育まれていない。"}], "note": "※このほか1名が「その他」に「。」のみを記入。"}, {"no": 4, "title": "学校教育・学校との関わりにおける「一番の壁」と、解決のアイディア", "items": [{"ja": "保護者と学校の話し合い定期に行う事"}, {"ja": "学力の把握。過去と比べて、落ちているか、把握すらできていないのではないかという危惧がある"}, {"ja": "学校と言う場所をもっと保護者や地域の方が集まる場所になれば行きやすくなるのでは？"}, {"ja": "当たり前のことですが保護者の温度感が各家庭違うので、足並みが揃わない。地域、学校、いろんな取り組みをしているが、興味のない保護者はとこちん興味がなさそう。"}, {"ja": "多様なニーズへの対応は不十分かもしれないが、学校だけが支援・対応しなくていいと思うので、、、。でも、そうなると田舎は特に選択肢が少ない、または通う大変さがあると感じる。"}, {"ja": "1人1人のレベルにあった教育かと言われるとそうとは思えず、我が家の場合は兄弟の中で勉強についていくことに苦労してる子もいますまた担任の先生の威圧感や厳しさにストレスを感じていて、その日の授業の内容を覚えていなかったりします(怖い、怒鳴られている友達がいるだけで頭が真っ白になるなどして)先生の余裕という意味もありますが、いまだに大声で怒鳴る、先生の機嫌で怒られるなどがあるというのが不安のもとです。先生の余裕を生み出していただき、また生徒への指導に適切で必要な指導方法が徹底されてほしいと感じます"}, {"ja": "日本の教育を受けてきた人たちが先生をしているし、私もそうやって育ってきたので、どんな方法があるのかわからないけど、実現可能なもっと多様な教育の方法があるなら、まずは知りたいし、話し合っていけたら良いと思う。"}, {"ja": "中学校と地域との関わり。先生が地域のことを知らなさすぎる。かやぶきだけではありません。小学校は地域の方がどんどん校舎の中に入って生徒だけでなく先生との交流もある。中学校は全くといってない。"}, {"ja": "PTAも学校に頼らず、学校もPTAに頼らず、共に子供の育成が出来れば嬉しい。"}, {"ja": "人数が減少と美山町という面積の広い町での放課後のあり方が課題かなと思う。学童を必要としない子供たちの交流の場を増やせればと寺子屋のようなものを作ろうと考えている。地域住民の協力が必須である。"}, {"ja": "学校での子ども達の様子がわかりにくい。"}, {"ja": "家庭は地域の一員でもあるという認識のもと、積極的に学校が地域に依頼している活動に参加し、学校の様子、子どもの様子を見る"}, {"ja": "先生の働き方。残業が多く、心配になります。地域や保護者でお手伝いできることがあると思うのですが、どのように手伝えばいいのか分かりません。"}, {"ja": "小学校と中学校との先生の温度差を近づけてほしい せっかく小学校で伸び伸びできていたのに中学で壁にぶち当たる"}, {"ja": "保護者も先生も忙しすぎる中で、子どもに過度の期待を寄せすぎている"}, {"ja": "放課後遊びの環境、中学の文化系部活の充実（楽器合奏や合唱など）"}, {"ja": "ある程度の学習能力に応じた対応（組み分け的な）、その時のクラスメイトの柔軟性の教育"}, {"ja": "それぞれの資質の向上、向き合う姿勢、共有"}, {"ja": "美山町の広さゆえに放課後子どもたちが自分の力で友達の家へ行くことなどが難しく、送迎してもらえる家庭とそうでない家庭で放課後の過ごし方にどうしても差が出るので、現在取り組んでいただいている放課後プロジェクトや地域の方との関わりなどを活かして、学童以外の放課後の過ごし方が見つけられたらいいなと感じます。"}], "note": "※「特にありません」「なし」などの回答7件は省略。"}, {"no": 5, "title": "子どもの成長のために学校や先生方に期待すること（Q8）", "items": [{"ja": "子供の得意分野にもっと時間増やすのと苦手の分野を克服できるように工夫して欲しいです。"}, {"ja": "先生ともっと話せる機会があれば相談などもしやすいのでは？"}, {"ja": "このまま、暖かく子供達の学校教育をお願いできたら嬉しいです。気付いた点とては、小学校に上がると子供達が標準語で話すようになってきました。日頃から、先生たちが子供達に丁寧な言葉使いで接して下さってるからかもしれませんが、家庭内でちょっと寂しくなりました。つい、「家では関西弁で喋って」とお願いしてしまいます。"}, {"ja": "日々子供たちに学びとより良い成長を願っているのは、親も先生方も変わらない部分だと思っています。ですが先生によって子供たちのストレス具合がこんなにも違うことはやはり悩みであり、不安です。子供たちのより良い成長のために、保護者も学校も地域も協力し合いながら良いサイクルを築いていく必要があると思います。"}, {"ja": "好きなことをどんどん伸ばしていける、選択していける日々であれば良いと思う。"}, {"ja": "小学校での学びが 中学校で途切れる。残念だ。"}, {"ja": "お忙しい中かとは思いますが、子供達に配慮する発言や行動を期待しております。"}, {"ja": "家庭ではたっぷりの愛情を！学校ではもっと自由になる時間を作り、先生(保護者も)がもっと自由に楽しく生きることを！幸せにクリエイティブに生きている大人の中で子供は様々なことを学んで選択して、自分の選択に関心を持ち、少しづつ自信をつけていけたら良いと思います。"}, {"ja": "現在の小学校校長は地域との連携や学びを大切にしていらっしゃる。素晴らしいので先生方が変わってもその方針は変わらずあってほしいと心から願っている。"}, {"ja": "学校側は美山学として、子ども達にどういった学びを与えられるか、念密に考えてくださり、こまめにアップデートしてくださっているんだな、と先日のまちごとスクールミーティングのお話を聞かせていただき、とてもありがたく思っています。一方で、子ども達に寄り添った対応をするために、先生方には負担が増えているのではないかと思います。家庭が学校・地域に寄り添っていくことが必要なのではないかと感じています。"}, {"ja": "先生方も含め生き生きと毎日を過ごしてくださっていることが、何より子どもの成長に繋がると思っています。大人になるって楽しいとおもってほしいです。"}, {"ja": "先生の心身の健康が充実する職場、地域社会であれますように。よいときの大空小学校の映画「みんなの学校」を地域の皆さんや先生方と一緒に鑑賞できたらいのにな。"}, {"ja": "家庭で親から聞く言葉と「先生」という立場から教わる事では、聞く姿勢も受け取り方も違うのだなと感じます。尊敬、憧れの眼差し、好きな○○先生方から、自分なりの挑戦や良かったなと思う経験談など、たくさんの大人から話を聞ける機会があれば有難いなと思います。"}, {"ja": "先生方には感謝しています。自分の子供でも時代の背景が否応なしに変わっていくなかで子育ての変化、大変さを感じる時もあります。そんな中先生方は時代のニーズの把握など変化に対応されていくのは大変だと思います。でも、子供達は今を生きているのでその今を輝かせてもらえる様に関わってくださっていると願っています。"}], "note": ""}]}, {"id": "B-2", "region": "dk", "role": "parent", "n": 27, "title": "B-2 デンマーク（グリブスコウ市） 保護者（N=27）", "sections": [{"no": 1, "title": "学校との対話や先生との関わりについて（Q1〜Q3関連）", "items": [{"en": "Aula is bad thing, and to manny students in classroms", "ja": "Aula（学校と家庭の連絡システム）はよくない。また、1クラスの生徒数が多すぎる。"}, {"en": "Online debate platforms", "ja": "オンラインの討論プラットフォーム。"}, {"en": "Yes, the danish teachers are busy. But still we have always as parents been met by teachers who take time to talk or write on Aula, when we have questions etc. Our kids have good relations to their main-teachers.", "ja": "確かにデンマークの先生は忙しい。それでも、私たち保護者が質問をしたときには、いつも先生が時間をとって話したり、Aulaで返信したりしてくれる。子どもたちは担任の先生と良い関係を築いている。"}], "note": ""}, {"no": 2, "title": "Q6「最も大きな課題」で「Other（その他）」を選んだ方の記述", "items": [{"en": "Too many students are disrupting the class. To often substitute teachers attend in classes instread of regular teachers. Many Students do not respect teachers, caused by lack of dicipline from home.", "ja": "授業を妨げる生徒が多すぎる。正規の先生ではなく代講の先生が授業に入ることがあまりに多い。家庭でのしつけ不足が原因で、先生を尊重しない生徒が多い。"}, {"en": "Including children with diagnoses who do splitting between the children, are at problem if they don’t get at grown up to follow them. They will run around creating fires in the environment.", "ja": "子どもたちの間に分断を生む、診断のある子どもを（通常学級に）含めることは、ついてくれる大人がいないと問題になる。周囲で騒ぎを起こして回ってしまう。"}, {"en": "The gap between the students different levels and efforts with their schoolwork.", "ja": "生徒間の学力や学習への取り組みの差。"}], "note": ""}, {"no": 3, "title": "学校教育・学校との関わりにおける最も大きな課題と、解決のアイディア（デンマーク版Q8）", "items": [{"en": "One challenge is in finding the time and resources to differentiate the levels of teaching so that they match the individual students needs more appropriately", "ja": "課題の一つは、一人ひとりの生徒のニーズにより適切に合うよう、指導のレベルを分けるための時間と資源を確保することだ。"}, {"en": "That the goverment dont put enough resorces to the school, but I feel the teachers truely do the best with what they have", "ja": "政府が学校に十分な資源を投じていないこと。ただ、先生方は今ある資源の中で本当に最善を尽くしていると感じる。"}, {"en": "They cant solve previus stated problem", "ja": "（学校は）先に挙げた問題を解決できない。"}, {"en": "Does inclusion mean that the environment will take damage and the quality will fall, and how much of that is enough or too much", "ja": "インクルージョンとは、学習環境が損なわれ、質が下がることを意味するのか。そして、どこまでなら許容範囲で、どこからが行き過ぎなのか。"}, {"en": "That some misbehaving kids are destroying it for the rest", "ja": "一部の素行の悪い子どもが、ほかの子どもたちにとっての環境を壊していること。"}, {"en": "I think that more psychological help for individuals is needed", "ja": "個々の生徒に対して、もっと心理的な支援が必要だと思う。"}, {"en": "My son was bullied for many years. And in my opinion, the efforts and support in this regard were insufficient. I hope that the school will focus more on well-being and anti-bullying in the future as it affects the students learning and the motivation to go to school.", "ja": "息子は何年もいじめを受けていた。私の考えでは、それに対する取り組みや支援は不十分だった。いじめは生徒の学習や登校意欲に影響するので、今後は学校がウェルビーイングといじめ防止にもっと力を入れてくれることを望む。"}, {"en": "Kommunikation from teachers", "ja": "先生からのコミュニケーション。"}], "note": ""}, {"no": 4, "title": "子どもの成長のために学校や先生方に期待すること", "items": [{"en": "To help with general academic knowledge and the ability to resolve tasks, find information, and crave more knowledge.", "ja": "一般的な学力と、課題を解決する力、情報を見つける力、もっと知りたいと思う気持ちを育ててほしい。"}, {"en": "I hope to work more on building a stronger personality for the child.", "ja": "子どもがより強い人格を築けるよう、もっと取り組んでほしい。"}, {"en": "Be a support and a visible grown up to guide them through the learning process", "ja": "学びの過程を導く、支えとなる目に見える大人であってほしい。"}, {"en": "The main teachers in both my children’s classes are “persons” not just teachers, I think that my kids like that, and also the kids get to be other that just student for at teachers, who really “sees”the kids.", "ja": "二人の子どものクラス担任はどちらも、単なる「先生」ではなく一人の「人」として接してくれている。子どもたちはそれを好んでいると思うし、子どもも先生にとって単なる「生徒」以上の存在でいられる。先生は本当に子どもたちを「見て」くれている。"}, {"en": "Let them feel safe and confident. That it is okay to make mistakes", "ja": "子どもたちが安心して自信をもてるようにしてほしい。間違えてもいいのだと感じられるように。"}, {"en": "More relationship, and little more respect to adults", "ja": "もっと関係づくりを。そして大人に対するもう少しの敬意を。"}, {"en": "That they love teaching and inspiring students. That they prioritize well-being and class cohesion, as this is necessary for the students to be able to learn", "ja": "教えることを愛し、生徒に刺激を与えてほしい。生徒が学ぶためにはウェルビーイングとクラスのまとまりが欠かせないので、それを優先してほしい。"}, {"en": "Individual adaption to children's learning curves", "ja": "子ども一人ひとりの学習曲線（理解の進み方）に合わせた個別の対応。"}], "note": ""}]}, {"id": "B-3", "region": "mi", "role": "teacher", "n": 15, "title": "B-3 美山町（日本） 教員（N=15）", "sections": [{"no": 1, "title": "生徒の参加・対話について心掛けていることや具体例（Q3関連）", "items": [{"ja": "毎日一人ひとりと話すように努めています。話したときにはいろいろな気持ちを受け止めるようにしています。聞いたことで気になったことは関係する先生に相談しています。授業ではペアワークや考えたくなる問いかけが行われている印象です。"}, {"ja": "学びたい、なぜだろう、どうしてと興味を持てるように意識をしている。自然と会話が生まれるようにしていきたい。"}, {"ja": "教員からの一方的な講義型授業ではなく、生徒間で実際にコミュニケーションをとることや、ICTを利用して自分たちの力で問題解決ができるような授業構成を意識しています。"}, {"ja": "まずは自分で考えてやってみる。失敗でも成功でも、「やった」ことが大事で、その経験に価値付けしたり、改善したりすることが教師の役目かと。"}, {"ja": "普段から教師間で児童の様子について話をしている。また、話したうえでどうアプローチするかを考え、行動している。学習の中で必ず児童の考えを言う場面を確保している。また、１日の中で全員が話すように声をかけ、意識させている。"}, {"ja": "ペア学習やグループ学習を取り入れる。また、ノートに自分の意見を書かせる時間を取り、自分の考えを整理できる時間を確保する。"}, {"ja": "主体的な対話を引き出すため、興味のわく質問をするよう心がけたり、「なぜ」を引き出し「知りたい」となるような授業展開を目指しています。"}, {"ja": "時間を見つけて校内を積極的に見回り、児童の様子を観察したり声かけをしたりすること"}, {"ja": "自分1人の見取りだけで判断せず、いろんな立場の先生から意見を聞くことが大切だと思っています。本人の言葉も大切ですが、額面どおりに受け取ってはいけない場合もあると思います。そんなときこそ、できるだけたくさんの情報を集めます。"}, {"ja": "授業では、アウトプットの場面やグループ学習、意見交流、協働的に解決する場面が増えていると思います。"}, {"ja": "毎日ではないが、年度初めの教職員と5,6年生徒の熟議が今年度で3回目となった。また、学校生活については今年度初めて1～4年生も声を上げられる仕組みづくりを進めている。"}, {"ja": "児童に寄り添い、できた！分かった！楽しい！など味わえるように。また、自分の思いを伝えたり、自己決定をしたりできるようにしている。クラブや委員会では、みんながいきいきできるためにどんなことができるかを考え、どんなクラブや委員会が必要か、児童が自分たちで考えている。高学年の総合的な学習の時間34カンパニーの進化版！"}], "note": ""}, {"no": 2, "title": "多角的な評価についての具体的な取り組み（Q5関連）", "items": [{"ja": "テストの振り返りや授業の振り返りで自分自身の成長を見直すことができるように心がけている。"}, {"ja": "日々の授業のふりかえりシートやパフォーマンス課題の取り組む姿勢・スピーチ・作文など"}, {"ja": "児童に意見を求める場面やもらった意見は必要であれば教師間で共有し、どうするかを考えている。委員会やクラブなど特別活動の多くの場面で児童の意見をもとに行っている。ノートや宿題、自主学習、授業での様子などの学力が定着するための努力とその成果を踏まえ評価している。"}, {"ja": "自主学習や、授業中のノートでの記載内容を見たり、発言内容をチェックしている。"}, {"ja": "対話を通して学んだことを発表する場を設けたり、ロイロノートを使って考えたことや学んだこと、振り返りを書くなどし、それらを評価に取り入れている。"}, {"ja": "児童主体の委員会活動"}, {"ja": "教師と児童がともに学校を良くするために話し合う熟議を行っています。高学年以外の意見を吸い上げる機会も今年度模索中です。"}, {"ja": "小テスト、単元テスト、パフォーマンステストに取り組む教科が増えている。"}, {"ja": "年間２回、学習・生活面でアンケート調査を行っている。"}, {"ja": "ぐんぐんタイム"}], "note": ""}, {"no": 3, "title": "学校教育への関心・参加を高めるための工夫や発信（Q7関連）", "items": [{"ja": "あいさつ運動や花植え、広報など"}, {"ja": "ホームページを充実している"}, {"ja": "文化祭の午後の活動など"}, {"ja": "学級通信や、学校ホームページで発信しているつもりである。"}, {"ja": "学校ホームページの作成や親子活動、文化祭午後の部など"}, {"ja": "ふるさと学習や職場体験、文化祭（午後の部）など"}, {"ja": "学校行事への案内 HPの毎日更新 学校だよりの全戸配布"}, {"ja": "学校だより、ホームページ、熟議、参観など"}, {"ja": "学校運営協議会を通しての連携は他校に比べると進んでいると思います。ただ美山の学校運営協議会のスペックを最大限に生かせているかというとそうではなく、学校としての工夫の余地はあると思っています。"}, {"ja": "学校運営協議会制度、美山まちづくり委員会との連携、学校だより・webサイトによる情報発信、放課後子ども教室（仮称）による参画。"}, {"ja": "・放課後子ども教室\n・総合的な学習の時間、生活科などいろいろな授業で地域の方から教えていただき交流\n・ホームステイ\n・こだま２組 和太鼓練習開始！"}], "note": ""}, {"no": 4, "title": "地域課題の解決やボランティア活動への参加の具体例（Q10関連）", "items": [{"ja": "生徒自身がボランティアに参加できる仕組みがあるといいと思う"}, {"ja": "総合的な学習の時間（美山学）"}, {"ja": "中学校では、教育課程の遂行や部活動の関係で、どうしても時間的制約があり、実際は日曜日以外の活動には、生徒たちも参加しにくい状況にあると思っています。"}, {"ja": "３年前から、5,6年生が「総合的な学習の時間」において、10年後の美山に残したい物・事というテーマで、興味ある分野について探究活動を行っている。"}], "note": ""}, {"no": 5, "title": "Q14「力を入れている取り組み」で「その他」を選んだ方の記述", "items": [{"ja": "今年5月29日に開催した「まちごとSchoolMeeting」（まちづくり委員会・美山小中学校学校運営協議会共催）の取組で、多くの地域住民・保護者が参加し、現在に至る美山の地域と協働した教育について理解を得る大きな一歩となったこと。"}], "note": ""}, {"no": 6, "title": "Q15「最も大きな壁」で「その他」を選んだ方の記述", "items": [{"ja": "僻地であるがゆえの不自由さが多い。（公共交通機関の少なさ・生徒数の減少による偏った人間関係など）"}, {"ja": "社会の大きな変化に学校現場（保護者・地域・学校教職員）の理解やスキル、マインドチェンジがついていけていない。"}], "note": ""}, {"no": 7, "title": "ご自身の教育の一番の目標と、そのために生徒に教えたいこと（Q16）", "items": [{"ja": "教育の目標は、その生徒が生きやすい道を選べるように支援することです。今何を考えているか、どんな思いを抱えているかを聞いて受けとめ、一緒に考えることが大切だと実感しています。"}, {"ja": "生きる力を身につけていきたい。中学校を卒業すると社会へと出ていく。だからこそ、大人にならないといけないし、美山という場所から広い世界へと旅だっていくこと。"}, {"ja": "生徒が幸せになることを１番に望んでいます。そのため基礎的な知識ももちろん大事ですが、日々の学校生活での人とのかかわり方や、コミュニケーション力、疑う力等を教えたいと思う。"}, {"ja": "よく生きること、自分に正直に生きてほしい。"}, {"ja": "目標としては、どんな時代どんな社会でも生きていける人材の育成。そのために、「自分のことは自分でやる」「困った時は助けてと言える」「ありがとう、ごめんを素直に言える」「縦横どの関係でも他者と繋がる」「最低限の一般常識」は身につけさせたい。"}, {"ja": "子どもが安心して学校で過ごし、いずれ社会で生きていく中での自分の在り方みたいなものを見つけて、幸せに生きていくこと。そのために、できないことを受け入れながらも頑張ることの大切さであったり、人との繋がりの尊さであったり、自分が好きなこと、がんばっていることなど自分のがんばりを自分で認める力などを自分の経験も交えて伝えられたらいいなと思う。"}, {"ja": "大人になっても学び続け、人生を楽しめること。そのためにも、学ぶことの楽しさが伝えたい"}, {"ja": "いろいろな経験体験を通して学ぶこと他者と協働する力や発信する力をつけていきたい"}, {"ja": "予測可能な社会を生き抜く力をつけさせたい。学生に教えたいことは「視野を広げること」"}, {"ja": "自分を大切に、周りの人を幸せにできる人になること"}, {"ja": "1番の目標は関わった子どもたちがもれなく自分の幸せな人生を生きることです。そのためには自己理解と自分の活かし方を知ることが大切だと思います。"}, {"ja": "大人になった時に社会を力強く生きる力をつけるため、基盤となる基礎基本をしっかりと身につけてほしいと思っています。＊学力（知識・技能を含む）、常識、道徳心、礼儀や作法の全般で。"}, {"ja": "自分たち大人を超える子どもを育てること。現状を自分でより良くしていくというマインドをもつこと。"}, {"ja": "自立できる力をつける。自分のことをよく知り、助けあおう。"}, {"ja": "子どもたちの笑顔が輝くようにする信頼できる大人はそばにいるよ"}], "note": ""}, {"no": 8, "title": "現場での具体的なエピソードや今後の展望、ご意見（Q17）", "items": [{"ja": "なかなか日々時間に追われて目の前のことでいっぱいで、何かを考える余裕がありません。"}, {"ja": "相手の人の想いを想像して行動できる人になってほしい。自分だけ良ければいいじゃなく、周りの人に力を使える生きる力をつけてほしい"}, {"ja": "自然あふれる美山の景色に囲まれて、のびのびと勉強できることに誇りをもってほしい。美山はその名の通り、美しいです。ありがとうございました。"}, {"ja": "デンマークで深い学びができることを願っています。また、その学びを小学生や中学生に伝える機会を作っていただけるとありがたいです。"}, {"ja": "自分で考えること、主体的に行動する姿勢はもちろん大切ですが、その基となる判断や認識が間違っていると正しい行動がとれないので、そこは大人がしっかり教え、伝えることが大切だと思っています。そういう意味では、もう少し子どもたちへの厳しさが必要な部分もあるのかなと思っています。"}, {"ja": "美山の教育は、少しずつではあるが、間違いなく良い方向に向かってきていると感じています。しかし、まだまだそのより良い方向に向かうサイクルが定着しているわけではありません。その定着を目指して、（こうやってアンケートを取ってくれている若者たちを含め）多様な年代・性別・立場の意識共有・協働が必要だと感じています。"}, {"ja": "・子どもたちと一緒に笑いあえるのは楽しい\n・こだま２組の和太鼓 学習発表会のオープニングを飾りたい！(こういう今後の展望じゃない？笑)"}], "note": ""}]}, {"id": "B-4", "region": "dk", "role": "teacher", "n": 23, "title": "B-4 デンマーク（グリブスコウ市） 教員（N=23）", "sections": [{"no": 1, "title": "生徒の参加・対話について心掛けていることや具体例（Q3関連）", "items": [{"en": "Group work, projects, PBL", "ja": "グループワーク、プロジェクト、PBL（課題解決型学習）。"}, {"en": "Group work, talk two and two, talks with students one on one, presentations", "ja": "グループワーク、ペアでの話し合い、生徒との一対一の対話、プレゼンテーション。"}, {"en": "Co-teaching is key to reach all students", "ja": "すべての生徒に届くためには、コ・ティーチング（複数教員による協働指導）が鍵である。"}], "note": ""}, {"no": 2, "title": "多角的な評価についての具体的な取り組み（Q5関連）", "items": [{"en": "Formative assessment.", "ja": "形成的評価。"}, {"en": "Presentations, talks, talks in plenum, written asignments, minor tests", "ja": "プレゼンテーション、対話、全体での話し合い、記述課題、小テスト。"}, {"en": "We use continuous assessment for our students", "ja": "生徒に対して継続的な評価を行っている。"}], "note": "※Q7関連（地域への発信の工夫）とQ10関連（地域プロジェクトの具体例）の記述欄には、回答がありませんでした。"}, {"no": 3, "title": "Q15「最も大きな壁」で「Other（その他）」を選んだ方の記述", "items": [{"en": "I think the government should focus more on the educational system, economy etc.", "ja": "政府は教育制度や経済などにもっと力を注ぐべきだと思う。"}], "note": ""}, {"no": 4, "title": "ご自身の教育の一番の目標と、そのために生徒に教えたいこと（Q16）", "items": [{"en": "For me it's important for student to learn how to learn", "ja": "私にとって大切なのは、生徒が「学び方を学ぶ」こと。"}, {"en": "History", "ja": "歴史。"}, {"en": "To become good people who take care of each other", "ja": "互いを思いやれる良い人間になること。"}, {"en": "reading", "ja": "読むこと。"}, {"en": "To prepare the students for life in Denmark.", "ja": "生徒がデンマークでの生活に備えられるようにすること。"}, {"en": "Teaching students to coexist with their fellow students in combination with expanding their knowledge on various subjects", "ja": "さまざまな教科の知識を広げながら、仲間の生徒と共に生きることを教えること。"}, {"en": "Subject based objectives and Bildung", "ja": "教科ごとの目標と、ビルドゥング（Bildung：人間形成・全人教育）。"}, {"en": "i want them to learn math", "ja": "数学を学んでほしい。"}, {"en": "I want to teach them danish and how to use the danish language correctly", "ja": "デンマーク語と、その正しい使い方を教えたい。"}, {"en": "klassefællesskab", "ja": "クラスフェレススカブ（klassefællesskab：学級共同体）。"}, {"en": "My primary educational objective is to help students become curious, confident and independent learners. I want to create a safe classroom where they feel comfortable asking questions, sharing ideas and learning from their mistakes. I would like my students to leave my lessons not only with new knowledge, but also with the confidence to think for themselves.", "ja": "私の第一の目標は、生徒が好奇心と自信をもった自立した学習者になるよう支援すること。生徒が安心して質問し、考えを共有し、間違いから学べる安全な教室をつくりたい。授業を終えた生徒が、新しい知識だけでなく、自分の頭で考える自信も身につけていてほしい。"}, {"en": "I don't know", "ja": "わからない。"}, {"en": "Learn how to learn - and how to be one self", "ja": "学び方を学ぶこと。そして、自分自身であること。"}, {"en": "Getting students aged 6-8 to learn the basic in reading/writing that lets them go on in the next years tol use those skills in other scenarios. All that while being included in the social life amongst other students", "ja": "6〜8歳の生徒が読み書きの基礎を身につけ、その後の学年でほかの場面にも生かせるようにすること。それを、ほかの生徒との社会生活に包摂されながら実現すること。"}, {"en": "Our primary objective is to help students develop confidence, practical skills and a sense of responsibility. Through Juniormesterlære, we want to teach them how to connect school learning with real-life work, discover their strengths and prepare for their future education and careers.", "ja": "私たちの第一の目標は、生徒が自信、実践的なスキル、責任感を育むよう支援すること。ジュニアマイスター制度（Juniormesterlære）を通じて、学校での学びを実社会の仕事と結びつけ、自分の強みを見つけ、将来の進学やキャリアに備える方法を教えたい。"}, {"en": "Motivated children being interested in the world around them", "ja": "身の回りの世界に興味をもつ、意欲的な子どもたち。"}, {"en": "How to be in a the given enviroment and participate in the school activities. How to enjoy school basically", "ja": "与えられた環境の中でどう過ごし、学校の活動に参加するか。要するに、学校を楽しむ方法。"}, {"en": "To function as an individual in a community with respect for nature. Awareness of consuming culture. To be social intelligent. I try to include aspects and awareness of these things in my teaching.", "ja": "自然を尊重しながら、共同体の中で一人の個人として生きること。消費文化への意識。社会的知性をもつこと。こうした観点や意識を授業に取り入れるようにしている。"}, {"en": "I want the students to like to go to school and understand that it is good to educate oneself.", "ja": "生徒が学校に行くのを好きになり、自らを教育することは良いことだと理解してほしい。"}], "note": "※「???」「?」「..」など記号のみの回答4件は省略。"}, {"no": 5, "title": "現場での具体的なエピソードや今後の展望、ご意見（Q17）", "items": [{"en": "her er rart", "ja": "ここは居心地がよい。（デンマーク語）"}, {"en": "From my perspective we have a greater responsebility than just teaching mat and Danish. We need to support considerative young people to be aware of own actions and how to be a good human beings in a capitalistic consuming world.", "ja": "私の考えでは、私たちには数学やデンマーク語を教える以上の大きな責任がある。消費社会・資本主義の世界の中で、自分の行動を自覚し、良い人間であろうとする思いやりのある若者を支えていく必要がある。"}], "note": "※記号のみの回答2件は省略。"}]}], "interview": [{"who": "teacher", "title": "教員へのインタビュー", "topics": [{"no": 1, "title": "Multifaceted Evaluation and Inquiry-Based Learning", "qs": [{"q_en": "How do you implement the evaluation process beyond paper tests, and how do teachers share and operate evaluation criteria among themselves?", "a_en": "In Denmark, there are only official exams for 8th grade and 9th grade, which also depend on each teacher’s choice to take. There are several ways to evaluate their work, including small assignments, presentations, and discussion during the class. Teachers will set the goal for the class to meet the result that is assigned by the government education center, but the evaluation criteria depend on the individuals. The goal is the same, but how they evaluate and make students work is different.", "q_ja": "筆記試験以外の評価はどのように実施されているか。また、教師は評価基準をどのように共有し、運用しているのか。", "a_ja": "デンマークでは、法律により試験は8年生と9年生のみと定められ、実施するかどうかも各教員の判断に委ねられています。義務教育の最終学年（９年生）には卒業試験が行われますが、基本的に７年生までは通知表も存在しません。通常は、小レポート、プレゼンテーション、授業内でのディスカッションなど、さまざまな方法で生徒の学びを評価します。政府の教育省が設定した目標に対してクラス全体で到達できるよう教員がゴールを設定しますが、具体的な評価基準や生徒へのアプローチ方法は教員個人の判断に任されています。北の星国民学校では、それぞれの教科担当の教師で共通の課題を設定し、それに対する評価方法は教師個人が定めます。"}]}, {"no": 2, "title": "Creating Time and Curriculum Flexibility", "qs": [{"q_en": "How many hours do teachers work in a day at school? How do Danish schools reduce the burden of lesson preparation and administrative work?", "a_en": "The working hours of teachers, by law, are 40 hours per week, which is 45 min, 26 lessons in the maximum. However, there is flexibility about how many lessons they have by position and the other tasks that they have. The head teachers for the subject have fewer classes because they need other work, and teachers who are responsible for attending the school trip have fewer classes too. They will reduce the burden of preparation time by doing so, while all the teachers have the same time for class preparation time.", "q_ja": "教員は学校で1日に何時間働いているか。デンマークの学校では授業準備や行政業務の負担をどのように軽減しているか。", "a_ja": "法律上の労働時間は週40時間で、授業（1コマ45分）は最大週26コマです。（教科担当制）ただし、役職や担当業務によってコマ数には柔軟性があります。たとえば、教科主任は他の校務があるため持ちコマ数が少なく設定されており、校外学習を担当する教員なども同様に授業負担が軽減されます。全教員に共通の授業準備時間を確保しつつ、役割に応じた調整を行うことで負担軽減を図っています。 ただし、教科によって必要な準備時間が異なるため、より長く準備時間が必要な教科が存在するなど、それによる弊害も発生しています。"}]}, {"no": 3, "title": "Approaches for Students from Multicultural Backgrounds", "qs": [{"q_en": "What academic and emotional support is provided school-wide for students from different language and cultural backgrounds?", "a_en": "The educational council has some classes where international students can learn about Denmark in general as well as the Danish language. As a common system, there is no specific system all Danish schools adopt, but in Norsherskolen, there is a system where small kids can take more Danish classes that the teacher is specializing to teach Danish as a second language. For older students, there is no system to support those students and because of the Ukraine war, there are some students who does speak zero Danish and struggle to fit in the class, and each teacher’s commitment is required in that case.", "q_ja": "異なる言語や文化背景を持つ生徒に対して、学校全体でどのような学習面・精神的サポートが提供されているか。", "a_ja": "教育委員会主導で、留学生などがデンマーク全般やデンマーク語を学ぶ講座が開設されています。国レベルで共通する統一制度はありませんが、北の星国民学校（Nordstjerneskolen）では、低学年（〜6年生）向けに「第二言語としてのデンマーク語」の専門教員による授業を受ける仕組みがあります。一方で高学年向けの支援体制は不足しており、ウクライナ情勢による避難民などデンマーク語が全く話せない生徒の適応については、現場の各教員個人の配慮に依存しているのが現状です。"}, {"q_en": "How do you support students with emotionally-based school avoidance/refusal?", "a_en": "There is no specific policy or system to support as a school. Each teacher meet the parent and make individual agreements to how they can come to school, such as coming for just specific subject/teacher, however, the problem is increasing in recent years. In Denmark, if students choose not to come, there are always alternative way to learn or achieve what they want,(homeschool or other thing) therefore, it was not such a big issue until recent years the number of those students are increasing.", "q_ja": "心理的・感情的な理由による不登校（登校拒否）の生徒をどのように支援しているか。", "a_ja": "学校としての統一された方針やシステムはありません。教員が保護者と面談し、「好きな教科や特定の授業だけ出席する」といった個別の合意を交わして対応しています。デンマークでは不登校になってもホームスクーリングなどの多くの代替手段が常に存在するため、かつては大きな問題とされていませんでしたが、近年不登校の生徒数が増加しており課題となっています。"}]}, {"no": 4, "title": "Decision making", "qs": [{"q_en": "How are parents' and community opinions reflected in school management?", "a_en": "School board members are always half parents and the chairman is one of the parent. Locals who does not have children in the school have no opportunity to participate in school management. Instead, they do open school one in a whole to welcome locals and hear anything from them.", "q_ja": "保護者や地域住民の意見は、学校運営にどのように反映されているか。", "a_ja": "学校運営協議会（School Board）の構成員の半数は保護者であり、議長も保護者が務めています。子どもが通っていない地域住民が直接運営に参加する機会はありませんが、年に1度「オープン・スクール」を開催し、地域住民を歓迎して広く意見を聞く場を設けています。"}]}, {"no": 5, "title": "Educational Philosophy", "qs": [{"q_en": "How does the Danish educational system support teachers to adapt to emerging ideas and new policies?", "a_en": "When the new policy is from the educational administration, they make several courses for teachers to learn those new things and provide materials. Danish teachers prefer to take those courses to keep updated and there are plenty of resources for teachers to learn. If the policy was made by local government, they are mostly forced to adapt. If the idea is really new and need special knowledge to implement, they offer outside teachers to teach teachers and students instead.", "q_ja": "デンマークの教育システムは、新たな施策や教育理念に教員が適応できるようどのようにサポートしているか。", "a_ja": "教育委員会や、教育省からの新方針であれば教員向けの研修講座や教材が用意され、教員も主体的に学びをアップデートしています。地方自治体決定の政策は導入が義務付けられるケースが多いです。専門知識が必要な新しいテーマの場合は、外部講師を招いて教員や生徒に直接指導を行わせます。"}]}, {"no": 6, "title": "Lessons from Japanese Education Settings", "qs": [{"q_en": "What is the single most important “core skill” Danish education aims to impart?", "a_en": "Government policy is to improve STE(A)M subject and readings and math for national test. As a school, they try to focus on IT skills especially how to use practically, efficiently and ethically. To cooperate with others and learn how to learn.", "q_ja": "デンマーク教育が授けようとしている最も重要な「核となるスキル」は何か。", "a_ja": "政府の方針としては、全国テストに向けた読解力・数学力やSTE(A)M分野の強化です。学校現場では特にITスキルの実践的・効率的・倫理的な活用法や、「他者との協働」、そして「学び方を学ぶ力」の育成に重点を置いています。"}, {"q_en": "What are the difficulties or challenges faced in Danish schools?", "a_en": "There are families with economic difficulties and they tend to have less attention to school and receive less cooperation from those parents. If their child is not doing good at school, they tend to think that it is totally school’s fault and there are not much support from parents to their children. Students are more becoming more individualistic in recent years, and teachers cannot force them to do anything much, that if students do not want to do anything, they cannot do anything about much because if they force to do so, it can be illegal. To avoid the difference ability and level of academic skills, two-teachers classroom is implemented. Two teachers in one class to manage the different levels, need additional cooperation between teachers that have different methods of teaching.", "q_ja": "デンマークの学校が直面している課題や困難は何か。", "a_ja": "経済的な問題を抱える家庭では学校教育への関心が薄く、保護者の協力が得られにくい傾向があります。そういった家庭では、子どもが学校生活や学習で上手くいかない場合、すべてが学校の責任と考えていることが多く、子どもへの保護者からの支援が十分に受けられません。また、近年は生徒の個人主義化が進み、嫌がることを無理に強制すると違法となり得るため、教員からの指導方法が難しくなっています。習熟度や能力の差に対応するため「1学級2人担任制」を取り入れていますが、指導方針の異なる教員同士の調整が必要になるという課題もあります。"}, {"q_en": "Things from Japanese school education such as detailed student guidance, collective activities like cleaning and school meals, and a culture of collectivism- are there aspects you feel could be incorporated into Danish education?", "a_en": "There are so much to learn from Japanese school especially leaning cooperation with others, however, as a school system, school lunch cannot be implemented because of the cost, and the cleaning is banned because of the danger of its tool. Students cannot manage their behavior with how to use those tools as a cleaning tool and it is a problem that their behavior is not mature enough as they age.", "q_ja": "日本の「きめ細やかな生徒指導」「清掃や給食などの集団行動」「集団主義」の中で、デンマーク教育に取り入れられると感じる点はあるか。", "a_ja": "他者との協働を学ぶ点など、日本から学べる部分は多いですが、給食はコスト面から導入が難しく、清掃活動は道具の安全管理上の懸念（生徒が掃除道具を正しく扱えずトラブルになるリスク）から禁止されています。"}, {"q_en": "What do you think are the strengths of individual-focused education vs. Japanese collectivist education, and how can both countries learn from each other?", "a_en": "Individualism: their education create individual personality traits, creativity, and critical thinking, however, this also creates isolation and individualistic behavior in school which is a issue as a social group. Collectivism: The group focused eduction creates less critical thinking because they prefer to be as a group and avoid/lack of being as themselves. However, Japanese education teach students to be part of the society and being as a social group which is important when they become an adult.", "q_ja": "個尊重型教育と日本型集団主義教育のそれぞれの強み、および相互に学べる点は何か。", "a_ja": "どちらのモデルにも一長一短が存在すると考えますが、デンマークの教育制度は、個人の特質、創造性、そして批判的思考力を養うことができる点が強みです。しかしその反面、学校という社会的グループの中で「孤立」を生み出したり、個人主義的な行動が目立つようになったりすることが課題となります。一方で、 集団を重視する教育では、人々がグループでいることを好み、自分らしくいることを避けたり欠いたりする傾向があるため、批判的思考力（自主的に疑問を持つ力）が育ちにくくなります。しかし、日本の教育は「社会の一員となること」や「社会集団として機能すること」を教えており、これは子どもたちが大人になったときに非常に重要なスキルとなります。"}]}]}, {"who": "student", "title": "生徒へのインタビュー", "topics": [{"no": 1, "title": "Voice and Decision-Making", "qs": [{"q_en": "Do you feel that your opinions and ideas are listened to and reflected in school rules, events, or daily classroom activities? Can you share a specific example?", "a_en": "It depends on the teachers but mostly, their opinions are well reflected. When students speak up to what they want, most of the time they try to manage.", "q_ja": "校則や行事、日々の授業において、自分の意見やアイデアを聞いてもらえたり、反映されていると感じますか？具体的な例があれば教えてください。", "a_ja": "教員によって異なりますが、ほとんどの場合は意見がしっかりと反映されています。生徒がやりたいことを声に出して伝えると、教員は大抵の場合なんとか実現できるよう対応しようとしてくれます。"}]}, {"no": 2, "title": "Handling Different Opinions", "qs": [{"q_en": "When you have a different opinion from your classmates during group work or discussions, how do you usually resolve it?", "a_en": "Usually, they work out themselves and teachers have no commission to resolve. If they want to change the group, teachers would change.", "q_ja": "グループワークやディスカッションの際、クラスメイトと意見が異なった場合はどのように解決していますか？", "a_ja": "通常は生徒同士で解決し、教員が介入して解決することはありません。もしグループを変えたいと希望があれば、教員がメンバーの変更を行います。"}, {"q_en": "How do you balance expressing your own ideas with getting along with others?", "a_en": "If they do want to get along, they don’t. They express themselves with their cloth, dyeing their hair", "q_ja": "「自分の考えを表現すること」と「他者とうまくやっていくこと」をどのように両立させていますか？", "a_ja": "デンマークでは生徒同士が合わないと感じれば、仲良くすることがほとんどありません。一方で、服装、髪を染めることなどで、自分自身を自由に表現しています。"}]}, {"no": 3, "title": "Learning Environment & Wellbeing", "qs": [{"q_en": "When do you feel most engaged or comfortable being yourself at school? What kind of encouragement or feedback from teachers helps you feel that way?", "a_en": "When they are in class with favorite teachers or the class they like they are comfortable with benign themselves. Some students prefer to be in a small group to express their opinions.", "q_ja": "学校で「最も意欲的になれる」「自分らしくいられる」と感じるのはどんなときですか？ また、教員からのどのような声かけやフィードバックがそのように感じる助けになっていますか？", "a_ja": "好きな教員が指導する授業や、好きな教科の授業を受けているときに、自分らしく安心して過ごすことができます。また、生徒によっては自分の意見を自由に表現するため、少人数グループで取り組むことを好む場合もあります。"}]}, {"no": 4, "title": "Making School Better", "qs": [{"q_en": "What changes would you like to see implemented to make school more fun and more beneficial for you?", "a_en": "From 7th grade, their work is more group project and they do not have much time to work alone. One participants preferred to work alone more. Their class is about 90 mim and they want a small breaks during classes so that they can stay focused in the class. They want some class activities to get along with classmates because in the current situation, they feel that they are separated.", "q_ja": "学校がより楽しく、自分にとってためになる場所になるよう、どのような変更や工夫が実現してほしいですか？", "a_ja": "7年生（中学生年代）以降はグループでのプロジェクト作業が増え、個人で静かに作業する時間が減ってしまいます。生徒の中には「もっと一人で作業できる時間がほしい」と希望する声がありました。また、同じ授業が２コマ続きで、約90分間と長いため、集中力を維持できるよう授業内に短い休憩時間を挟んでほしいという要望もあります。さらに、現状では「生徒同士が分断されている（バラバラになっている）」と感じる場面があるため、クラスメイトと打ち解け合えるようなクラス全体の親睦活動を求めています。"}]}]}], "chapters": [{"id": "abstract", "no": "概要", "title": "概要", "lead": "調査の目的・主な知見・実践への視点", "secs": [{"h": null, "p": ["本調査は、教員の多忙化や児童生徒のウェルビーイング向上という課題に対し、日本（美山町）とデンマーク（グリブスコウ市）の教育環境を比較し、持続可能な学校づくりの示唆を得ることを目的とした。両地域の教員・保護者へのアンケートおよび現地校の教員・生徒へのインタビューによる混合研究を実施した。分析の結果、両国とも約8割の教員が多忙感を抱く一方、新しい取り組みへのゆとり感（日本0.0%、デンマーク30.4%）や保護者が重視する教育価値（日本：自己肯定感、デンマーク：学力）に明確な構造差が見られた。また、美山町では保護者の「配慮ゆえの遠慮」や小中連携の壁が課題として浮き彫りとなった。本研究は、教員個人の情熱に依存しないチーム指導体制への転換と、学校・家庭・地域が共同パートナーとして支え合う受入柔軟性の確保が不可欠であることを示している。"]}]}, {"id": "ch1", "no": "第1章", "title": "導入", "lead": "問いを立て、地域の教育を多面的に捉える。", "secs": [{"h": "1.1 本調査・分析の目的", "p": ["変化の激しい現代社会において、子どもたちが主体的かつ健やかに成長できる教育環境の構築は、国や地域を越えた共通の重要課題となっています。本報告書は、日本の地方自治体における先行的な取り組みと、教育先進国として名高いデンマークの教育実践を定量・定性の両面から多角的に比較・分析した調査結果を取りまとめたものです。本調査の理念的基盤には、NPO法人「森の教育プロジェクト」が掲げる「『子ども時代は、田舎で学ぶ』が、あたりまえの世の中に。」という想いがあります。都市部への人口一極集中と少子高齢化が進む中、自然や伝統文化が色濃く残る里山・里海の地域環境は、それ自体が豊かな体験と学びを提供する最高の「学び舎（教育資源）」に他なりません。自然の恵みや地域コミュニティとの触れ合いを通じて、50年後の未来を見据えた「自由で豊かに生きる力」を育む教育環境の整備は、地方都市の持続可能性を高める上でも極めて重要な意義を持っています。", "本報告書では、京都府南丹市美山町とデンマーク・グリブスコウ市（ヘルシンゲ）の教育環境を対象に比較分析を行いました。極めて多忙な状況下において深い情熱をもって子どもたちを支え続ける現場の先生方の情熱としなやかな強さに最大限の敬意と感謝を表しつつ、学校・家庭・地域が孤立することなく一体となって子どもを育むための、「環境資源を新しい価値で活用する教育の場」を創出することを、本調査の最大の狙いとしています。"]}, {"h": "1.2 レポートの構成と分析アプローチ", "p": ["本報告書では、京都府南丹市美山町とデンマーク・グリブスコウ市における教育環境の実態を多角的に把握し、持続可能な地域教育の未来像を描くため、「混合研究法（定量・定性データの統合）」と「二段階比較アプローチ」を採用しています。"]}, {"h": "分析アプローチ：定量・定性データの複合的統合", "sub": 1, "p": ["本調査では、単なる数値の比較にとどまらず、教育現場を取り巻く状況や当事者の声を立体的に捉えるため、定量データと定性データを組み合わせた分析を行いました。定量データについては、美山町およびグリブスコウ市の教員（日本15名・デンマーク23名）と保護者（日本26名・デンマーク27名）を対象としたアンケート調査の集計結果を用い、教員の働き方、外部からのサポート体制、教育に対する目標や意識などについて、両地域における傾向を把握しました。", "一方、定性データについては、現地校である北の星国民学校における教員・生徒へのインタビュー記録に加え、アンケートの自由記述回答を分析しました。これにより、アンケートの数値だけでは捉えきれない先生方の思いや、子どもたちが日々の学校生活をどのように感じているのか、また保護者が教育環境に対して抱いている期待や懸念など、現場の実情を把握しました。", "さらに、教育に対する意識や課題の背景をより詳細に明らかにするため、教員の経験年数や役割といった属性に加え、児童生徒の発達段階にも着目して分析を行いました。具体的には、小学校低学年・高学年・中学生といった学年区分や、デンマークにおけるGrades 0–3とGrades 4–9の違いを踏まえ、それぞれの立場や発達段階によって教育環境に対する意識や課題認識にどのような差異がみられるのかを検討しました。これらの定量・定性データと属性別の分析を組み合わせることで、両地域の教育環境を多面的に捉え、個別の数値や意見の背後にある課題構造を整理しました。"]}, {"h": "分析の二段階構造", "sub": 1, "p": ["本報告書では、両国の文脈や文化的背景を尊重するため、以下の二段階で分析を進めます。", "1. 各国の現状分析（第3章・第4章）： まず、日本（美山町）とデンマーク（グリブスコウ市）のそれぞれについて、定量・定性データから得られた事実関係、教員の働き方の実態、成果や課題を個別に詳しく紐解きます。", "2. 統合比較分析（第5章）： 個別の分析を踏まえた上で両国を統合比較し、「教育制度による両国での差異」、「両国共通の強み」、および「共通する現場の壁」を比較します。"]}]}, {"id": "ch2", "no": "第2章", "title": "調査の概要", "lead": "アンケートと現地での聞き取りを組み合わせる。", "secs": [{"h": null, "p": ["本調査では、日本（美山町）とデンマーク（グリブスコウ市）の双方において、教員および保護者を対象とした定量アンケート調査（5段階評価＋選択・自由記述）を実施するとともに、デンマーク現地校（北の星国民学校：Nordstjerneskolen）の教員・生徒に対する定性インタビューおよび現地視察を実施しました。収集されたデータ概要および回答者の属性データは以下の表の通りです。"]}, {"h": "表1 調査対象および回答者属性", "block": "table1"}]}, {"id": "ch3", "no": "第3章", "title": "日本（美山町）の教育環境分析", "lead": "教員と保護者の回答から、学校の現在を読む。", "secs": [{"h": "3.1 アンケート結果概要", "block": "mi-summary"}, {"h": "3.2 データから見る教員の働き方と構造的リスク", "p": ["アンケート調査の数値からは、現場が直面する精神的・時間的余裕の欠如が浮き彫りとなっています。新しい教育概念を実践するためのゆとりが「ある」と回答した教員は0%（15名中0名）にとどまり、否定的な回答が53.3%に達していることからも、現場がいかに余力を失っているかが窺えます。さらに、「日々の業務やカリキュラム消化に追われ、新しいことに取り組めない」とする回答は86.7%に上ります。これらの数値は、教員が決まった業務の消化に追われ、「教育」という本質的業務を全うする負担になっている実態を明らかにしました。", "しかし、こうした極限の状況下でも、美山町の教育は現場の「レジリエンス（回復力・現場の創意工夫）」によって支えられ、高い質が維持されています。授業での対話機会を確保できている（80.0%）とする数値や、総合的な学習の時間「美山学」等の地域資源活用（86.7%）は、多忙な状況下でも教育の質を保とうとする現場の先生方の熱意の現れと言えます。", "実際に、5・6年生による「10年後の美山に残したいもの」を探究する活動や、美山町の豊かな自然環境、伝統文化、歴史、農村景観などの「地域資源」を教育カリキュラムに取り入れ、子どもたちが主体的・探究的に学ぶ「美山学」、地域住民と保護者が一堂に会した「まちごとSchool Meeting」など、美山町独自の地域密着型教育が実施されています。どのような状況にあっても子どもたちの学びを第一に考え、地域と共にあろうとする現場の取り組みは、これからの持続可能な学校づくりに向けた確かな希望となっています。"]}, {"h": "3.3 保護者と教員の認識的ギャップ", "block": "gap-mi", "p": ["教員側は「多忙で十分に個別対応ができない」ことに焦りや無力感を抱えており、保護者側も「もっと先生と話したい・子どもの個性や多様なニーズを見てほしい」と望んでいるものの、「先生の負担になりたくない」という遠慮が心理的バリアとなり、双方向のオープンな対話を阻む一因となっています。", "保護者は学校教育を通した「自己肯定感」や「挑戦する力」の育成を求めている一方で、教員の多忙を目の当たりにし、「働き方改革が叫ばれる中で、これ以上の負担を強いる相談や要望は控えるべきだ」という「配慮ゆえの遠慮（沈黙）」が発生している現状です。このジレンマは、学校と家庭のパートナーシップを脆弱化させる要因となり得ます。これらの意見が目立つ中、「特に課題があるとは感じない」の選択も一定数見られ、学校教育に対する認識の差があることが分かります。"]}, {"h": "3.4 キャリア・発達段階による構造的差異", "p": ["本調査ではアンケートを実施するにあたり、回答者の属性情報も収集したため、教員のキャリア（年代・経験年数）や、子どもの発達段階（学年）によって、学校現場や課題に対する認識にどのような違いがあるか分析します。", "なお、日本側の集計サンプル数（教員N=15名、保護者N=26名）において各年代・学年群の人数は小規模であるため、定量数値の安易な比較・一般化は避け、回答者のキャリアや保護者の立場に応じた意識や課題感の「質的な傾向」として整理します。", "教員のキャリア・年代別にみると、全年代を通じて「時間的・精神的ゆとりがある（Q12）」への肯定回答はゼロ（0.0%）であり、いずれの年代も多忙感に直面していますが、キャリアの段階によって関心や課題認識の軸に明らかな違いが見られます。20代の若手層（3名／経験年数5年未満〜15年未満）においては、「その生徒が生きやすい道を選べるよう気持ちを聞いて受け止める」「人とのかかわり方やコミュニケーション力を育む」など、児童生徒一人ひとりの心理的抱え込みや人間関係へのアプローチを最優先の教育目標として掲げています。一方で、経験の浅さと膨大な日常業務の板挟みとなり、「日々に追われて目の前のことでいっぱいで、何かを考える余裕がない」といった切実な困惑や精神的負荷が表れています。30代・40代の中堅層（7名／経験年数5年未満〜15年以上）では、「どんな時代・社会でも生きていける人材の育成」「大人になっても学び続け人生を楽しめること」など、将来の自立や予測困難な社会を生き抜く主体性の育成に重点が置かれています。課題面では、校務や学級経営の中心を担う中での強烈な時間的圧迫感に加え、「地域や外部企業との連絡・調整窓口の不足」や「公共交通の少なさ・人間関係の偏りといった僻地ならではの不自由さ」など、実務や地域構造に起因する壁を捉えています。教職歴15年以上のベテラン層（50代以上、5名）は、「自分たち大人を超える子どもを育てる」「関わった子どもたちがもれなく自分の幸せな人生を生きる」といった包括的な教育ビジョンを持っています。", "現場の課題に対しては、「美山学」や「まちごとSchoolMeeting」といった地域協働の成果を高く評価する一方で、「社会の大きな変化に学校現場・地域・教職員のマインドチェンジが追いついていない」という全体構造への課題意識を指摘しています。単発の取り組みや特定教員の情熱に頼るのではなく、教員の異動があっても持続的に機能する「より良い教育サイクルの定着」と組織的サポートを強く求めています。", "さらに、児童生徒の発達段階や小中学校の連携においても保護者の指摘するギャップが存在します。小学校低学年においては、地域に根ざした伸び伸びとした教育環境に対する保護者の満足度は非常に高い水準にあります。しかし、高学年から中学校へと進むにつれ、部活動や学力重視へのシフト、さらには規律中心の指導への変化に伴い、小学校で育まれた主体的な学びや温かい関わりが途切れてしまう「小中連携の壁」に対する懸念や戸惑いが保護者から示されています。"]}]}, {"id": "ch4", "no": "第4章", "title": "デンマークの教育環境分析", "lead": "現地の実践と当事者の声を、同じ紙面で捉える。", "secs": [{"h": "現地調査の記録として読む", "note": 1, "p": ["本章の制度や学校運営に関する記述には、現地での聞き取り内容が含まれます。学校固有の実践・回答者の見解と、国全体の制度を区別してお読みください。制度に関する記述は、聞き取り時の説明に基づきます。"]}, {"h": "4.1 アンケート及びインタビュー結果概要", "block": "dk-summary"}, {"h": "4.1-3 現地校教員インタビュー分析", "sub": 1, "p": ["北の星国民学校のインタビュー調査及び、視察から、デンマークの教員が示す、一定のゆとりや授業での対話確保（表4-1）の背景には、制度化された評価方法と、柔軟な労働環境が見えてきます。本節では、デンマーク現地校（北の星国民学校）にて実施した教員（2名）および生徒（4名）への定性インタビュー調査から得られた主要な知見を整理・分析します。なお、インタビューの全文および詳細な質疑応答記録については、巻末の「付録C：インタビュー全文」を参照してください。", "デンマーク義務教育では、法律により公式的な試験が８年生・９年生のみに定められており、７年生までは通知表が存在しません。日々の学習成果は、小レポートやプレゼンテーション、授業内のディスカッションなど多様な方法を通じて評価されます。政府・教育省が設定する到達目標を共有しつつも、具体的な評価基準や指導方法は教員個人の裁量に委ねられています。北の星国民学校では、教科担当の教員間で共通の課題を設定しつつ、個々の評価は各教員が決定する運用がなされています。（付録C：インタビュー全文より質問１）", "教員の法定労働時間は週40時間であり、授業（1コマ45分）の上限は最大週26コマと定められています。持ちコマ数には役職や校務に応じた柔軟な調整機構が存在し、教科主任や校外学習担当などの役職に就く教員は授業数が軽減されます。全教員に共通の授業準備時間が確保されているものの、教科ごとに必要な準備時間に差異があることによる負担感の偏りも指摘されています。（付録C：インタビュー全文より質問２）異なる言語・文化背景を持つ生徒への支援として、北の星国民学校の低学年（〜6年生）では「第二言語としてのデンマーク語」の専門教員による授業を受ける仕組みが整えられています。しかし高学年においては統一的な支援システムが不足しており、ウクライナ避難民などデンマーク語を話せない生徒への対応は現場教員個人の配慮に依存しています。また、近年増加傾向にある不登校（登校拒否）に対しては学校統一の規律やシステムは存在せず、教員が保護者と個別に面談を行い、「特定の教科や授業のみ登校する」といった個別の合意（Individual agreements）を交わして対応しています。（付録C:インタビュー全文より質問３）", "デンマークの教育方針は「学び方を学ぶ（Learn how to learn）」ことや、批判的思考力、創造性、自己決定権の育成を強みとしています。その一方で、近年は生徒の個人主義化が進んでおり、嫌がる活動を教員が無理に強制することは違法となるリスクを伴うため、指導の難しさが増しています。また、個の自由や自己決定を重視する反面、学校という社会集団内での「孤立」や個人主義的行動を生むリスクが構造的課題となっています。さらに、生徒の学力差・習熟度差に対応するために導入されている「1学級2人担任制（Co-teaching）」は、指導方針の異なる教員同士の調整が必要になるという運用上の課題も存在します。（付録C:インタビュー全文より質問４）"]}, {"h": "4.1-4 現地校生徒インタビュー分析", "sub": 1, "p": ["教員や制度の視点にとどまらず、学びの直接の当事者である「子どもたちのリアルな学校生活の実感」を捉えることは、持続可能な教育環境を構築する上で不可欠なプロセスです。保護者アンケート（4.1-2）において、デンマークの保護者の多くが学校の教育方針や「個の尊重」に対して高い信頼を寄せている一方で、実際の学習現場において子どもたちがどのように主体性を発揮し、自他の個性を尊重し合い、どのような学習環境上の課題や改善ニーズを抱えているのかについては、生徒自身の生の言葉から紐解く必要があります。以下では、生徒の視点から見たデンマーク教育の実態を解明していきます。なお、インタビューの全文および詳細な記録については、巻末の「付録C：インタビュー全文」を参照してください。", "校則や学校行事、日々の授業運営において、生徒たちの意見や要望は大半の場面で手厚く尊重されています。生徒がやりたいことや改善案を自ら声を上げて伝えると、教員は大抵の場合、その実現に向けて柔軟に調整や対応を図ろうと努めます。こうした環境が、生徒自身の高い主体性と学校生活への当事者意識を支えています。", "グループワークや討論の場で生徒同士の意見が対立した場合、基本的に教員が介入することなく、生徒間での自律的な対話によって解決を図るスタイルが定着しています（必要に応じてメンバー変更等の調整を教員に求めることは可能）。また、無理に周囲と同調したり合わない相手と仲良くしたりすることを求められず、服装や髪色などの自由な自己表現を通して互いの個性を尊重し合う文化が根付いています。", "生徒が学校で最も意欲的になれ、自分らしく安心して過ごせるのは、好きな教科や信頼できる教員が担当する授業の場です。また、大人数の場よりも少人数のグループ環境において、自分の意見やアイディアをより自由に表現しやすく感じるという生徒の実情も示されています。", "一方で、日々の学校生活における具体的な課題や改善ニーズも提示されています。７年生以降はグループプロジェクト形式の課題が中心となるため、一人で静かに集中して取り組む時間が減っており、「個人で集中できる作業時間もほしい」という声が上がりました。また、現在の学校生活や、授業スタイルでは限られた生徒同士でしか関わりを持たないため、クラスメイトが分断されやすいと感じており、クラス全体で打ち解けあえる親睦活動の実施が求められています。"]}, {"h": "4.2 データから見る教員の働き方と、制度的・組織的ゆとり", "p": ["デンマークの教員アンケートにおいて、新しい教育理念や取り組みを実践するための時間的・精神的ゆとりが「ある」と回答した教員は30.4%（「全くない・あまりない」の否定派は43.5%）となっています。肯定派が0%であった日本とは対照的に、ある程度の教員がゆとりを感じている実態が浮き彫りとなっています。", "こうしたゆとりを支える要因として、機能的なサポート体制の充実が挙げられます。デンマークの教育システムは、新たな施策や教育理念に教員が適応できるように、教員向けの研修講座や教材が豊富に用意され、教員も主体的に学びをアップデートしています。組織的な教員へのサポート体制が整っていることで、時間的余裕だけでなく精神的な余裕も生まれていることが分かります。", "一方で、制度的なバックアップがありながらも、現場の多忙感が完全に解消されているわけではありません。7年生まで通知表を設けないプロセス評価（小レポート・プレゼン等）、1学級2人担任制、週40時間勤務・授業上限（最大26コマ）などの労働条件の整備に加え、地域企業や職業学校と連携した「Juniormesterlære（ジュニア・マイスター制度）」といった実践的キャリア教育など、生徒への手厚いバックアップが機能している反面、このような個別に対応する業務は、教員の負担として立ちはだかっています。"]}, {"h": "4.3 生徒・保護者の視点と教育制度の受容", "block": "gap-dk", "p": ["デンマークでは教員・保護者ともに自律や対話を重んじる共通基盤があるものの、家庭環境の格差や生徒の個人主義化が進む中で、教員側は「家庭の協力不足や指導の制限」を感じ、保護者側は「学力伸長や個別ニーズに対する学校のサポートの質」を厳しく注視するという期待値のズレが発生しています。", "生徒は自身の意見が校風や授業に反映されていると実感している一方で、90分授業における小休憩の設置要望、グループワーク中心の中で「一人で作業・集中する時間」の確保、クラス内の分断を防ぐ親睦活動の実施など、具体的でリアルな学習環境の改善ニーズが示されています。", "さらに保護者からは、テスト結果のみに依存しない評価方法や「個」を尊重する教育方針への信頼度は高いことが読み取れます。しかし、進級に伴う学力差・習熟度差への対応や、不登校・多様な背景を持つ生徒に対する、より個別的で透明性の高い支援体制を求める声も上がっています。"]}, {"h": "4.4 キャリア・発達段階による構造的差異", "p": ["デンマークの教員（N=23名）におけるキャリアや年代別の回答傾向を分析すると、共通して抱える多忙感や対話重視の指導姿勢の根底において、経験年数に応じた教育ビジョンや課題意識の広がりに明らかな特徴が見られます。", "20代から30代の若手・中堅層においては、児童生徒が「学び方を学ぶ（learn how to learn）」ことや、失敗を恐れずに質問や意見交換ができる安心感のある学級環境（safe classroom）の構築に強い関心が向けられています。ペアワークやプロジェクト型学習（PBL）を通じた生徒同士の関わり合いを重視しながら、日々の業務やカリキュラム消化に伴う多忙感の中で、目の前の児童生徒への個別アプローチや丁寧な関係性づくりに意欲的に取り組んでいます。", "40代を中心とするミドル層では、好奇心と自信を持った自立した学習者の育成を目指し、教科知識の習得と主体的思考力の育成をバランスよく推進する意識が高まります。この層では、日々の業務負担を感じつつも工夫により一定の時間的・精神的ゆとりを保持して指導にあたる教員が見られる一方で、学校と地域・保護者との間における教育方針や認知のズレを現場の主な壁として捉える傾向が強まります。", "50代以上のベテラン・熟練層においては、デンマークの伝統的な教育理念である「klassefællesskab（学級共同体）」の形成や、全人教育を意味する「Bildung」の探求など、より長期的かつ包括的な人間形成を目指す記述が際立ちます。低学年段階での基礎的学力と社会的包摂の両立、実践的職場体験プログラム（Juniormesterlære）を通じた社会・キャリアとの接続、さらには消費社会の中で自然や他者を尊重する社会的知性の育成など、社会構造を見据えた教育目的が提示されています。また、すべての生徒へ均等にアプローチするためのチーム指導（Co-teaching）の重要性を指摘するなど、指導体制に対する高い組織的洞察を示しています。", "このようにデンマークの教員現場では、若手・中堅層における「安心できる空間での主体的学びや人間関係の基盤づくり」から、ミドル・ベテラン層における「学級共同体の形成、全人教育（Bildung）、そして社会・キャリアへの構造的接続」へと、キャリアの進展に伴って教育の視野が多角化・構造化していく傾向が見取れます。", "デンマークの保護者（N=27名）における意識は、子どもの発達段階に応じて変化しており、小学校低学年（Grades 0–3）では学校生活への適応や安心できる環境づくりが重視され、多様なニーズへの対応に伴う学級の混乱や代講教員の多さへの懸念が目立ちます。一方、高学年から中学生（Grades 4–9）へ進むにつれて「確かな学力・知識」や「批判的思考力」の習得へと期待がシフトし、生徒間の理解度差に応じた「個別の習熟度別指導」の不足が主な課題として認識されます。デンマークでは「低学年での環境の安心・安定」から「高学年以降での確かな学力保障」へと求める学校機能の軸が移行していく点が大きな特徴です。"]}]}, {"id": "ch5", "no": "第5章", "title": "日本・デンマーク統合比較分析", "lead": "違いと共通点を並べ、次の問いにつなげる。", "secs": [{"h": "5.1 対照的な二大構造ギャップ", "block": "table6"}, {"h": "【教員環境】最大の構造ギャップ：ゆとり感の絶対的不足（Q12）", "sub": 1, "p": ["教員を取り巻く環境について、両国間で特に大きな差がみられたのが、「新しい取り組みを行うための時間的・精神的なゆとり」（Q12）でした。日本（美山町）では、この項目について肯定的に回答した教員は0.0％（0名／15名）であったのに対し、デンマークでは30.4％（7名／23名）が肯定的に回答しました。一方、否定的な回答は日本で53.3％（8名）、デンマークで43.5％（10名）となっており、両国の教員が必ずしも十分なゆとりを感じているわけではないことも明らかになりました。", "また、日々の業務に追われているという実感（Q15）については、日本の86.7％、デンマークの82.6％と、両国ともに高い割合を示しています。このことから、教員の多忙感そのものは両国に共通する課題であると考えられます。その一方で、新しい取り組みに充てる時間的・精神的な余裕については、日本とデンマークの間に明確な差がみられました。", "デンマークでは、1学級を複数の教員で担当するCo-teachingの仕組みや労働時間の管理など、教員の負担を分散・調整する仕組みが整備されていることから、約三割の教員が新たな取り組みに向けた時間的・精神的な余裕を確保できていると考えられます。一方、日本（美山町）では、今回の回答者15名の中に「ゆとりがある」と回答した教員は一人もおらず、日常業務への対応に加えて、新しい教育実践を検討・実行するための余力を確保することが難しい状況が示されました。", "以上の結果から、両国とも教員の多忙感を抱えている点では共通しているものの、その中でも「新しい教育活動や改善に取り組むための余白」をどの程度確保できているかという点に、両国の教育環境を分ける重要な違いがみられることが示唆されます。"]}, {"h": "【保護者意識】最大の価値観ギャップ：求める力の対照性（保護者Q7）", "sub": 1, "p": ["保護者が「子どもに最も身につけてほしい能力」（Q7）について回答した結果を比較すると、日本（美山町）とデンマークの間には、重視する能力に明確な違いがみられました。特に、「高い学力・知識」と「自分らしく生きる力・自己肯定感」に対する優先度において、両国の回答には対照的な傾向が表れています。", "「高い学力・知識」を最も身につけてほしい能力として挙げた保護者は、日本（美山町）では11.5％（3名／26名）で、規範意識（11.5%）と同率最下位と低い割合でした。一方、デンマークでは59.3％（16名／27名）となっており、最も高い割合を占めています。これに対して、「自分らしく生きる力・自己肯定感」については、日本（美山町）では42.3％（11名／26名）と最も高い割合を示したのに対し、デンマークでは22.2％（6名／27名）にとどまりました。", "この結果から、日本（美山町）の保護者は、学校教育に対して、知識や学力の獲得そのものよりも、子どもが自分自身を肯定し、自分らしく生きていくための力を身につけることをより重視している傾向がうかがえます。一方、デンマークの保護者では、「高い学力・知識」がより高い優先度を示しており、学校に対して確かな学力や知識の習得を期待していることがうかがえます。", "ただし、この差は単純に「日本は学力を重視しない」「デンマークは学力を重視する」と捉えるのではなく、それぞれの教育環境や社会的背景を踏まえて解釈する必要があります。今回の調査結果からは、日本の保護者にとっては「自分らしく生きる力や自己肯定感」を学校教育に期待する意識が強く表れている一方、デンマークの保護者にとっては、個人の尊重や自律性を重視する教育的価値観を背景として、学校には学力や知識の確実な習得を期待するという違いが示唆されます。", "したがって、両国の保護者が子どもの成長を異なる方向で捉えているというよりも、それぞれの社会・教育環境の中で、学校に期待する役割や、学校に担ってほしい教育内容の重点が異なっていると考えることができます。"]}, {"h": "5.2 両国共通の成果と現場の壁", "block": "table7"}, {"h": "共通の成果（対話と地域資源の活用）", "sub": 1, "p": ["両国の教育環境を比較すると、「対話・主体的参加の確保」と「地域資源の活用」において、共通した強みがみられました。日常の授業において、子どもたちとの対話や主体的な参加を確保できていると回答した教員は、日本で80.0％、デンマークで69.6％となっており、両国ともに高い水準を示しています。また、地域資源を教育活動に活用しているという回答も、日本では86.7％、デンマークでは73.9％に達しました。"]}, {"h": "共通の構造的壁（時間の枯渇と意識の乖離）", "sub": 1, "p": ["両国の教員環境を比較すると、いずれも約80％前後の教員が日々の業務に追われていると回答していますが、その多忙感を生み出している要因には、両国の間で特徴的な違いがみられます。", "日本（美山町）では、管理業務やカリキュラムの消化、学校外部との調整など、「事務的・組織的な負荷」が教員の多忙感につながっている傾向がみられました。これに対してデンマークでは、多様なニーズを持つ生徒を学校の中で包摂していくための対応や、学級内のさまざまな課題への対応、個々の生徒に応じた支援の充実など、「教育的対応そのものの複雑化」が教員の負担につながっていることがうかがえます。この違いを踏まえると、日本においては、まず教員が抱えている事務的・組織的な負担を軽減し、本来の教育活動により多くの時間とエネルギーを振り向けられる環境を整えることが重要な課題であると考えられます。一方、デンマークにおいては、教員が教育活動に十分な時間を費やすことができる環境を前提としながらも、生徒の多様化に伴って複雑化する教育的ニーズに対して、どのように支援体制を整えていくかが課題となっています。", "また、教員の時間的な余裕だけでなく、学校と地域・保護者との間における教育に対する意識や期待のずれも、両国に共通する課題として浮かび上がっています。このことから、教員の負担を単純に学校内部の問題として捉えるのではなく、学校・家庭・地域がそれぞれどのような役割を担い、子どもの成長をどのように支えていくのかについて、共通理解を形成していくことも重要な課題であると考えられます。"]}, {"h": "5.3 教育観とアプローチの比較考察：「個尊重型」と「集団協調型」", "block": "kotoshudan", "p": ["デンマークが掲げる『個尊重型・プロセス重視』のアプローチには、確かな成果とともに特有の課題が存在します。この教育観は、批判的思考力や生徒自身の自己決定権を育み、不登校や多様な背景を持つ生徒に対しても柔軟な個別対応を可能にする大きな強みを持っています。一方で、集団内での孤立リスクや高学年における「個」としての負担感が生じやすいほか、一人ひとりへの手厚い配慮が個々の教員の裁量や個人的負荷に依存しやすいという側面も抱えています。", "これに対して、日本の『集団協調型・きめ細やかさ』を重視するモデルも、光と影の両面を有しています。高い協働性や一体感、さらには困難を乗り越える全人的な成長を実現する点は、デンマークの現地教育関係者からも高く評価される強みです。しかしその反面、教育現場が教員の自己犠牲的な労働に過度に依存する構造を作り出しており、集団の中で「個」が埋没しやすい点や、深刻な多忙化によって教員の精神的・時間的ゆとりが損なわれているという構造的な弊害を招いています。"]}, {"h": "5.4 地域資源の活用と外部連携", "p": []}, {"h": "共通点｜地域資源（自然・文化・歴史）の教材化に対する高い手応え", "sub": 1, "p": ["日本（美山町）とデンマークの双方において、地域の固有な文化・歴史・自然といった「地域資源」を教育カリキュラムや学習活動に効果的に取り入れているとする評価は、両国ともに教員の7割以上（日本86.7%、デンマーク73.9%）に達しています。日本（美山町）では、地域の豊かな自然や歴史を学ぶ総合的な学習の時間「美山学」や、5・6年生による探究活動「10年後の美山に残したいもの」、さらには放課後子ども教室やふるさと学習など、地域に根ざした独自の教育実践が展開されています。デンマークにおいても、校舎内にとどまらず地域社会そのものを生きた学びの場として捉え、主体的なアクティブ・ラーニングが推進されています。"]}, {"h": "共通点｜地域・企業・NPOとのプロジェクトや体験学習の実践", "sub": 1, "p": ["両国では、学校単独ではなく地域住民、事業者、NPO等の外部主体と連携した実践的な学びが活発に行われています。美山町においては、教員の53.3%が「地域住民や企業を招いた特別授業・連携行事の実施」や「地域課題をテーマにした探究学習」に注力し、その効果を実感していると回答しています。一方デンマークにおいても、地域企業や職業学校と連携して実践的なキャリア教育を行う「ジュニア・マイスター制度（Juniormesterlære）」の導入や、外部の専門講師を招いた特別授業など、社会と地続きの学びを提供する仕組みが機能しています。"]}, {"h": "差異点｜組織の開かれ方と地域住民の参加構造", "sub": 1, "block": "openness", "p": ["地域や外部との連携においては、住民や保護者が学校運営や教育活動に関わる「参加構造」に両国で明確な違いが見られます。", "日本（美山町）では、地域住民、保護者、教員、そして子どもが一堂に会する「まちごとSchoolMeeting」の開催や、学校運営協議会（コミュニティ・スクール）と「美山まちづくり委員会」の連携などを通じて、町全体で子どもを育む包括的な地域一体型コミュニティの構築を目指しています。子どもが通っていない地域住民も含め、多様なステークホルダーが対等に熟議し、学校運営や地域教育に関与する開かれた体制が特徴です。", "これに対してデンマークでは、学校運営協議会（School Board）の構成員の半数を保護者が占め、議長も保護者が務めるなど、保護者の制度的な関与や影響力が非常に強く設計されています。しかしその反面、子どもが校内に通っていない一般の地域住民が直接学校運営に関わる機会や仕組みは限定的であり、年に1回開催される「オープン・スクール」などで地域住民を歓迎し意見を聞く形をとっています。このように、地域全体へ包括的に開く日本（美山町）モデルに対し、デンマークでは保護者を中心とした権利・責任構造のもとで部分的に地域へ開くという対照的な参加アプローチが採られています。"]}, {"h": "5.5 ステークホルダー間の意識・認識ギャップ", "block": "table8", "p": ["日本（美山町）におけるステークホルダー間のギャップは、児童生徒の発達段階に伴う「接続のギャップ」と、保護者の「配慮ゆえの遠慮」という特有の性質を帯びています。小中学校の接続においては、小学校段階で地域や保護者との温かく気さくな関わりが構築されているのに対し、中学校へ進学するとマニュアル的・規律重視の指導方針へとシフトする傾向が見られます。これにより、小学校で育まれた伸び伸びとした学びや地域との連携が途切れてしまうという、保護者の困惑や懸念が生じています。また、保護者は子どもたちの自己肯定感や挑戦する力の育成を期待しながらも、教員の極度な多忙さを間近で目にする中で、これ以上の負担を強める相談や要請を控えざるを得ないという配慮と遠慮のジレンマを抱えています。一方、デンマークにおけるギャップは、家庭の経済的・文化的背景の多様化と「個人主義化」に伴う摩擦という異なる要因から発生しています。経済的な困難を抱える家庭や、デンマーク語を話さない移民家庭などが増加する中で、すべての家庭から均一な教育への関心や協力を得ることが難しくなっており、学校側の対応ノウハウや各教員個人の配慮に依存せざるを得ない実態が存在します。さらに、生徒の個人主義化が進む中で、嫌がる活動を無理に強制することが法的なリスクを伴うため、教員と生徒・保護者との間で「特定の教科のみ登校する」といった個別の合意を形成する際、相互の認識や折り合いをつけるための強い苦慮が生じています。"]}]}, {"id": "ch6", "no": "第6章", "title": "今後の教育実践・地域協働への展望", "lead": "一人の努力から、共に支える仕組みへ。", "secs": [{"h": "6.1 多忙感の中で子ども・保護者と向き合うために", "p": ["美山町の教員アンケートにおいては、新しい取り組みを行う「時間的・精神的ゆとりがある」と回答した教員が0.0%にとどまり、日々の業務やカリキュラム消化による多忙感を訴える割合が86.7%に上るなど、現場が極限の事務的・組織的負荷に晒されている実態が浮き彫りとなっています。しかし、こうした多忙を極める環境下であっても、子どもや保護者と温かく向き合い続けるためには、指導体制や評価手法、コミュニケーションのあり方を構造的に見直していく必要があります。", "まず求められるのは、「すべてを教員一人で抱え込まない」チーム指導体制への転換です。デンマークで実践されている「1学級2人担任制（Co-teaching）」や、役職に応じた持ちコマ数の調整のように、教員間や外部サポート人材と課題を柔軟に分担・共有する姿勢が不可欠となります。学級の悩みや個別の課題を特定の教員だけに抱え込ませず、教員同士の日常的な情報共有やチームでの対応を強化していくことが、結果として教員の精神的なゆとりを生み出す基盤となります。", "次に、日常の小さな対話や「プロセス評価」を効果的に活用することが重要です。デンマークでは7年生まで通知表が存在せず、小レポートやプレゼンテーション、日々のディスカッションを通じて成長の過程を多角的に評価しています。美山町で既に導入されている振り返りシートやロイロノート、授業内でのペアワークやグループ学習を活かし、大規模なテストや評価業務に追われるスタイルから、日常の小さな学びや気づきの蓄積を評価軸へと組み替えていくことで、業務負担を軽減しながら子ども一人ひとりの成長を丁寧に見守ることが可能となります。", "さらに、保護者が抱く「配慮ゆえの遠慮」を解きほぐす積極的な発信も欠かせません。調査結果からも明らかなように、保護者の多くは教員の多忙さを気遣うあまり、「忙しい先生にこれ以上の負担をかけたくない」と相談や連絡をためらっている現状があります。学校だよりやデジタル連絡ツール、学級通信などを通じて伝え続けることが、保護者との信頼関係を深め、心理的すれ違いや課題の深刻化を未然に防ぐ重要な鍵となります。"]}, {"h": "6.2 学校を「共に育てるパートナー」として捉える", "p": ["保護者アンケートにおいては、子どもに最も身につけてほしい能力として「自分らしく生きる力・自己肯定感」や「自分の意見を持ち表現する力」、「失敗を恐れずに挑戦する力」が上位を占めています。子どもたちの健やかな成長とこうした力の育成を実現するためには、学校と家庭が単なる「サービス提供者と消費者」という関係を超えて、真のパートナーシップを構築していくことが不可欠です。", "そのためには、まず保護者が学校を単に「教育サービスを提供する場」として一方的に評価や要望を行う「教育の消費者」という立場を離れ、学校や教員とともに子どもを育む「共同パートナー（共同プロデューサー）」へと意識を再定義していくことが求められます。登下校の見守りや学校イベントへの協力、地域行事への参加など、保護者にできる小さなサポートを自発的に申し出ることで教員の事務的・組織的な負担が軽減され、教員が「子ども一人ひとりと向き合う時間」を取り戻すための大きな後押しとなります。また、教員の多忙さを気遣うあまり「忙しい先生に迷惑をかけたくない」と困りごとや不安を抱え込んでしまう「気遣いゆえの遠慮」を、温かい対話へと変えていく姿勢も重要です。「忙しいのに申し訳ない」と声を呑んで相談を諦めるのではなく、日頃の感謝を添えながら連絡ノートや二者面談などの機会を積極的に活用し、家庭での子どもの様子や小さな懸念をフラットに共有・相談することが望まれます。日頃からオープンな情報共有を行うことが、保護者と教員の間の心理的すれ違いを防ぎ、より強い信頼関係を育む土台となります。", "さらに、小学校から中学校への進学に伴う「小中連携のギャップ」を乗り越える上でも、家庭における寄り添いと学校との積極的な対話が大きな役割を果たします。小学校での「地域密着型で伸び伸びとした関わり」から、中学校での「規律・部活動・学力重視」への指導方針の変化に対し、子どもだけでなく保護者自身も戸惑いを抱く声が存在します。家庭において環境変化に直面する子どもの気持ちに優しく寄り添うとともに、小中学校の指導方針の接続や関わり方について、「まちごとSchool Meeting」などの対話の場を通じて学校側とオープンに協議・共有していく姿勢が効果的です。"]}, {"h": "6.3 学校教育における「地域の役割」", "p": ["美山町には、総合的な学習の時間「美山学」や5・6年生による探究活動「10年後の美山に残したいもの」など、地域社会そのものを生かした豊かな学びの基盤と優れた教育実践が息づいています。子どもたちが地域社会の中で主体的に成長し、地域全体で持続可能な学校づくりを推進していくためには、学校側に過度な負担を集中させるのではなく、地域社会自身が「教育の主役および協働のパートナー」としての役割を積極的に担っていくことが求められます。", "美山町においては、学校運営協議会やまちづくり委員会、NPO等の存在により、地域と学校をつなぐ外部コーディネートの基盤はすでに先駆的に形成されています。今後の焦点は、こうした既存のコーディネート機能をより実効的なものとするために、外部からの提案を柔軟に受け入れられる「学校側の組織的・運用的柔軟性」を高めていくことにあります。教員が日々のカリキュラム消化や事務業務に追われる中で外部連携に対応できるよう、年間指導計画の中にあらかじめ柔軟に変更可能な「探究・地域連携枠」を確保することや、授業の進行・指導を外部専門人材に一部委ねる「目的共有型の権限委譲」を進めることが求められます。学校側が「すべてを校内で完結・管理しなければならない」という固定観念を解きほぐし、迅速な意思決定と柔軟な受入体制を整えることで、既存の地域連携がより円滑かつ持続可能な仕組みとして深まっていきます。", "また、デンマークの「ジュニア・マイスター制度（Juniormesterlære）」に代表される実践的なキャリア教育の視点を採り入れ、地域社会全体が生きた学びの場を提供することも極めて効果的です。美山町が誇る豊かな農業や、かやぶきをはじめとする伝統工芸、ローカルビジネス、観光などの地場事業者が、小中学生を温かく受け入れる実戦的な体験や学びの機会を創出することが望まれます。単なる見学にとどまらず、地域の大人の仕事や生き方に直接触れるリアルな体験を通じて、子どもたちは自らの強みや興味を発見し、将来に向けた自立やキャリア形成の基盤を育むことができます。", "さらに、「まちごとSchoolMeeting」にみられるような多世代協働の協議体を軸とし、地域教育コミュニティの熟議と定着を図っていくことが不可欠です。地域住民、保護者、教員、そして子どもたちが一堂に会し、地域の未来や教育のあり方について対等な立場で意見を交わす熟議の場を定例化・成熟させていくことが求められます。単なる学校行事への手伝いという一時的な協力にとどまらず、地域全体で子どもを育てる持続可能な連携サイクルを確立することで、学校と地域が真に一体となった学びの場が将来にわたって紡がれていきます。"]}, {"h": "6.4 調査の限界と持続的な日丹教育連携", "p": ["本調査は、日本（美山町）とデンマーク（グリブスコウ市）の限定された地域およびサンプル数を対象とし、特定の一時点において実施された定量アンケートと定性インタビューに基づくものです。そのため、得られた知見や分析結果を両国の教育システムや文化としてそのまま一般化することには一定の限界が存在します。また、地域独自の文脈や社会構造、サンプル規模の制約を踏まえた上で、慎重に結果を解釈していく必要があります。", "しかし、本調査が提示する価値は、単なる一度限りの実態把握や視察成果の記録にとどまるものではありません。日本とデンマークという異なる教育モデルや価値観を互いに照らし合わせ、自らの教育環境や課題を客観的に見つめ直すための「対話の鏡」として機能させ続ける点にあります。一時的な比較で終わらせるのではなく、双方が教育のあり方を問い直し、改善に向けた刺激を受け合い続ける持続的なパートナーシップの確立が期待されます。", "こうした持続可能な教育連携を具現化していくためには、子どもたちと教員双方の多層的な交流機会を定例化していくことが極めて効果的です。児童生徒間においては、直接的な対面交流や子どもたちの交換留学プログラム、現地での文化交流イベント（JAPAN DAY等）の継続的な開催を通じ、異文化への理解や多様な価値観に触れる体験を重ねることが望まれます。また、教員間においては、オンラインツールを活用した定期的な情報交換や授業実践の協議を行うことで、国境を越えた学び合いのネットワークを構築することが可能です。", "このように、互いの教育文化をリスペクトしながら対話を重ね、双方の現場で得られた実践知や学びをそれぞれの地域教育へ還流させていくサイクルを定着させることが求められます。両地域の教育関係者やコミュニティが今後も「共に学び合うパートナー」として歩みを進めていくことこそが、持続可能な学校づくりと子どもたちの豊かな未来を拓く力強い推進力となります。"]}]}, {"id": "ch7", "no": "第7章", "title": "結論", "lead": "未来の学校を、地域とともに育てる。", "secs": [{"h": null, "p": ["本調査は、日本（美山町）とデンマーク（グリブスコウ市）における定量アンケートおよび定性インタビューを通じて、両地域の教育現場が直面する構造的課題と、子どもたちのウェルビーイングを高めるための取り組みを多角的に比較・分析してきました。日本の「集団協調型・きめ細やかさ」を重視する教育モデルと、デンマークの「個尊重型・プロセス重視」の教育モデルは、それぞれ歴史的・文化的文脈に根ざした独自の強みを持つ一方で、現代の教育現場においては異なる質の壁や課題に直面していることが判明しました。", "美山町をはじめとする日本の教育現場では、地域の豊かな自然や歴史を活かした「美山学」に代表される探究学習や、教員の深い情熱と現場の粘り強い創意工夫（レジリエンス）によって高い教育水準が維持されています。しかし、その一方で、教員が決定的な時間的・精神的ゆとりを失い、自己犠牲的な労働に依存せざるを得ない構造的リスクが浮き彫りとなっています。これに対し、デンマークでは「1学級2人担任制（Co-teaching）」や持ちコマ数の調整、通知表を設けないプロセス評価など、制度面からの多角的なバックアップによって一定のゆとりが保持されているものの、生徒の個人主義化や家庭環境の多様化に伴う対応の複雑化が新たな負担となっています。", "今後の持続可能な学校づくりに向けた最大の鍵は、教員一人ひとりの個人力や情熱だけに依存する構造から脱却し、学校・家庭・地域が真の「共同パートナー」として機能する持続可能な仕組みへとシフトしていくことにあります。教員の事務的・組織的負荷を軽減するためのチーム指導体制や柔軟な教育課程の運用を進めるとともに、保護者の「配慮ゆえの遠慮」を解消するオープンな情報発信と対話の機会を広げていく必要があります。さらに、学校運営協議会やまちづくり委員会、NPO等の既存の外部コーディネート機能を活かしつつ、学校側の受入柔軟性を高めることで、地域社会全体が生きた学びの場として機能する体制が深まっていきます。", "自然の恵みと地域コミュニティの温かな関わりの中で、子どもたちが自らの個性を大切にし、他者と協働しながら「自分らしく生きる力」を育んでいくための基盤は、すでに美山町の地の中に脈々と息づいています。日本とデンマークという異なる教育モデルを互いの「対話の鏡」として照らし合わせ、互いの知恵と強みを学び合い続ける取り組みこそが、教員のウェルビーイングを守り、子どもたちの未来と地域社会の持続可能性を拓く確かな礎となります。"]}]}], "preface": ["子どもたちが豊かな自然と温かな地域の人々に囲まれながら、自分らしく成長していける教育とはどのようなものなのでしょうか。そして、教員や保護者、地域住民も子どもたちとともに学び、支え合える環境はどのように生まれるのでしょうか。", "私たちはこの問いを見つめるため、NPO法人「森の教育プロジェクト」が掲げる「『子ども時代は、田舎で学ぶ』が、あたりまえの世の中に。」という理念のもと、京都府南丹市美山町とデンマーク・グリブスコウ市をつなぐ教育調査を実施しました。", "今回の調査は、数年前に行われた教育調査から時間が経った今、デンマークの教育現場がどのように変化しているのかを知りたいという素朴な関心から始まりました。", "現地での視察やインタビューの準備を進めるなかで、私たち引率の大学生二人の間には、もう一つの問いが生まれました。", "「デンマークの教育について学ぶ前に、私たちが暮らす日本の教育現場は今どのような状況にあるのだろうか。」", "この問いをきっかけに、現地へ赴く前の準備として日本の教員を対象としたアンケート調査を実施し、まずは美山町の教育現場の実態を自分たち自身の目線で捉えることにしました。", "そして、日本での事前アンケートとデンマークでの現地調査の結果を見比べていくなかで、子どもたちを取り巻く教育環境だけでなく、教員、学校、保護者の間にある関係性や、それぞれが抱える思いが少しずつ見えてきました。", "さらに、「教育現場と保護者、そして地域とのつながり」について理解を深めるため、帰国後には日本とデンマークの両国で保護者を対象とした追加アンケート調査も行いました。そこからは、両国の教育を支える人々の共通する願いや、それぞれの地域が抱える課題についても知ることができました。", "本報告書は、海外の事例を紹介したり、調査結果を比較したりすることだけを目的としたものではありません。日本とデンマーク、それぞれの地域で子どもたちと向き合う教員や保護者、そして子どもたち自身の声に耳を傾けながら、これからの学校と地域のあり方について考えるための「対話のきっかけ」となることを願ってまとめたものです。", "最後に、本調査の実施にあたり、多忙な日々の中でアンケートやインタビューにご協力くださった美山町およびデンマーク・グリブスコウ市の教員、保護者、児童生徒の皆様、ならびに本プロジェクトを支えてくださったすべての関係者の皆様に、心より感謝申し上げます。"], "glossary": [{"t": "Aula（アウラ）", "d": "デンマークの学校や保育施設で、子ども・保護者・職員が連絡を取り、学校生活などの情報を共有するためのコミュニケーション基盤。本文の「学校と家庭の情報共有」を理解する手掛かりとなる。", "src": "KOMBIT「Aula」", "url": "https://kombit.dk/loesninger/aula", "date": "2026年10月19日"}, {"t": "Juniormesterlære（ジュニアマイスター制度）", "d": "第8・9学年の生徒が、学校での学習と企業での実習や実践的な教育を組み合わせる選択肢。例えば週1〜2日を企業や職業学校等で過ごし、残りの日は学校で学ぶ。自治体ごとに枠組みを整える。", "src": "デンマーク教育省「Juniormesterlære」", "url": "https://uvm.dk/grundskole/folkeskolen/fag-og-indhold/udskoling/juniormesterlaere/", "date": "2026年10月19日"}, {"t": "Co-teaching（協働指導）", "d": "二人の指導者が、授業を共同で計画・実施・評価し、同時に指導を担う方法。単に教室に教員を一人増やすこととは異なり、共同責任と双方の専門性を生かす点に特徴がある。本文では「1学級2人担任制」という表現が使われている。", "src": "デンマーク教育ポータル Emu「Tilrettelæg, gennemfør og evaluér co-teaching」", "url": "https://emu.dk/grundskole/undervisningsmiljoe/co-teaching/tilrettelaeg-gennemfoer-og-evaluer-co-teaching?b=t5-t3834-t5119", "date": "2026年10月19日"}, {"t": "形成的評価（Formative assessment）", "d": "学習の途中で理解や進み具合を把握し、その情報をフィードバックや指導の調整に用いて、次の学習を支える評価。小テストや発表などの形式だけでなく、得られた情報をどう学習改善に使うかが重要となる。", "src": "OECD（2025）「Using formative assessment and feedback」", "url": "https://www.oecd.org/en/publications/2025/04/unlocking-high-quality-teaching_808bd876/full-report/using-formative-assessment-and-feedback_189fb6dc.html", "date": "2026年10月19日"}, {"t": "ウェルビーイング", "d": "本書では、子どもや教員の心身の状態、安心感や学校生活での過ごしやすさを捉える語として使われています。単一の設問でその全体を測定したものではありません。", "src": "本文第1・2・5章、および付録Aの設問（編集部による読解補助）"}, {"t": "混合研究法", "d": "本書では、アンケートの数値と、インタビュー・自由記述の内容を組み合わせ、教育環境を多面的に読み解く分析の進め方を指しています。", "src": "本文第1・2・5章（編集部による読解補助）"}, {"t": "ステークホルダー", "d": "学校教育に関わる立場の人々。本書では主に教員、保護者、生徒、地域住民などを指しています。", "src": "本文第1・2・5章（編集部による読解補助）"}], "chapterFix": {"ch1": "※Web版では、本文中のデンマーク保護者の回答者数を付録Aの集計（27名）に合わせています。", "ch3": "※Web版では、表3-1の数値（業務に追われている割合・外部窓口の不足・意識のズレ）と保護者の項目を、付録Aの集計に合わせて直しています。", "ch4": "※Web版では、4.2・表4・4.4の数値（否定派の割合、「特に課題はない」、意識のズレ、批判的思考・自己表現、保護者の回答者数）を付録Aの集計に合わせて直しています。", "ch5": "※Web版では、5.1・5.2の本文と表6・表7の数値（Q15の美山の割合、デンマークの自己肯定感、Q3のデンマークの割合など）を付録Aの集計に合わせて直しています。"}, "voiceCount": 167, "qaCount": 15};
+</script>
+<script>
+(function(){
+const D = window.SITE;
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pct = (c,n)=> (c/n*100).toFixed(1);
+const N = {miT:15,dkT:23,miP:26,dkP:27};
+
+/* ---------- chart builders ---------- */
+function dumbbell(rows,{sort=true}={}){
+  let r = rows.slice();
+  if(sort) r.sort((a,b)=>(b.mi-b.dk)-(a.mi-a.dk));
+  return `<div class="dumb" role="table">${r.map(x=>{
+    const lo=Math.min(x.mi,x.dk), hi=Math.max(x.mi,x.dk), miR=x.mi>=x.dk;
+    const lbl=(v,isMi)=>{const right=(isMi===miR);return `style="left:calc(${v}% ${right?'+ 12px':'- 12px'});${right?'':'transform:translateX(-100%)'}"`};
+    return `<div class="drow ${x.dk>x.mi?'dkwin':''}" role="row">
+      <div class="lab" role="cell">${x.q?`<span class="qn">${x.q}</span>`:''}${esc(x.label)}${x.rev?' <span class="fine">※低いほど良い</span>':''}</div>
+      <div class="track" role="cell" aria-label="美山 ${x.mi.toFixed(1)}%、デンマーク ${x.dk.toFixed(1)}%">
+        <span class="span" style="left:${lo}%;width:${hi-lo}%"></span>
+        <span class="dot" style="left:${x.mi}%;background:var(--mi)"></span>
+        <span class="dot" style="left:${x.dk}%;background:var(--dk)"></span>
+        <span class="val" ${lbl(x.mi,true)}>${x.mi.toFixed(1)}</span>
+        <span class="val" ${lbl(x.dk,false)}>${x.dk.toFixed(1)}</span>
+      </div></div>`}).join('')}</div>
+  <div class="axis"><div></div><div><span>0%</span><span>50%</span><span>100%</span></div></div>`;
+}
+function pbars(rows,{hot}={}){
+  return `<div class="pbars">${rows.map(x=>`<div class="pb ${hot&&hot===x.label?'hot':''}">
+    <div class="lab">${esc(x.label)}</div>
+    <div class="row"><span class="who">美山町</span><span class="b"><i style="width:${x.mi}%;background:var(--mi)"></i></span><span class="v">${x.mi.toFixed(1)}%</span></div>
+    <div class="row"><span class="who">デンマーク</span><span class="b"><i style="width:${x.dk}%;background:var(--dk)"></i></span><span class="v">${x.dk.toFixed(1)}%</span></div>
+  </div>`).join('')}</div>`;
+}
+function seg(c,n,color){
+  const p=c.map(v=>v/n*100);
+  const t=['肯定','中立','否定'];
+  return `<span class="seg" role="img" aria-label="${t.map((x,i)=>x+' '+p[i].toFixed(1)+'%（'+c[i]+'名）').join('、')}">
+    <i style="width:${p[0]}%;background:${color}" title="肯定 ${c[0]}名">${p[0]>=12?p[0].toFixed(1):''}</i>
+    <i class="neu" style="width:${p[1]}%" title="どちらとも言えない ${c[1]}名">${p[1]>=12?p[1].toFixed(1):''}</i>
+    <i class="neg" style="width:${p[2]}%" title="否定 ${c[2]}名">${p[2]>=12?p[2].toFixed(1):''}</i></span>`;
+}
+function likert(set,keys){
+  const T=D.likert[set], rows=keys?T.rows.filter(r=>keys.includes(r.q)):T.rows;
+  return `<div class="legend"><span><i style="background:var(--mi)"></i><i style="background:var(--dk);margin-left:-4px"></i>肯定（そう思う）</span><span><i style="background:var(--neu)"></i>どちらとも言えない</span><span><i style="background:var(--neg)"></i>否定</span></div>
+  <div class="lk">${rows.map(r=>`<div class="lkrow"><div class="lab">${r.q}. ${esc(r.text)}</div>
+    <div class="lkbar"><span class="who">美山 ${T.nMi}人</span>${seg(r.mi,T.nMi,'var(--mi)')}</div>
+    <div class="lkbar"><span class="who">デンマーク ${T.nDk}人</span>${seg(r.dk,T.nDk,'var(--dk)')}</div>
+    ${r.note?`<div class="fine">${esc(r.note)}</div>`:''}</div>`).join('')}</div>`;
+}
+function multi(set){
+  const T=D.multi[set];
+  return pbars(T.rows.map(r=>({label:r.label,mi:+pct(r.mi,T.nMi),dk:+pct(r.dk,T.nDk)})),{hot:T.hot});
+}
+function slope(){
+  const R=D.multi.q7.rows.filter(r=>r.label!=='その他');
+  const W=640,H=330,x1=170,x2=W-170,top=40,bot=H-24;
+  const y=v=>bot-(v/70)*(bot-top);
+  const rank=(k)=>R.slice().sort((a,b)=>b[k]-a[k]);
+  // stagger labels to avoid overlap
+  const place=(arr,k,n)=>{const pos=arr.map(r=>({r,y:y(r[k]/n*100)}));pos.sort((a,b)=>a.y-b.y);for(let i=1;i<pos.length;i++){if(pos[i].y-pos[i-1].y<22)pos[i].y=pos[i-1].y+22}return new Map(pos.map(p=>[p.r.label,p.y]))};
+  const lm=place(R,'mi',26), ld=place(R,'dk',27);
+  return `<svg class="slope" viewBox="0 0 ${W} ${H}" role="img" aria-label="保護者が子どもに最も身につけてほしい力（美山とデンマーク）">
+   <text x="${x1}" y="18" text-anchor="middle" font-size="14" fill="var(--ink)">美山町（26人）</text>
+   <text x="${x2}" y="18" text-anchor="middle" font-size="14" fill="var(--ink)">デンマーク（27人）</text>
+   <line x1="${x1}" y1="${top-8}" x2="${x1}" y2="${bot}" stroke="var(--line)" stroke-width="2"/>
+   <line x1="${x2}" y1="${top-8}" x2="${x2}" y2="${bot}" stroke="var(--line)" stroke-width="2"/>
+   ${R.map(r=>{const a=r.mi/26*100,b=r.dk/27*100,hot=r.label.includes('学力');
+     return `<line x1="${x1}" y1="${y(a)}" x2="${x2}" y2="${y(b)}" stroke="${hot?'var(--coral)':'var(--ink-2)'}" stroke-width="${hot?4:2}" stroke-opacity="${hot?1:.45}"/>
+     <circle cx="${x1}" cy="${y(a)}" r="7" fill="var(--mi)" stroke="var(--surface)" stroke-width="2"/>
+     <circle cx="${x2}" cy="${y(b)}" r="7" fill="var(--dk)" stroke="var(--surface)" stroke-width="2"/>
+     <text x="${x1-14}" y="${lm.get(r.label)+5}" text-anchor="end" font-size="12.5" fill="${hot?'var(--coral)':'var(--ink)'}">${esc(r.short)} ${a.toFixed(1)}%</text>
+     <text x="${x2+14}" y="${ld.get(r.label)+5}" font-size="12.5" fill="${hot?'var(--coral)':'var(--ink)'}">${b.toFixed(1)}% ${esc(r.short)}</text>`}).join('')}
+  </svg>`;
+}
+const LEG = `<div class="legend"><span><i style="background:var(--mi)"></i>美山町</span><span><i style="background:var(--dk)"></i>デンマーク</span></div>`;
+function chart(title,body,cap){return `<div class="chart"><h4>${title}</h4>${body}${cap?`<div class="cap">${cap}</div>`:''}</div>`}
+function quote(q){return `<figure class="quote ${q.r}" style="margin:0"><blockquote style="margin:0">「${esc(q.t)}」</blockquote>${q.en?`<div class="en">${esc(q.en)}</div>`:''}<figcaption class="src">${q.r==='mi'?'美山':'デンマーク'}・${esc(q.who)}${q.src?`｜<a href="#${q.src}">${q.srcL||'全文へ'}</a>`:''}</figcaption></figure>`}
+
+/* ---------- routes ---------- */
+
+const P = (...xs)=>`<div class="prose">${xs.map(x=>`<p>${x}</p>`).join('')}</div>`;
+const Q = (t,r,who,src,en)=>({t,r,who,src,en});
+const tbl=(head,rows)=>`<div class="tbl"><table><thead><tr>${head.map((h,i)=>`<th ${i===1?'class="c-mi"':i===2?'class="c-dk"':''}>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr><th scope="row">${r[0]}</th>${r.slice(1).map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+
+D.themes = [
+{ id:'yutori', color:'mi', title:'先生のゆとり',
+  card:'忙しさは両地域に共通。違いが出たのは、その先の「余白」でした。', cardStat:'0', cardStatL:'人／15人　美山で「ゆとりがある」先生',
+  head:'美山の先生で「新しいことに取り組むゆとりがある」は0人',
+  stats:[{who:'美山町（15人中）',v:'0',u:'人'},{who:'デンマーク（23人中）',v:'7',u:'人'}],
+  body:()=>`
+   ${P('「日々の業務に追われ、新しいことに取り組む時間がない」。この壁を挙げた先生は、美山<strong>86.7%</strong>、デンマーク<strong>82.6%</strong>。忙しさは両地域に共通しています。違いが出たのは、その先の「余白」でした。',
+       '新しい教育の実践に取り組む時間的・精神的なゆとりが「ある」と答えた先生は、美山では15人中0人でした。半数の8人が「ない」、残りは「どちらとも言えない」と答えています。デンマークでは23人中7人（30.4%）が「ある」と答えました。')}
+   ${chart('新しいことに取り組むゆとりがある？（教員Q12）', likert('teacher',[12]), '出典：付録A 表A-7・A-10')}
+   ${chart('いちばん大きな壁は？（教員Q15・2つまで選択）', LEG+pbars(D.multi.q15.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23)}))), '出典：付録A 表A-9・A-12')}
+   ${P('デンマークの現地校では、先生の時間を守る仕組みの説明を受けました。教科主任など役職のある先生は授業が減らされ、1つの学級を複数の先生で教える「コ・ティーチング」も取り入れられています。',
+       'ただし、デンマークにも壁はあります。不登校の子どもへの対応は先生と保護者の個別の取り決めに任され、デンマーク語を話せない高学年の生徒への支援は先生個人の努力に頼っています。「学校と保護者・地域の意識のズレ」を壁に挙げた先生は34.8%で、美山（6.7%）より多くなっています。')}
+   <div class="chart"><h4>デンマークの先生の時間を守る仕組み</h4><div class="facts">
+     <div class="fact"><span class="n num">40<small>時間／週</small></span><span class="l">1人の勤務時間</span></div>
+     <div class="fact"><span class="n num">26<small>コマ／週</small></span><span class="l">授業の上限</span></div>
+     <div class="fact"><span class="n num">45<small>分</small></span><span class="l">1コマの長さ</span></div>
+     <div class="fact"><span class="n num">2+<small>人</small></span><span class="l">1学級を複数の先生で</span></div>
+     <div class="fact"><span class="n num">8・9<small>年生のみ</small></span><span class="l">公式試験。7年生まで通知表なし</span></div></div>
+     <div class="cap">北の星国民学校での聞き取りによるもの。<a href="#interview-t2">付録C インタビュー2</a></div></div>
+   <div class="full"><div class="quotes">${[
+     Q('なかなか日々時間に追われて目の前のことでいっぱいで、何かを考える余裕がありません。','mi','教員','voices-b3-8'),
+     Q('社会の大きな変化に学校現場（保護者・地域・学校教職員）の理解やスキル、マインドチェンジがついていけていない。','mi','教員','voices-b3-6'),
+     Q('すべての生徒に届くためには、コ・ティーチング（複数教員による協働指導）が鍵である。','dk','教員','voices-b4-1','Co-teaching is key to reach all students')].map(quote).join('')}</div></div>`,
+  deeper:[
+   {h:'ch5-s1',tag:'本編 第5章',t:'【教員環境】最大の構造ギャップ：ゆとり感の絶対的不足',d:'Q12とQ15を両地域で比べ、「余白」の差が生まれる理由を考察。'},
+   {h:'ch3-s1',tag:'本編 第3章',t:'3.2 データから見る教員の働き方と構造的リスク',d:'多忙の中でも対話と地域学習を保つ、美山の現場の創意工夫。'},
+   {h:'ch4-s4',tag:'本編 第4章',t:'4.2 制度的・組織的ゆとり',d:'研修やサポート体制と、それでも残る個別対応の負担。'},
+   {h:'interview-t2',tag:'付録C',t:'先生インタビュー「時間とカリキュラムの柔軟性」',d:'週40時間・26コマ上限と、役職に応じたコマ数の調整。'},
+   {h:'data-a9',tag:'付録A',t:'表A-9・A-12　教育現場で最も大きな壁',d:'「その他」の記述も含めた全項目。'},
+   {h:'voices-b3-8',tag:'付録B',t:'美山の先生の声　エピソードと展望（Q17）',d:'自由記述の全文。'}]},
+
+{ id:'chikara', color:'dk', title:'子どもに育てたい力',
+  card:'学校生活を通じて身につけてほしい力。両地域の順位は、ほぼ逆さまに。', cardStat:'59.3%', cardStatL:'デンマークの保護者が「学力」を選択',
+  head:'「学力」を望む保護者は、美山11.5%、デンマーク59.3%',
+  stats:[{who:'美山町',v:'11.5',u:'%'},{who:'デンマーク',v:'59.3',u:'%'}],
+  body:()=>`
+   ${P('学校生活を通じて子どもに最も身につけてほしい力を、2つまで選んでもらいました。両地域の順位は、ほぼ逆さまになりました。',
+       '美山の保護者が最も多く選んだのは「自分らしく生きる力・自己肯定感」と「自分の意見を持ち、表現する力」（ともに42.3%）。「高い学力・知識」と「規範意識」はともに11.5%で、最も少ない結果でした。デンマークでは「高い学力・知識」が59.3%で突出し、「自己肯定感」は22.2%にとどまりました。')}
+   ${chart('子どもに最も身につけてほしい力（保護者Q7・2つまで）', slope(), '線の傾き＝優先度の差。橙の線＝「高い学力・知識」。自己肯定感＝自分らしく生きる力・自己肯定感、表現する力＝自分の意見を持ち、表現する力。出典：付録A 表A-3・A-6')}
+   ${P('一方、「自分の意見を持ち、表現する力」（42.3%／37.0%）と「他者と協力・協働する力」（30.8%／29.6%）は、両地域でほぼ同じように望まれています。',
+       'この違いは「美山は学力を大切にしない」という意味ではありません。学校に何を期待するかの違いと考えられます。個の尊重が社会の前提であるデンマークでは、学校に確かな学力を求める声が強くなります。学年が上がるにつれて、安心できる環境から学力へと期待が移ることも、自由記述から読み取れます。')}
+   <div class="chart"><h4>先生が掲げる教育の目標</h4><div class="compare2">
+     <div style="background:var(--mi-soft)"><h5>美山町</h5><ul><li>生きる力</li><li>関わった子どもたちがもれなく自分の幸せな人生を生きる</li><li>自分たち大人を超える子ども</li><li>学ぶことの楽しさ</li></ul></div>
+     <div style="background:var(--dk-soft)"><h5>デンマーク</h5><ul><li><span lang="en">Learn how to learn</span>（学び方を学ぶ）</li><li><span lang="de">Bildung</span>（人間形成）</li><li><span lang="da">klassefællesskab</span>（学級共同体）</li><li><span lang="en">safe classroom</span>（安心できる教室）</li></ul></div></div>
+     <div class="cap">教員Q16の自由記述より。<a href="#voices-b3-7">美山の全文</a>／<a href="#voices-b4-4">デンマークの全文</a></div></div>
+   <div class="full"><div class="quotes">${[
+     Q('好きなことをどんどん伸ばしていける、選択していける日々であれば良いと思う。','mi','保護者','voices-b1-5'),
+     Q('先生方も含め生き生きと毎日を過ごしてくださっていることが、何より子どもの成長に繋がると思っています。大人になるって楽しいとおもってほしいです。','mi','保護者','voices-b1-5'),
+     Q('子どもたちが安心して自信をもてるようにしてほしい。間違えてもいいのだと感じられるように。','dk','保護者','voices-b2-4','Let them feel safe and confident. That it is okay to make mistakes'),
+     Q('一般的な学力と、課題を解決する力、情報を見つける力、もっと知りたいと思う気持ちを育ててほしい。','dk','保護者','voices-b2-4','To help with general academic knowledge and the ability to resolve tasks, find information, and crave more knowledge.')].map(quote).join('')}</div></div>`,
+  deeper:[
+   {h:'ch5-s2',tag:'本編 第5章',t:'【保護者意識】最大の価値観ギャップ：求める力の対照性',d:'数値の差を、それぞれの社会的背景からどう読むか。'},
+   {h:'ch4-s6',tag:'本編 第4章',t:'4.4 キャリア・発達段階による構造的差異',d:'低学年の「安心」から高学年の「学力」へ。デンマークの保護者の期待の移り変わり。'},
+   {h:'interview-t6',tag:'付録C',t:'先生インタビュー「デンマーク教育の核となるスキル」',d:'ITの実践的・倫理的な活用、協働、学び方を学ぶ力。'},
+   {h:'data-a3',tag:'付録A',t:'表A-3・A-6　子どもに最も身につけてほしい能力',d:'「その他」の記述を含む全項目。'},
+   {h:'voices-b3-7',tag:'付録B',t:'美山の先生　ご自身の教育の一番の目標（Q16）',d:'15人の記述の全文。'},
+   {h:'voices-b4-4',tag:'付録B',t:'デンマークの先生　教育の一番の目標（Q16）',d:'19件。原文と仮訳。'}]},
+
+{ id:'taiwa', color:'coral', title:'学校と家庭の対話',
+  card:'先生を気遣って相談を控える「配慮ゆえの遠慮」が見えてきました。', cardStat:'61.5%', cardStatL:'美山で「先生に気軽に相談できる」',
+  head:'「先生に気軽に相談できる」保護者は、美山61.5%、デンマーク96.3%',
+  stats:[{who:'美山町',v:'61.5',u:'%'},{who:'デンマーク',v:'96.3',u:'%'}],
+  body:()=>`
+   ${P('美山の保護者が挙げた課題で最も多かったのは、「学校の方針や様子が見えにくく、相談の窓口や機会が足りない」（26.9%）でした。デンマークでは3.7%です。',
+       '美山では「窓口・見えにくさ」と「多様なニーズへの支援不足」がともに26.9%で並びました。デンマークでは「特に課題はない」が40.7%で最も多く、続くのが「多様なニーズへの支援不足」（33.3%）です。不登校や発達の特性、多文化の背景をもつ子どもへの支援は、両地域に共通する課題です。')}
+   ${chart('保護者が感じる、学校との関わりの課題（保護者Q6・2つまで）', LEG+pbars(D.multi.q6.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,26),dk:+pct(r.dk,27)})),{hot:D.multi.q6.hot}), '差が最大の項目を色づけ。出典：付録A 表A-2・A-5')}
+   ${P('自由記述からは、先生の忙しさを気遣って相談を控える「配慮ゆえの遠慮」が見えてきます。先生の忙しさの中身は、家庭からは見えにくいのかもしれません。小学校から中学校への進学で、関わり方が変わることへの戸惑いも複数寄せられました。')}
+   <div class="chart"><h4>先生の実感と、家庭から見える姿（美山町）</h4><div class="facts">
+     <div class="fact" style="background:var(--mi-soft)"><span class="n num">86.7<small>%</small></span><span class="l">先生自身が「業務に追われている」（教員Q15・15人）</span></div>
+     <div class="fact" style="background:var(--coral-soft)"><span class="n num">23.1<small>%</small></span><span class="l">保護者から見て「先生に余裕がない」（保護者Q3・26人）</span></div></div>
+     <div class="cap">先生と保護者は、異なる人への異なる問いです。</div></div>
+   <div class="chart full"><h4>学校と家庭をつなぐ仕組み</h4><div class="compare2">
+     <div style="background:var(--mi-soft)"><h5>美山町</h5><ul><li>日々の連絡：連絡ノート、電話、家庭訪問、二者面談、学校だより・HP</li><li>運営への参加：学校運営協議会、まちごとSchool Meeting</li></ul></div>
+     <div style="background:var(--dk-soft)"><h5>デンマーク</h5><ul><li>日々の連絡：Aula（デジタル連絡基盤）</li><li>運営への参加：School Board（半数が保護者・議長も保護者）、オープンスクール（年1回）</li></ul></div></div>
+     <div class="cap"><a href="#glossary">Aulaとは（付録D）</a>／<a href="#interview-t4">付録C 意思決定</a></div></div>
+   <div class="full"><div class="quotes">${[
+     Q('働き方改革と言われると、先生も大変なのでは？と思うとこれくらいの相談はやめておこう、と思ってしまうことがある','mi','保護者','voices-b1-1'),
+     Q('電話ではなく連絡できるメールやアプリなどがあればもっと気軽に連絡をとりあえるのでは？','mi','保護者','voices-b1-1'),
+     Q('小学校での学びが 中学校で途切れる。残念だ。','mi','保護者','voices-b1-5'),
+     Q('確かにデンマークの先生は忙しい。それでも、私たち保護者が質問をしたときには、いつも先生が時間をとって話したり、Aulaで返信したりしてくれる。','dk','保護者','voices-b2-1','Yes, the danish teachers are busy. But still we have always as parents been met by teachers who take time to talk or write on Aula, when we have questions etc.')].map(quote).join('')}</div></div>`,
+  deeper:[
+   {h:'ch3-s2',tag:'本編 第3章',t:'3.3 保護者と教員の認識的ギャップ',d:'比較表とコメント抜粋で読む「配慮ゆえの遠慮」。'},
+   {h:'ch6-s1',tag:'本編 第6章',t:'6.2 学校を「共に育てるパートナー」として捉える',d:'「教育の消費者」から「共同パートナー」へ。'},
+   {h:'data-a1',tag:'付録A',t:'表A-1・A-4　学校との関わり・評価に関する意識',d:'保護者の5問を、肯定・中立・否定の3区分で。'},
+   {h:'voices-b1-1',tag:'付録B',t:'美山の保護者　学校との対話や先生との関わり',d:'10件の記述の全文。'},
+   {h:'voices-b1-4',tag:'付録B',t:'美山の保護者　「一番の壁」と解決のアイディア',d:'19件。放課後、小中連携、地域との関わり。'},
+   {h:'voices-b2-3',tag:'付録B',t:'デンマークの保護者　最も大きな課題',d:'インクルージョン、いじめ、心理的支援。'}]},
+
+{ id:'chiiki', color:'both', title:'子どもの声と、地域との学び',
+  card:'地域を学びの場にすること。子どもの声を学校づくりに生かすこと。', cardStat:'86.7%', cardStatL:'美山で地域資源を教材に',
+  head:'地域の自然・文化・歴史を教材にできている先生は、美山86.7%、デンマーク73.9%',
+  stats:[{who:'美山町',v:'86.7',u:'%'},{who:'デンマーク',v:'73.9',u:'%'}],
+  body:()=>`
+   ${P('地域を学びの場にすることと、子どもの声を学校づくりに生かすこと。この2つは、両地域の先生が手応えを感じている共通の強みです。',
+       '美山では、総合的な学習の時間「美山学」を中心に、地域に根ざした学びが続いています。5・6年生は3年前から「10年後の美山に残したい物・事」を探究し、2026年5月には地域住民・保護者・教員が集う「まちごとSchool Meeting」が開かれました。力を入れている取り組みとしては、「生徒会・委員会を通じた意見の吸い上げ」が73.3%で最多です。')}
+   ${chart('先生が力を入れている取り組み（教員Q14・複数選択）', LEG+pbars(D.multi.q14.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23)}))), '出典：付録A 表A-8・A-11')}
+   ${chart('地域とのつながり（教員アンケート）', likert('teacher',[7,9,10]), '出典：付録A 表A-7・A-10')}
+   ${P('ただし、子どもが地域課題の解決やボランティアに参加できる仕組みが「整っている」は40.0%、「整っていない」も40.0%でした。中学生は部活動などで時間が限られる、という声もありました。',
+       'デンマークでいちばん力を入れているのは「日常的な面談・相談」（56.5%）です。地域企業や職業学校と連携した職業体験「ジュニアマイスター制度（Juniormesterlære）」もあります。')}
+   <div class="chart"><h4>学校の「開き方」が違う</h4><div class="compare2">
+     <div style="background:var(--mi-soft)"><h5>美山町｜地域全体に開く</h5><ul><li>子ども・保護者・地域住民・学校が一堂に会する「まちごとSchool Meeting」</li><li>学校運営協議会、まちづくり委員会と連携</li></ul></div>
+     <div style="background:var(--dk-soft)"><h5>デンマーク｜保護者を中心に開く</h5><ul><li>School Boardは半数が保護者</li><li>子どもが通っていない地域住民は、年1回のオープンスクールで</li></ul></div></div></div>
+   <div class="chart full"><h4>デンマークの生徒の声（インタビュー要約）</h4><div class="facts">
+     <div class="fact" style="background:var(--both-soft)"><span class="l" style="font-size:14px;font-weight:900">意見は届く</span><span class="l" style="font-weight:500">やりたいことを伝えると、先生はたいてい実現しようとしてくれる。</span></div>
+     <div class="fact" style="background:var(--both-soft)"><span class="l" style="font-size:14px;font-weight:900">意見がぶつかったら</span><span class="l" style="font-weight:500">生徒同士で解決する。先生は介入しない。</span></div>
+     <div class="fact" style="background:var(--both-soft)"><span class="l" style="font-size:14px;font-weight:900">自分を表す</span><span class="l" style="font-weight:500">服装や髪の色で、自分らしさを自由に表現する。</span></div>
+     <div class="fact" style="background:var(--both-soft)"><span class="l" style="font-size:14px;font-weight:900">変えてほしいこと</span><span class="l" style="font-weight:500">90分授業に小休憩を。一人で集中する時間を。クラス全体で打ち解ける活動を。</span></div></div>
+     <div class="cap"><a href="#interview-s1">生徒インタビューの全文（付録C）</a></div></div>
+   <div class="full"><div class="quotes">${[
+     Q('年度初めの教職員と5,6年生徒の熟議が今年度で3回目となった。また、学校生活については今年度初めて1～4年生も声を上げられる仕組みづくりを進めている。','mi','教員','voices-b3-1'),
+     Q('３年前から、5,6年生が「総合的な学習の時間」において、10年後の美山に残したい物・事というテーマで、興味ある分野について探究活動を行っている。','mi','教員','voices-b3-4')].map(quote).join('')}</div></div>`,
+  deeper:[
+   {h:'ch5-s7',tag:'本編 第5章',t:'5.4 地域資源の活用と外部連携',d:'共通点と、組織の「開かれ方」の違い。'},
+   {h:'ch6-s2',tag:'本編 第6章',t:'6.3 学校教育における「地域の役割」',d:'探究・地域連携枠、地元の仕事に触れる体験、熟議の定例化。'},
+   {h:'ch4-s3',tag:'本編 第4章',t:'4.1-4 現地校生徒インタビュー分析',d:'子どもたちのリアルな学校生活の実感。'},
+   {h:'interview-s1',tag:'付録C',t:'生徒インタビュー全文',d:'意見と意思決定、意見の違い、学習環境、変えてほしいこと。'},
+   {h:'voices-b3-1',tag:'付録B',t:'美山の先生　生徒の参加・対話で心掛けていること',d:'12件の記述の全文。'},
+   {h:'voices-b3-3',tag:'付録B',t:'美山の先生　関心・参加を高める工夫や発信',d:'学校だより、HP、学校運営協議会、放課後子ども教室。'}]},
+
+{ id:'ko', color:'lilac', title:'個と集団',
+  card:'どちらが優れているかではなく、互いを映す「鏡」として。', cardStat:'光と影', cardStatL:'個を尊重する教育／集団で育つ教育',
+  head:'「個を尊重する教育」と「集団で育つ教育」。どちらにも光と影がある',
+  stats:[{who:'「協調性より個性を尊重」と感じる保護者　美山',v:'34.6',u:'%'},{who:'デンマーク',v:'44.4',u:'%'}],
+  body:()=>`
+   <div class="full">${P('デンマークの先生は、個を尊重する教育が個性・創造性・批判的思考を育てる一方、学校という集団の中で「孤立」を生むことがあると語りました。反対に、集団を大切にする日本の教育は、自分の意見を持つ力が育ちにくい反面、「社会の一員として生きる力」を育てている、とも。どちらが優れているかではなく、互いを映す「鏡」として見ることが、この調査の出発点です。')}</div>
+   <div class="full">${D.blocks.kotoshudan()}</div>
+   ${chart('保護者から見た「個性」と「評価」', likert('parent',[4,5]), '出典：付録A 表A-1・A-4')}
+   <div style="display:flex;flex-direction:column;gap:14px">
+    ${quote(Q('日本の教育は「社会の一員となること」を教えている。それは大人になったときにとても大切な力だ。','dk','教員（インタビューより要約）','interview-t6'))}
+    <div class="callout"><h4>COLUMN　デンマークの学校に「給食」と「掃除の時間」がない理由</h4><p>日本から学べることは多いという答えの一方で、給食は費用の面から、生徒による掃除は道具の安全管理の面から、導入が難しいといいます。</p><a class="go" href="#interview-t6">付録C インタビューを読む</a></div>
+   </div>`,
+  deeper:[
+   {h:'ch5-s6',tag:'本編 第5章',t:'5.3 教育観とアプローチの比較考察',d:'「個尊重型・プロセス重視」と「集団協調型・きめ細やかさ」。'},
+   {h:'interview-t6',tag:'付録C',t:'先生インタビュー「日本の学校教育から学べること」',d:'個尊重型と集団主義、それぞれの強みと課題。'},
+   {h:'voices-b1-2',tag:'付録B',t:'美山の保護者　個性・協調性の尊重や評価',d:'9件の記述の全文。'},
+   {h:'voices-b3-2',tag:'付録B',t:'美山の先生　多角的な評価の取り組み',d:'振り返りシート、ロイロノート、熟議。'},
+   {h:'ch7',tag:'本編 第7章',t:'結論　未来の学校を、地域とともに育てる',d:'2つの教育モデルを「対話の鏡」に。'}]}
+];
+
+D.blocks = {
+ table1:()=>tbl(['区分','調査対象地域','回答者数','調査手法・主な属性'],[
+   ['教員アンケート','日本（美山町）','15名','5段階評価＋選択・自由記述。20代〜50代以上、教職歴5年未満〜15年以上'],
+   ['教員アンケート','デンマーク（グリブスコウ市）','23名','5段階評価＋選択・自由記述。20代〜50代以上、教職歴5年未満〜15年以上'],
+   ['保護者アンケート','日本（美山町）','26名','5段階評価＋選択・自由記述。小・中学校に子どもが通う保護者'],
+   ['保護者アンケート','デンマーク（グリブスコウ市）','27名','5段階評価＋選択・自由記述。小・中学校に子どもが通う保護者'],
+   ['現地インタビュー','デンマーク（北の星国民学校）','教員2名・生徒4名','対面インタビュー及び現地視察']]),
+ 'mi-summary':()=>`<div style="display:flex;flex-direction:column;gap:14px">
+   ${chart('意識・環境の評価（教員Q3・Q9・Q12・Q13）',likert('teacher',[3,9,12,13]),'本編の表2-1・表4-1に対応。デンマークの値も並べて表示しています。出典：付録A 表A-7・A-10')}
+   ${chart('現場で感じる最も大きな壁（教員Q15・最大2つ）',LEG+multi('q15'),'本編の表2-2・表4-2に対応。')}
+   ${chart('子どもに最も身につけてほしい能力（保護者Q7・最大2つ）',LEG+multi('q7'),'本編の表2-3・表4-3に対応。')}
+   ${chart('学校教育・関わりにおける課題意識（保護者Q6・最大2つ）',LEG+multi('q6'),'本編の表2-4・表4-4に対応。')}</div>`,
+ 'dk-summary':()=>`<div class="box"><p>4.1-1 デンマーク教員アンケート（N=23名）と4.1-2 デンマーク保護者アンケート（N=27名）の集計は、<a class="xref" href="#ch3-s0">第3章 3.1</a>で美山町と並べてグラフにしています。全項目は<a class="xref" href="#data">付録A</a>へ。</p></div>`,
+ 'gap-mi':()=>tbl(['比較軸','教員視点（美山町）','保護者視点（美山町）'],[
+   ['現場の捉え方・悩み','管理業務やカリキュラム消化、外部調整などの「事務的・組織的負荷」に忙殺されており、新しい取り組みや子ども一人ひとりに向き合う時間的・精神的ゆとりが欠如している（ゆとり肯定0%、「業務に追われ時間がない」86.7%）。','先生方が日々の業務に追われていることを気遣い、懸念する声がある（「先生が忙しすぎて余裕がない」と感じる保護者は23.1%）。多忙な先生を気遣い「これ以上の負担を強める相談や要望は控えよう」と声を呑み込んでしまう。'],
+   ['子どもに求める力','生きる力、自立心、他者との協働、課題解決力や地域の学び（美山学）を通じた成長。','「自己肯定感（42.3%）」「自分の意見を持ち表現する力（42.3%）」「挑戦する力（34.6%）」を最も重視し、知識・学力（11.5%）は優先度が低い。'],
+   ['関係性の壁','外部との連絡・調整窓口の不足（20.0%）や保護者・地域との教育意識のズレ（6.7%）を課題として認識。','小学校から中学校への進学時に、親しみやすい連携から規律・マニュアル的対応へ変化する「小中連携のギャップ」への戸惑い。多様なニーズへの支援不足、学校の方針や様子が見えにくいと感じている（ともに26.9%）。']])
+   +`<h3>表3-2 「保護者と教員の認識的ギャップ」コメント抜粋</h3><div class="quotes">${[
+     Q('働き方改革と言われると、先生も大変なのでは？と思うとこれくらいの相談はやめておこう、と思ってしまうことがある','mi','保護者｜先生への配慮と相談の遠慮','voices-b1-1'),
+     Q('先生の働き方。残業が多く、心配になります。地域や保護者でお手伝いできることがあると思うのですが、どのように手伝えばいいのか分かりません。','mi','保護者｜教員の多忙感への懸念と協力の意向','voices-b1-4'),
+     Q('小学校と中学校との先生の温度差を近づけてほしい せっかく小学校で伸び伸びできていたのに中学で壁にぶち当たる','mi','保護者｜小中連携の接続ギャップ','voices-b1-4'),
+     Q('なかなか日々時間に追われて目の前のことでいっぱいで、何かを考える余裕がありません。','mi','教員｜日々業務の限界と余裕の不在','voices-b3-8'),
+     Q('教育の目標は、その生徒が生きやすい道を選べるように支援することです。今何を考えているか、どんな思いを抱えているかを聞いて受けとめ、一緒に考えることが大切だと実感しています。','mi','教員｜個への向き合いの理想と構造的葛藤','voices-b3-7')].map(quote).join('')}</div>`,
+ 'gap-dk':()=>tbl(['比較軸','教員視点（グリブスコウ市）','保護者視点（グリブスコウ市）'],[
+   ['現場の捉え方・悩み','制度的なゆとりやサポート体制は一定ある（サポート体制が「十分」47.8%）ものの、不登校や多様なニーズ（ウクライナ避難民等）への対応といった「教育的対応の複雑化」が負担になっている。34.8%の教員が「学校と保護者・地域との意識のズレ」を課題に挙げる。','通知表のないプロセス評価や「個」を尊重する学校方針に対する基本的信頼度は高く、「特に課題はない」とする層も多い（40.7%）。一方で、教員が多忙で個別対応や連絡が不十分だと感じる声もある。'],
+   ['子どもに求める力','他者との協働、他者への尊重、自立的な学び方の修得（Learn how to learn）。','批判的思考や自己表現（37.0%）に加え、「高い学力・知識（59.3%）」の習得を最も強く望んでいる。'],
+   ['関係性の壁','家庭の経済格差・文化の違い（デンマーク語を話せない家庭等）により協力が得られにくいことや、問題が生じた際に「すべて学校の責任」とする一部の保護者の姿勢に苦慮。また、個人主義化が進む生徒に過度な強制ができない中、個別の合意形成に時間を割かれている。','学年進行に伴う学力・習熟度の格差への対応や、不登校・特別な配慮が必要な生徒に対する、より手厚く透明性の高い個別支援体制を求める（多様なニーズへの支援不足 33.3%）。']]),
+ table6:()=>`${chart('新しい取り組みへのゆとり（教員Q12）',likert('teacher',[12]),'付録A 表A-7・A-10')}`+tbl(['比較項目（設問）','日本（美山町）','デンマーク（グリブスコウ市）','構造的分析・ギャップのポイント'],[
+   ['教員Q12　新しい取り組みを行う時間的・精神的ゆとり','肯定 0.0%／否定 53.3%（中立 46.7%）','肯定 30.4%／否定 43.5%（中立 26.1%）','日本は精神的・時間的余裕が大きく不足している。デンマークは一部でゆとりを実感。'],
+   ['保護者Q7　最も身につけてほしい能力','自己肯定感・表現力 各42.3%／学力・知識、規範意識 各11.5%','学力・知識 59.3%／自己肯定感 22.2%','両国で子どもたちに身につけてほしい能力の順位が逆転した。']]),
+ table7:()=>tbl(['比較項目（設問・テーマ）','日本（美山町）','デンマーク','共通性のポイント・質的違い'],[
+   ['Q3　授業での対話・主体的参加の確保（成果）','肯定 80.0%','肯定 69.6%','共通の強み：両国ともに7割前後の教員が日常授業での対話確保に手応えを感じている。'],
+   ['Q9　地域資源（文化・自然等）の教材活用（成果）','肯定 86.7%','肯定 73.9%','共通の強み：両国ともに7割以上が地域の自然・歴史の教材化に手応えを感じている。'],
+   ['Q15　日々の業務過多による時間不足（共通の壁）','該当 86.7%','該当 82.6%','共通の課題：両国とも8割以上が多忙を訴えるが、日本は事務的・組織的負荷、デンマークは教育的対応の複雑化が主因とみられる。'],
+   ['Q12　新しい教育理念の実践に取り組む時間的・精神的余裕（課題）','肯定 0%／否定 53.3%','肯定 30.4%／否定 43.5%','余白の確保に明確な差。']]),
+ kotoshudan:()=>tbl(['','個を尊重する教育（デンマーク）','集団で育つ教育（日本・美山町）'],[
+   ['光','個性・創造性・批判的思考が育つ／自分で決める力（自己決定）／不登校や多様な背景に、柔軟に個別対応できる','協働する力・一体感が育つ／社会の一員として生きる力／困難を乗り越える全人的な成長'],
+   ['影','集団の中での孤立／個への配慮が、先生個人の裁量と負担に頼りがち','「個」が埋もれやすい／先生の自己犠牲的な働き方に頼りがち']]),
+ openness:()=>`<div class="compare2" style="font-family:var(--f-pop)">
+   <div style="background:var(--mi-soft)"><h5>美山町｜地域全体に開く</h5><ul><li>まちごとSchool Meeting</li><li>学校運営協議会（コミュニティ・スクール）</li><li>美山まちづくり委員会との連携</li></ul></div>
+   <div style="background:var(--dk-soft)"><h5>デンマーク｜保護者を中心に開く</h5><ul><li>School Boardは半数が保護者・議長も保護者</li><li>地域住民は年1回のオープン・スクールで</li></ul></div></div>`,
+ table8:()=>tbl(['比較項目','日本（美山町モデル）','デンマーク（グリブスコウ市モデル）'],[
+   ['ギャップの主因','教員の極度な多忙と、保護者の「配慮ゆえの遠慮（沈黙）」。','家庭背景の多様化（経済・文化差）と、生徒の「個人主義化」。'],
+   ['保護者の最優先ニーズ','自己肯定感・挑戦・協働力（学力優先度は低い）。','高い学力・知識、批判的思考・自己表現。'],
+   ['課題となる接続・対応','小中連携の壁（小学校の温かさと中学校の規律の段差）。','個別の習熟度差・多様性支援（不登校・多文化等への透明な対応）。'],
+   ['ギャップ解消の方向性','先生の事務負担を減らし、保護者が遠慮せず対話できる「まちごとSchool Meeting」等の場づくり。','個別合意（Individual agreements）の共有と、学力・多様性対応における家庭と学校の役割分担の再確認。']])
+};
+
+const THEMES = D.themes;
+const ROUTES = {};
+function crumbs(list){return `<div class="wrap crumbs">${list.map((c,i)=>c.h?`<a href="#${c.h}">${esc(c.t)}</a>`:`<span>${esc(c.t)}</span>`).join('<span class="sep">/</span>')}</div>`}
+
+ROUTES.top = ()=>{
+  const T=D.likert.teacher.rows.map(r=>({q:'Q'+r.q,label:r.short,mi:r.mi[0]/15*100,dk:r.dk[0]/23*100}));
+  return `
+  <section class="hero"><div class="circles" aria-hidden="true"><i></i><i></i><i></i></div>
+   <div class="wrap"><div class="hero-inner">
+    <span class="eyebrow">2026 Education Field Report · Summary</span>
+    <h1>子どもたちの未来と<br>持続可能な学校づくりを<br>ともに考える</h1>
+    <div class="pair"><span class="chip mi">美山町（日本）</span>×<span class="chip dk">デンマーク（グリブスコウ市）</span></div>
+    <p class="sub">京都府南丹市美山町とデンマーク・グリブスコウ市。ふたつの地域の先生と保護者、そして子どもたちの声から、これからの学校と地域のあり方を考えます。</p>
+   </div>
+   <div class="voices97" style="margin-top:28px">
+     <div class="v97"><span class="bar mi"></span><span class="n">15<small>人</small></span><span class="l">美山町の先生</span></div>
+     <div class="v97"><span class="bar mi"></span><span class="n">26<small>人</small></span><span class="l">美山町の保護者</span></div>
+     <div class="v97"><span class="bar dk"></span><span class="n">23<small>人</small></span><span class="l">デンマークの先生</span></div>
+     <div class="v97"><span class="bar dk"></span><span class="n">27<small>人</small></span><span class="l">デンマークの保護者</span></div>
+     <div class="v97"><span class="bar both"></span><span class="n">6<small>人</small></span><span class="l">北の星国民学校でのインタビュー（先生2人・生徒4人）</span></div>
+   </div>
+   <p class="fine" style="margin-top:12px">2026年7〜9月にアンケートを実施。あわせて97人の声です。限られた地域・人数への調査で、日本・デンマーク全体の代表値ではありません。</p>
+  </div></section>
+
+  <section class="band" style="padding-top:8px"><div class="wrap"><div class="intro">
+   <a class="ph" href="#about" aria-label="「はじめに」を読む"><img src="group.jpg" alt="調査に参加した学生たちの集合写真" width="1800" height="1350" loading="lazy"><span class="plabel"><b>はじめに</b><span>PREFACE</span></span></a>
+   <div class="tx"><span class="eyebrow">Preface</span><h2 style="font-size:clamp(22px,3vw,30px)">この調査を始めた、ふたりの問い</h2>
+    <p class="qq">「デンマークの教育について学ぶ前に、私たちが暮らす日本の教育現場は今どのような状況にあるのだろうか。」</p><p style="color:var(--ink-2)">引率の大学生ふたりが、美山町とデンマーク・グリブスコウ市をつなぐ調査を始めたきっかけと、この報告書に込めた願いを綴ります。</p>
+    <div class="au"><span class="fine">調査・執筆</span><span><img src="furukita.jpg" alt="">古北咲恵莉</span><span><img src="kaji.jpg" alt="">加地優咲希</span></div>
+    <a class="btn" href="#about">「はじめに」を読む</a></div></div></div></section>
+
+  <section class="band" style="padding-top:20px"><div class="wrap">
+   <div class="sec-head"><span class="eyebrow">Key findings</span><h2>ひと目でわかる、3つの発見</h2></div>
+   <div class="finds">
+    <a class="find" href="#yutori"><span class="k">1</span><span class="q">新しいことに取り組む「ゆとりがある」と答えた先生</span>
+      <span class="vs"><div><span class="big">0<small>人</small></span><span class="who">美山町 / 15人</span></div><div><span class="big" style="color:var(--dk)">7<small>人</small></span><span class="who">デンマーク / 23人</span></div></span>
+      <span class="note">忙しさは共通でも、「余白」には差がありました。</span><span class="go">テーマ01 先生のゆとり</span></a>
+    <a class="find" href="#chikara"><span class="k">2</span><span class="q">子どもに「高い学力・知識」を身につけてほしい保護者</span>
+      <span class="vs"><div><span class="big">11.5<small>%</small></span><span class="who">美山町</span></div><div><span class="big" style="color:var(--dk)">59.3<small>%</small></span><span class="who">デンマーク</span></div></span>
+      <span class="note">美山では「自分らしく生きる力」が42.3%で最多です。</span><span class="go">テーマ02 育てたい力</span></a>
+    <a class="find" href="#chiiki"><span class="k">3</span><span class="q">地域の自然・文化・歴史を教材に生かせている先生</span>
+      <span class="vs"><div><span class="big">86.7<small>%</small></span><span class="who">美山町</span></div><div><span class="big" style="color:var(--dk)">73.9<small>%</small></span><span class="who">デンマーク</span></div></span>
+      <span class="note">両地域に共通する強みです。</span><span class="go">テーマ04 地域との学び</span></a>
+   </div>
+  </div></section>
+
+  <section class="band" style="background:var(--sunk)"><div class="wrap">
+   <div class="sec-head"><span class="eyebrow">5 themes</span><h2>5つのテーマから、もう一歩なかへ</h2><p>カードを開くと、グラフと声で読むテーマのページへ。各ページの最後から、本編の章や回答の全文へさらに深く進めます。</p></div>
+   <div class="themes">${THEMES.map((t,i)=>`<a class="tcard" href="#${t.id}" style="background:var(--${t.color})"><span class="ring" aria-hidden="true"></span><span class="eyebrow">Theme 0${i+1}</span><h3>${esc(t.title)}</h3><p>${esc(t.card)}</p><span class="stat">${t.cardStat}<small>${esc(t.cardStatL)}</small></span></a>`).join('')}</div>
+  </div></section>
+
+  <section class="band" id="compare"><div class="wrap">
+   <div class="sec-head"><span class="eyebrow">Center spread</span><h2>13の問いで比べる</h2><p>学校の運営や教育環境についての問いに「そう思う」と答えた先生の割合です。黄と青の点の距離が、ふたつの地域の差。美山の先生は13問中10問でデンマークより肯定的でした。</p></div>
+   <div class="datagrid" style="padding-top:0">
+     <div class="full">${chart('先生（教員アンケート）　美山町15人／デンマーク23人', LEG+dumbbell(T), 'グレーの帯＝デンマークが上回った問い。差の大きい順。出典：付録A 表A-7・A-10。美山の先生1人の回答は6.7ポイント、デンマークは4.3ポイントにあたります。')}</div>
+     <div class="full">${chart('保護者では逆に、デンマークが5問中4問で上回る　美山町26人／デンマーク27人', LEG+dumbbell(D.likert.parent.rows.map(r=>({label:r.short,mi:r.mi[0]/26*100,dk:r.dk[0]/27*100,rev:r.rev})),{sort:false}), '「先生と気軽に相談できる」はデンマーク96.3%、美山61.5%。出典：付録A 表A-1・A-4。先生の自己評価と保護者の評価は、異なる人への異なる問いです。')}</div>
+   </div>
+   <a class="go" href="#data">付録A　全12表をデータで見る</a>
+  </div></section>
+
+  <section class="band" style="background:var(--sunk)"><div class="wrap">
+   <div class="sec-head"><span class="eyebrow">Next step</span><h2>一人の努力から、共に支える仕組みへ</h2><p>比較から見えたのは、先生個人の情熱だけに頼らない仕組みの大切さです。学校・家庭・地域がそれぞれにできることを、3つずつまとめました。</p></div>
+   <div class="next3">
+     <div style="background:var(--mi)"><h3>学校</h3><ul><li>複数の先生で支えるチーム体制</li><li>振り返りシートなど、日々の小さな評価を生かす</li><li>年間計画に「探究・地域連携枠」をとっておく</li></ul></div>
+     <div style="background:var(--dk)"><h3>家庭</h3><ul><li>遠慮せず、小さな相談を</li><li>学校を「共に育てるパートナー」として見る</li><li>小中のつなぎ方を、対話の場で話す</li></ul></div>
+     <div style="background:var(--both)"><h3>地域</h3><ul><li>まちごとSchool Meetingを定例に</li><li>農業やかやぶきなど、地元の仕事に触れる体験を</li><li>学校運営協議会・まちづくり委員会・NPOがつなぎ役に</li></ul></div>
+   </div>
+   <div class="mirror"><span class="layer-tag">IN THE MIDDLE</span>美山とデンマークが「対話の鏡」として学び合い続ける　—　子ども同士の交流／先生同士のオンライン協議</div>
+   <p style="margin-top:20px"><a class="go" href="#ch6">本編 第6章「今後の教育実践・地域協働への展望」を読む</a></p>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+   <div class="sec-head"><span class="eyebrow">Go deeper</span><h2>この先は、3層の奥行きで</h2><p>概要版（16ページ）をこのページの入口に、テーマのページ、そして本編（64ページ）の章と資料へ。読みたい深さで、行き来できます。</p></div>
+   <div class="layers">
+    <div class="layer"><span class="layer-tag">LAYER 1</span><h3>概要</h3><p class="fine">このページ。3つの発見と、13の問いの比較。</p><ul><li><a href="#top">3つの発見<span class="num">P3</span></a></li><li><a href="#compare">13の問い・5つの問い<span class="num">P8–9</span></a></li><li><a href="#about">はじめに・調査について<span class="num">P2</span></a></li></ul></div>
+    <div class="layer"><span class="layer-tag">LAYER 2</span><h3>テーマ</h3><p class="fine">グラフと声で読む5つのテーマ。</p><ul>${THEMES.map((t,i)=>`<li><a href="#${t.id}">${esc(t.title)}<span class="num">0${i+1}</span></a></li>`).join('')}</ul></div>
+    <div class="layer"><span class="layer-tag">LAYER 3</span><h3>本編・資料</h3><p class="fine">本編の全章と、付録の全文・全データ。</p><ul>
+      <li><a href="#report">本編　概要・第1〜7章<span class="num">8</span></a></li>
+      <li><a href="#data">付録A　集計データ<span class="num">12表</span></a></li>
+      <li><a href="#voices">付録B　自由記述の全文<span class="num">${D.voiceCount}件</span></a></li>
+      <li><a href="#interview">付録C　インタビュー全文<span class="num">${D.qaCount}問</span></a></li>
+      <li><a href="#glossary">付録D　用語解説<span class="num">${D.glossary.length}語</span></a></li></ul></div>
+   </div>
+  </div></section>`;
+};
+
+function themePage(id){
+  const i=THEMES.findIndex(t=>t.id===id), t=THEMES[i], prev=THEMES[i-1], next=THEMES[i+1];
+  return crumbs([{t:'概要',h:'top'},{t:'テーマ 0'+(i+1)}]) + `
+  <section class="tband" style="background:var(--${t.color});margin-top:14px"><span class="ring" aria-hidden="true"></span><div class="wrap">
+    <span class="eyebrow">Theme 0${i+1} <span class="layer-tag" style="margin-left:8px">LAYER 2</span></span>
+    <h1>${esc(t.title)}</h1>
+    <p class="head">${esc(t.head)}</p>
+    <div class="stats">${t.stats.map(s=>`<div><span class="who">${esc(s.who)}</span><span class="big">${s.v}<small>${s.u||''}</small></span></div>`).join('')}</div>
+  </div></section>
+  <div class="wrap"><div class="tbody">${t.body()}</div>
+   <aside class="deeper" aria-label="さらに深く"><span class="eyebrow" style="opacity:.8">Go deeper · Layer 3</span><h3>本編と資料で、もっと深く</h3>
+    <div class="grid">${t.deeper.map(d=>`<a href="#${d.h}"><span class="layer-tag">${esc(d.tag)}</span><span class="t">${esc(d.t)}</span><span class="d">${esc(d.d)}</span></a>`).join('')}</div></aside>
+   <nav class="tnav">${prev?`<a href="#${prev.id}">← 0${i}　${esc(prev.title)}</a>`:'<a href="#top">← 概要へ</a>'}${next?`<a href="#${next.id}">0${i+2}　${esc(next.title)} →</a>`:'<a href="#report">本編を読む →</a>'}</nav>
+  </div>`;
+}
+THEMES.forEach(t=>ROUTES[t.id]=()=>themePage(t.id));
+
+/* report */
+const CH=D.chapters;
+function blockHTML(b){const f=D.blocks[b];return f?f():''}
+function chapterPage(id,secIdx){
+  const ci=CH.findIndex(c=>c.id===id), c=CH[ci];
+  const toc=`<nav class="toc" aria-label="本編の目次"><span class="grp">REPORT</span>${CH.map(x=>`<a href="#${x.id}" ${x.id===id?'aria-current="true"':''}>${x.id==='abstract'?'概要':esc(x.no+'　'+x.title)}</a>`).join('')}
+    <span class="grp">APPENDIX</span><a href="#data">付録A　集計データ</a><a href="#voices">付録B　自由記述</a><a href="#interview">付録C　インタビュー</a><a href="#glossary">付録D　用語解説</a><a href="#about">はじめに・制作</a></nav>`;
+  let k=0;
+  const body=c.secs.map((s,si)=>{
+    const sid=`${c.id}-s${si}`;
+    const h=s.h?(s.sub?`<h3 id="${sid}">${esc(s.h)}</h3>`:`<h2 id="${sid}">${esc(s.h)}</h2>`):'';
+    const ps=(s.p||[]).map(p=>`<p>${linkify(esc(p))}</p>`).join('');
+    if(s.note) return h+`<div class="box">${ps}</div>`;
+    return h+(s.block?blockHTML(s.block):'')+ps;
+  }).join('');
+  const prev=CH[ci-1], next=CH[ci+1];
+  return crumbs([{t:'概要',h:'top'},{t:'本編',h:'report'},{t:c.id==='abstract'?'概要':c.no}]) + `<div class="wrap reader">${toc}
+   <article class="doc"><header class="chhead"><span class="no">${c.id==='abstract'?'REPORT':esc(c.no)}　<span class="layer-tag">LAYER 3</span></span><h1>${esc(c.title)}</h1><span class="lead">${esc(c.lead)}</span></header>
+   ${body}
+   ${D.chapterFix[c.id]?`<p class="fixnote" style="text-indent:0">${esc(D.chapterFix[c.id])}</p>`:''}
+   <nav class="chnav">${prev?`<a href="#${prev.id}"><small>前へ</small>${esc(prev.id==='abstract'?'概要':prev.no+'　'+prev.title)}</a>`:'<span></span>'}${next?`<a href="#${next.id}"><small>次へ</small>${esc(next.no+'　'+next.title)}</a>`:`<a href="#data"><small>次へ</small>付録A　集計データ</a>`}</nav>
+   </article></div>`;
+}
+function linkify(s){
+  return s.replace(/付録C(：|:)インタビュー全文より質問([0-9０-９１-９]+)/g,(m)=>`${m} <a class="xref" href="#interview">付録Cへ</a>`)
+          .replace(/巻末の「付録C：インタビュー全文」/g,m=>`${m} <a class="xref" href="#interview">付録Cへ</a>`);
+}
+ROUTES.report=()=>chapterPage('abstract');
+CH.forEach(c=>ROUTES[c.id]=()=>chapterPage(c.id));
+
+/* voices */
+let vf={region:'all',role:'all',q:'',group:null};
+ROUTES.voices=(arg)=>{
+  if(arg) vf.group=arg; else vf.group=null;
+  return crumbs([{t:'概要',h:'top'},{t:'付録B　自由記述全文'}])+`<div class="wrap">
+   <div class="page-head"><span class="eyebrow">Appendix B <span class="layer-tag" style="margin-left:8px">LAYER 3</span></span><h1>自由記述の全文</h1>
+   <p>アンケートの自由記述欄に寄せられた回答を、地域・回答者・設問ごとに並べています。記述は原文のまま（誤字・脱字を含む）です。個人や学校が特定されうる固有名は一部伏せ、「特になし」や記号のみの回答は省略して件数を記しています。デンマークの回答には、調査者による仮訳と英語（一部デンマーク語）の原文を併記しています。</p></div>
+   <div class="filters" role="group" aria-label="絞り込み">
+     <span class="seg-ctl" data-k="region"><button data-v="all">すべて</button><button data-v="mi">美山町</button><button data-v="dk">デンマーク</button></span>
+     <span class="seg-ctl" data-k="role"><button data-v="all">すべて</button><button data-v="parent">保護者</button><button data-v="teacher">先生</button></span>
+     <input id="vq" class="search" type="search" placeholder="ことばで探す（例：相談、Aula、放課後）" aria-label="自由記述を検索">
+     <span class="count" id="vcount"></span>
+   </div><div id="vout"></div></div>`;
+};
+function renderVoices(){
+  const out=$('#vout'); if(!out) return;
+  const q=vf.q.trim().toLowerCase();
+  const hl=s=>{s=esc(s);if(!q)return s;const e=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return s.replace(new RegExp(e,'gi'),m=>`<mark>${m}</mark>`)};
+  let total=0;
+  const html=D.voices.filter(g=>(vf.region==='all'||g.region===vf.region)&&(vf.role==='all'||g.role===vf.role)).map(g=>{
+    const secs=g.sections.map((s,si)=>{
+      const items=s.items.filter(it=>!q||((it.ja||'')+' '+(it.en||'')).toLowerCase().includes(q));
+      if(!items.length && q) return '';
+      total+=items.length;
+      return `<div class="vsec" id="${g.id.toLowerCase().replace('-','')}-${s.no}"><h3>（${s.no}）${esc(s.title)}　<span class="count">${items.length}件</span></h3>
+       <div class="vlist">${items.map(it=>`<div class="vitem ${g.region}">${it.en?`<span class="tr">仮訳</span>`:''}<span>${hl(it.ja)}</span>${it.en?`<span class="en" lang="en">${hl(it.en)}</span>`:''}</div>`).join('')}</div>
+       ${s.note?`<p class="vnote">${esc(s.note)}</p>`:''}</div>`}).join('');
+    if(!secs) return '';
+    return `<section class="vgroup"><h2><span class="chip ${g.region}">${g.region==='mi'?'美山町':'デンマーク'}</span>${g.role==='parent'?'保護者':'先生'}（N=${g.n}）<span class="fine">付録${g.id}</span></h2>${secs}</section>`;
+  }).join('');
+  out.innerHTML=html||`<p class="empty">「${esc(vf.q)}」を含む回答は見つかりませんでした。別のことばで探すか、地域・立場の絞り込みを「すべて」に戻してください。</p>`;
+  $('#vcount').textContent=`${total}件を表示`;
+  document.querySelectorAll('.seg-ctl').forEach(c=>c.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(vf[c.dataset.k]===b.dataset.v))));
+}
+
+/* interview */
+let ilang='both';
+ROUTES.interview=()=>crumbs([{t:'概要',h:'top'},{t:'付録C　インタビュー全文'}])+`<div class="wrap">
+  <div class="page-head"><span class="eyebrow">Appendix C <span class="layer-tag" style="margin-left:8px">LAYER 3</span></span><h1>インタビュー全文</h1>
+  <p>デンマーク・グリブスコウ市の北の星国民学校（Nordstjerneskolen）で、先生2人と生徒4人に聞いた記録です。調査者が提供した英語・日本語の記録をそのまま掲載しています。日本語には英語にない補足がある箇所があり、厳密な逐語対訳ではありません。制度に関する説明は聞き取り時のもので、法令等を独自に確認した結果ではありません。</p></div>
+  <div class="filters"><span class="seg-ctl" id="ilang"><button data-v="ja">日本語</button><button data-v="both">日本語＋英語</button><button data-v="en">English</button></span><span class="count">${D.qaCount}問</span></div>
+  <div id="iout"></div></div>`;
+function renderInterview(){
+  const out=$('#iout'); if(!out) return; let n=0;
+  out.innerHTML=D.interview.map(g=>`<section class="vgroup"><h2><span class="chip ${g.who==='teacher'?'dk':'both'}">${g.who==='teacher'?'先生':'生徒'}</span>${esc(g.title)}</h2>
+   ${g.topics.map(t=>`<div class="itopic" id="interview-${g.who[0]}${t.no}"><h3>${t.no}. ${esc(t.title)}</h3>${t.qs.map(q=>{n++;return `<div class="qa">
+     ${ilang!=='en'?`<div class="q"><b class="dk">Q${n}</b><span>${esc(q.q_ja)}</span></div><div class="a">${esc(q.a_ja)}</div>`:''}
+     ${ilang!=='ja'?`<div class="en" lang="en">${ilang==='en'?`<span class="eq">Q${n}. ${esc(q.q_en)}</span>`:`<span class="eq">${esc(q.q_en)}</span>`}<span>${esc(q.a_en)}</span></div>`:''}
+   </div>`}).join('')}</div>`).join('')}</section>`).join('');
+  document.querySelectorAll('#ilang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===ilang)));
+}
+
+/* data */
+let dset='teacher';
+ROUTES.data=()=>crumbs([{t:'概要',h:'top'},{t:'付録A　集計データ'}])+`<div class="wrap">
+  <div class="page-head"><span class="eyebrow">Appendix A <span class="layer-tag" style="margin-left:8px">LAYER 3</span></span><h1>アンケート集計データ</h1>
+  <p>美山町とデンマーク（グリブスコウ市）の教員・保護者アンケートの集計です。5段階評価は「そう思う・強くそう思う」を肯定、「あまりそう思わない・全くそう思わない」を否定にまとめています。棒にカーソルを合わせると人数が出ます。</p></div>
+  <div class="filters"><span class="seg-ctl" id="dset"><button data-v="teacher">先生（美山15人・デンマーク23人）</button><button data-v="parent">保護者（美山26人・デンマーク27人）</button></span></div>
+  <div id="dout"></div></div>`;
+function renderData(){
+  const out=$('#dout'); if(!out) return;
+  if(dset==='teacher') out.innerHTML=`<div class="datagrid">
+    <div class="full" id="data-a7">${chart('表A-7・A-10　学校運営・教育環境に関する意識（5段階評価）',likert('teacher'),'出典：付録A 表A-7（美山町）・表A-10（デンマーク）。')}</div>
+    <div id="data-a8">${chart('表A-8・A-11　特に力を入れている、効果が出ている取り組み（Q14・複数選択）',LEG+multi('q14'),D.multi.q14.note)}</div>
+    <div id="data-a9">${chart('表A-9・A-12　教育現場で最も大きな壁（Q15・最大2つ）',LEG+multi('q15'),D.multi.q15.note)}</div></div>`;
+  else out.innerHTML=`<div class="datagrid">
+    <div class="full" id="data-a1">${chart('表A-1・A-4　学校との関わり・評価に関する意識（5段階評価）',likert('parent'),'出典：付録A 表A-1（美山町）・表A-4（デンマーク）。Q3は「低いほど良い」問いです。')}</div>
+    <div id="data-a2">${chart('表A-2・A-5　学校教育・学校との関わりにおける最も大きな課題（Q6・最大2つ）',LEG+multi('q6'),D.multi.q6.note)}</div>
+    <div id="data-a3">${chart('表A-3・A-6　子どもに最も身につけてほしい能力（Q7・最大2つ）',LEG+multi('q7'),D.multi.q7.note)}</div></div>`;
+  document.querySelectorAll('#dset button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===dset)));
+}
+
+ROUTES.glossary=()=>crumbs([{t:'概要',h:'top'},{t:'付録D　用語解説'}])+`<div class="wrap">
+  <div class="page-head"><span class="eyebrow">Appendix D <span class="layer-tag" style="margin-left:8px">LAYER 3</span></span><h1>主要教育用語解説</h1><p>本書を読むための補足です。前半4語は公式資料をもとに意味を整理し、後半3語は本書での使い方を整理したものです（編集部による読解補助）。</p></div>
+  <div class="gloss">${D.glossary.map(g=>`<div class="gl"><h3>${esc(g.t)}</h3><p>${esc(g.d)}</p>${g.src?`<div class="src">出典：${g.url?`<a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.src)}</a>`:esc(g.src)}${g.date?`／確認日：${esc(g.date)}`:''}</div>`:''}</div>`).join('')}</div></div>`;
+
+ROUTES.about=()=>crumbs([{t:'概要',h:'top'},{t:'はじめに・調査について'}])+`<div class="wrap"><figure class="pfig"><div class="pimg"><img src="group.jpg" alt="調査に参加した学生たちの集合写真" width="1800" height="1350"><div class="plabel"><h1 style="margin:0;font-size:inherit"><b>はじめに</b></h1><span>PREFACE</span></div><div class="pdots" aria-hidden="true"><i></i><i></i></div></div><figcaption>デンマークへ出発する日、空港にて</figcaption></figure></div><div class="wrap reader">
+  <nav class="toc"><span class="grp">ABOUT</span><a href="#about" aria-current="true">はじめに</a><a href="#report">本編　概要</a><a href="#ch2">第2章　調査の概要</a><a href="#glossary">付録D　用語解説</a></nav>
+  <article class="doc">
+   <p style="text-indent:0;font-family:var(--f-pop);font-weight:700;font-size:18px;line-height:1.9">${esc(D.preface[0])}</p>
+   ${D.preface.slice(1).map((p,i)=>i===3?`<div class="pq"><p>${esc(p)}</p></div>`:`<p>${esc(p)}</p>`).join('')}
+   <div class="authors" style="margin-top:8px;font-family:var(--f-pop)"><span class="fine" style="align-self:center">調査・執筆</span>
+    <div class="author"><img src="furukita.jpg" alt="古北咲恵莉さんの写真" width="84" height="84">古北咲恵莉</div>
+    <div class="author"><img src="kaji.jpg" alt="加地優咲希さんの写真" width="84" height="84">加地優咲希</div></div>
+   <h2>調査のかたち</h2>
+   ${blockHTML('table1')}
+   <div class="callout" style="font-family:var(--f-pop)"><h4>このWeb版について</h4><p>概要版（16ページ）を入口に、報告書（本編64ページ）の本文と付録をもとに構成しました。グラフと本文中の数値は、アンケートの集計データと照合しています。本編の一部に残っていた集計前の数値（回答者数・割合）は、このWeb版では付録Aの集計に合わせて直しています。</p></div>
+   <h2>制作・出典</h2>
+   <p style="text-indent:0">子どもたちの未来と持続可能な学校づくりをともに考える　日本（美山町）・デンマーク教育環境比較調査 報告書<br>発行：NPO法人 森の教育プロジェクト<br>調査・執筆：古北咲恵莉・加地優咲希<br>発行日：2026年10月20日</p>
+  </article></div>`;
+
+/* ---------- router ---------- */
+const DEPTH={top:1};THEMES.forEach(t=>DEPTH[t.id]=2);
+const NAVKEY=id=>id==='top'?'top':THEMES.some(t=>t.id===id)?'theme':(id==='report'||CH.some(c=>c.id===id)||id==='about')?'report':['voices','interview','data'].includes(id)?id:'';
+function route(){
+  let h=(location.hash||'#top').slice(1)||'top', anchor=null, arg=null;
+  let m=h.match(/^((?:ch\d|abstract))-s(\d+)$/); if(m){anchor=h;h=m[1]}
+  m=h.match(/^voices-(b\d)-(\d)$/); if(m){anchor=h.slice(7);h='voices'}
+  m=h.match(/^data-(a\d+)$/); if(m){anchor=h;dset=['a1','a2','a3'].includes(m[1])?'parent':'teacher';h='data'}
+  m=h.match(/^interview-([ts]\d)$/); if(m){anchor=h;h='interview'}
+  if(h==='compare'){h='top';anchor='compare'}
+  if(!ROUTES[h]){h='top'}
+  const v=$('#view'); v.classList.remove('enter'); void v.offsetWidth;
+  v.innerHTML=ROUTES[h](arg)+footer(); v.classList.add('enter');
+  if(h==='voices'){renderVoices();bindVoices()} if(h==='interview'){renderInterview();bindInterview()} if(h==='data'){renderData();bindData()}
+  const d=DEPTH[h]||3; const dp=$('.depth'); dp.dataset.d=d; $('#depthLabel').textContent=['','概要','テーマ','本編・資料'][d];
+  document.querySelectorAll('.nav a').forEach(a=>a.setAttribute('aria-current',String(a.dataset.n===NAVKEY(h))));
+  const t=anchor&&document.getElementById(anchor);
+  if(t){requestAnimationFrame(()=>t.scrollIntoView({block:'start'}))} else window.scrollTo(0,0);
+  document.title=(h==='top'?'':(titleOf(h)+'｜'))+'美山 × デンマーク 教育調査';
+}
+function titleOf(h){const t=THEMES.find(x=>x.id===h);if(t)return t.title;const c=CH.find(x=>x.id===h);if(c)return c.id==='abstract'?'本編 概要':c.no+' '+c.title;return {voices:'自由記述の全文',interview:'インタビュー全文',data:'集計データ',glossary:'用語解説',about:'はじめに'}[h]||''}
+function bindVoices(){
+  document.querySelectorAll('.seg-ctl[data-k]').forEach(c=>c.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;vf[c.dataset.k]=b.dataset.v;renderVoices()}));
+  const q=$('#vq'); q.value=vf.q; q.addEventListener('input',()=>{vf.q=q.value;renderVoices()});
+}
+function bindInterview(){$('#ilang').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ilang=b.dataset.v;renderInterview()})}
+function bindData(){$('#dset').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;dset=b.dataset.v;renderData()})}
+function footer(){return `<footer class="foot"><span class="c1" aria-hidden="true"></span><span class="c2" aria-hidden="true"></span><div class="wrap">
+  <h2>子どもたちの未来を、<br>ともに。</h2>
+  <p style="font-weight:700;max-width:40em;line-height:1.9">自然と地域の温かな関わりの中で、子どもたちが「自分らしく生きる力」を育む土台は、すでに美山の地に息づいています。美山とデンマークを互いの「対話の鏡」として学び合うことが、その未来を拓きます。</p>
+  <div><span class="rart" lang="da">Her er rart.</span> <span style="font-weight:700;font-size:14px">ここは居心地がいい。— デンマークの先生の回答より</span></div>
+  <a class="cta" href="https://edu-project.jp/contact" target="_blank" rel="noopener">お問い合わせ（edu-project.jp/contact）</a>
+  <div class="row"><div><strong style="font-weight:900;font-size:15px">NPO法人　森の教育プロジェクト</strong><br>調査・執筆　古北咲恵莉／加地優咲希<br>発行日　2026年10月20日</div>
+  <div style="font-family:var(--f-num);font-weight:700;letter-spacing:.12em;text-align:right">2026 EDUCATION FIELD REPORT<br>MIYAMA × DANMARK</div></div>
+  <p style="font-size:13px;line-height:1.8">調査にご協力いただいた美山町とグリブスコウ市の先生方・保護者の皆さま、北の星国民学校の先生と生徒の皆さんに、心より感謝申し上げます。</p>
+ </div></footer>`}
+window.addEventListener('hashchange',route);
+route();
+})();
+</script>
+</body>
+</html>
