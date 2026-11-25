@@ -190,16 +190,16 @@ section.band{padding-block:56px}
 @media (max-width:640px){.drow,.axis{grid-template-columns:1fr;gap:2px}.axis div:first-child{display:none}}
 .pbars{display:flex;flex-direction:column;gap:14px}
 .pb .lab{font-size:14px;font-weight:700;line-height:1.5;margin-bottom:4px}
-.pb .row{display:grid;grid-template-columns:5.5em minmax(0,1fr) 3.6em;gap:8px;align-items:center;font-size:12px}
+.pb .row{display:grid;grid-template-columns:5.5em minmax(0,1fr) 6.2em;gap:8px;align-items:center;font-size:12px}
 .pb .row .who{font-weight:700;color:var(--ink-2)}
 .pb .row .b{height:14px;border-radius:7px;background:var(--sunk);overflow:hidden}
 .pb .row .b i{display:block;height:100%;border-radius:7px}
-.pb .row .v{font-family:var(--f-num);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.pb .row .v{font-family:var(--f-num);font-weight:700;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.pb .row .v small{font-weight:600;color:var(--ink-2);margin-left:5px}
 .pb.hot{background:var(--coral-soft);border-radius:14px;padding:8px 10px;margin:0 -10px}
 .lk{display:flex;flex-direction:column;gap:12px}
 .lkrow .lab{font-size:14px;font-weight:700;line-height:1.5;margin-bottom:4px}
-.lkbar{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:8px;align-items:center;font-size:12px;margin-top:3px}
-.lkbar .who{font-weight:700;color:var(--ink-2)}
+.lkbar{display:grid;grid-template-columns:5.5em minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px;margin-top:3px}
+.lkbar .who{font-weight:700;color:var(--ink-2)}.lkbar .cnt{min-width:10.5em;text-align:right;font-family:var(--f-num);font-weight:600;font-size:11.5px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}@media (max-width:640px){.lkbar{grid-template-columns:5.5em minmax(0,1fr)}.lkbar .cnt{grid-column:2;text-align:left;min-width:0}}
 .seg{display:flex;height:22px;border-radius:11px;overflow:hidden;background:var(--sunk)}
 .seg i{display:flex;align-items:center;justify-content:center;font-style:normal;font-family:var(--f-num);font-weight:700;font-size:11px;color:var(--on-accent);min-width:0;overflow:hidden;white-space:nowrap}
 .seg i.neu{background:var(--neu);color:var(--ink)} .seg i.neg{background:var(--neg);color:var(--ink)}
@@ -427,8 +427,8 @@ function dumbbell(rows,{sort=true}={}){
 function pbars(rows,{hot}={}){
   return `<div class="pbars">${rows.map(x=>`<div class="pb ${hot&&hot===x.label?'hot':''}">
     <div class="lab">${esc(x.label)}</div>
-    <div class="row"><span class="who">美山町</span><span class="b"><i style="width:${x.mi}%;background:var(--mi)"></i></span><span class="v">${x.mi.toFixed(1)}%</span></div>
-    <div class="row"><span class="who">デンマーク</span><span class="b"><i style="width:${x.dk}%;background:var(--dk)"></i></span><span class="v">${x.dk.toFixed(1)}%</span></div>
+    <div class="row"><span class="who">美山町</span><span class="b"><i style="width:${x.mi}%;background:var(--mi)"></i></span><span class="v">${x.mi.toFixed(1)}%${x.cmi!=null?`<small>${x.cmi}人</small>`:''}</span></div>
+    <div class="row"><span class="who">デンマーク</span><span class="b"><i style="width:${x.dk}%;background:var(--dk)"></i></span><span class="v">${x.dk.toFixed(1)}%${x.cdk!=null?`<small>${x.cdk}人</small>`:''}</span></div>
   </div>`).join('')}</div>`;
 }
 function seg(c,n,color){
@@ -439,17 +439,18 @@ function seg(c,n,color){
     <i class="neu" style="width:${p[1]}%" title="どちらとも言えない ${c[1]}名">${p[1]>=12?p[1].toFixed(1):''}</i>
     <i class="neg" style="width:${p[2]}%" title="否定 ${c[2]}名">${p[2]>=12?p[2].toFixed(1):''}</i></span>`;
 }
+const cntl=c=>`<span class="cnt">肯定${c[0]}・中立${c[1]}・否定${c[2]}人</span>`;
 function likert(set,keys){
   const T=D.likert[set], rows=keys?T.rows.filter(r=>keys.includes(r.q)):T.rows;
   return `<div class="legend"><span><i style="background:var(--mi)"></i><i style="background:var(--dk);margin-left:-4px"></i>肯定（そう思う）</span><span><i style="background:var(--neu)"></i>どちらとも言えない</span><span><i style="background:var(--neg)"></i>否定</span></div>
   <div class="lk">${rows.map(r=>`<div class="lkrow"><div class="lab">${r.q}. ${esc(r.text)}</div>
-    <div class="lkbar"><span class="who">美山 ${T.nMi}人</span>${seg(r.mi,T.nMi,'var(--mi)')}</div>
-    <div class="lkbar"><span class="who">デンマーク ${T.nDk}人</span>${seg(r.dk,T.nDk,'var(--dk)')}</div>
+    <div class="lkbar"><span class="who">美山 ${T.nMi}人</span>${seg(r.mi,T.nMi,'var(--mi)')}${cntl(r.mi)}</div>
+    <div class="lkbar"><span class="who">デンマーク ${T.nDk}人</span>${seg(r.dk,T.nDk,'var(--dk)')}${cntl(r.dk)}</div>
     ${r.note?`<div class="fine">${esc(r.note)}</div>`:''}</div>`).join('')}</div>`;
 }
 function multi(set){
   const T=D.multi[set];
-  return pbars(T.rows.map(r=>({label:r.label,mi:+pct(r.mi,T.nMi),dk:+pct(r.dk,T.nDk)})),{hot:T.hot});
+  return pbars(T.rows.map(r=>({label:r.label,mi:+pct(r.mi,T.nMi),dk:+pct(r.dk,T.nDk),cmi:r.mi,cdk:r.dk})),{hot:T.hot});
 }
 function slope(){
   const R=D.multi.q7.rows.filter(r=>r.label!=='その他');
@@ -491,7 +492,7 @@ D.themes = [
    ${P('「日々の業務に追われ、新しいことに取り組む時間がない」。この壁を挙げた先生は、美山<strong>86.7%</strong>、デンマーク<strong>82.6%</strong>。忙しさは両地域に共通しています。違いが出たのは、その先の「余白」でした。',
        '新しい教育の実践に取り組む時間的・精神的なゆとりが「ある」と答えた先生は、美山では15人中0人でした。半数の8人が「ない」、残りは「どちらとも言えない」と答えています。デンマークでは23人中7人（30.4%）が「ある」と答えました。')}
    ${chart('新しいことに取り組むゆとりがある？（教員Q12）', likert('teacher',[12]), '出典：付録A 表A-7・A-10')}
-   ${chart('いちばん大きな壁は？（教員Q15・2つまで選択）', LEG+pbars(D.multi.q15.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23)}))), '出典：付録A 表A-9・A-12')}
+   ${chart('いちばん大きな壁は？（教員Q15・2つまで選択）', LEG+pbars(D.multi.q15.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23),cmi:r.mi,cdk:r.dk}))), '出典：付録A 表A-9・A-12')}
    ${P('デンマークの現地校では、先生の時間を守る仕組みの説明を受けました。教科主任など役職のある先生は授業が減らされ、1つの学級を複数の先生で教える「コ・ティーチング」も取り入れられています。',
        'ただし、デンマークにも壁はあります。不登校の子どもへの対応は先生と保護者の個別の取り決めに任され、デンマーク語を話せない高学年の生徒への支援は先生個人の努力に頼っています。「学校と保護者・地域の意識のズレ」を壁に挙げた先生は34.8%で、美山（6.7%）より多くなっています。')}
    <div class="chart"><h4>デンマークの先生の時間を守る仕組み</h4><div class="facts">
@@ -547,7 +548,7 @@ D.themes = [
   body:()=>`
    ${P('美山の保護者が挙げた課題で最も多かったのは、「学校の方針や様子が見えにくく、相談の窓口や機会が足りない」（26.9%）でした。デンマークでは3.7%です。',
        '美山では「窓口・見えにくさ」と「多様なニーズへの支援不足」がともに26.9%で並びました。デンマークでは「特に課題はない」が40.7%で最も多く、続くのが「多様なニーズへの支援不足」（33.3%）です。不登校や発達の特性、多文化の背景をもつ子どもへの支援は、両地域に共通する課題です。')}
-   ${chart('保護者が感じる、学校との関わりの課題（保護者Q6・2つまで）', LEG+pbars(D.multi.q6.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,26),dk:+pct(r.dk,27)})),{hot:D.multi.q6.hot}), '差が最大の項目を色づけ。出典：付録A 表A-2・A-5')}
+   ${chart('保護者が感じる、学校との関わりの課題（保護者Q6・2つまで）', LEG+pbars(D.multi.q6.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,26),dk:+pct(r.dk,27),cmi:r.mi,cdk:r.dk})),{hot:D.multi.q6.hot}), '差が最大の項目を色づけ。出典：付録A 表A-2・A-5')}
    ${P('自由記述からは、先生の忙しさを気遣って相談を控える「配慮ゆえの遠慮」が見えてきます。先生の忙しさの中身は、家庭からは見えにくいのかもしれません。小学校から中学校への進学で、関わり方が変わることへの戸惑いも複数寄せられました。')}
    <div class="chart"><h4>先生の実感と、家庭から見える姿（美山町）</h4><div class="facts">
      <div class="fact" style="background:var(--mi-soft)"><span class="n num">86.7<small>%</small></span><span class="l">先生自身が「業務に追われている」（教員Q15・15人）</span></div>
@@ -577,7 +578,7 @@ D.themes = [
   body:()=>`
    ${P('地域を学びの場にすることと、子どもの声を学校づくりに生かすこと。この2つは、両地域の先生が手応えを感じている共通の強みです。',
        '美山では、総合的な学習の時間「美山学」を中心に、地域に根ざした学びが続いています。5・6年生は3年前から「10年後の美山に残したい物・事」を探究し、2026年5月には地域住民・保護者・教員が集う「まちごとSchool Meeting」が開かれました。力を入れている取り組みとしては、「生徒会・委員会を通じた意見の吸い上げ」が73.3%で最多です。')}
-   ${chart('先生が力を入れている取り組み（教員Q14・複数選択）', LEG+pbars(D.multi.q14.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23)}))), '出典：付録A 表A-8・A-11')}
+   ${chart('先生が力を入れている取り組み（教員Q14・複数選択）', LEG+pbars(D.multi.q14.rows.filter(r=>r.label!=='その他').map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23),cmi:r.mi,cdk:r.dk}))), '出典：付録A 表A-8・A-11')}
    ${chart('地域とのつながり（教員アンケート）', likert('teacher',[7,9,10]), '出典：付録A 表A-7・A-10')}
    ${P('ただし、子どもが地域課題の解決やボランティアに参加できる仕組みが「整っている」は40.0%、「整っていない」も40.0%でした。中学生は部活動などで時間が限られる、という声もありました。',
        'デンマークでいちばん力を入れているのは「日常的な面談・相談」（56.5%）です。地域企業や職業学校と連携した職業体験「ジュニアマイスター制度（Juniormesterlære）」もあります。')}
@@ -858,7 +859,7 @@ function renderInterview(){
 let dset='teacher';
 ROUTES.data=()=>crumbs([{t:'概要',h:'top'},{t:'付録A　集計データ'}])+`<div class="wrap">
   <div class="page-head"><span class="eyebrow">Appendix A <span class="layer-tag" style="margin-left:8px">LAYER 3</span></span><h1>アンケート集計データ</h1>
-  <p>美山町とデンマーク（グリブスコウ市）の教員・保護者アンケートの集計です。5段階評価は「そう思う・強くそう思う」を肯定、「あまりそう思わない・全くそう思わない」を否定にまとめています。棒にカーソルを合わせると人数が出ます。</p></div>
+  <p>美山町とデンマーク（グリブスコウ市）の教員・保護者アンケートの集計です。5段階評価は「そう思う・強くそう思う」を肯定、「あまりそう思わない・全くそう思わない」を否定にまとめています。各棒の横に人数を表示しています。</p></div>
   <div class="filters"><span class="seg-ctl" id="dset"><button data-v="teacher">先生（美山15人・デンマーク23人）</button><button data-v="parent">保護者（美山26人・デンマーク27人）</button></span></div>
   <div id="dout"></div></div>`;
 function renderData(){

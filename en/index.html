@@ -190,16 +190,16 @@ section.band{padding-block:56px}
 @media (max-width:640px){.drow,.axis{grid-template-columns:1fr;gap:2px}.axis div:first-child{display:none}}
 .pbars{display:flex;flex-direction:column;gap:14px}
 .pb .lab{font-size:14px;font-weight:700;line-height:1.5;margin-bottom:4px}
-.pb .row{display:grid;grid-template-columns:5.5em minmax(0,1fr) 3.6em;gap:8px;align-items:center;font-size:12px}
+.pb .row{display:grid;grid-template-columns:5.5em minmax(0,1fr) 6.2em;gap:8px;align-items:center;font-size:12px}
 .pb .row .who{font-weight:700;color:var(--ink-2)}
 .pb .row .b{height:14px;border-radius:7px;background:var(--sunk);overflow:hidden}
 .pb .row .b i{display:block;height:100%;border-radius:7px}
-.pb .row .v{font-family:var(--f-num);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.pb .row .v{font-family:var(--f-num);font-weight:700;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.pb .row .v small{font-weight:600;color:var(--ink-2);margin-left:5px}
 .pb.hot{background:var(--coral-soft);border-radius:14px;padding:8px 10px;margin:0 -10px}
 .lk{display:flex;flex-direction:column;gap:12px}
 .lkrow .lab{font-size:14px;font-weight:700;line-height:1.5;margin-bottom:4px}
-.lkbar{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:8px;align-items:center;font-size:12px;margin-top:3px}
-.lkbar .who{font-weight:700;color:var(--ink-2)}
+.lkbar{display:grid;grid-template-columns:5.5em minmax(0,1fr) auto;gap:8px;align-items:center;font-size:12px;margin-top:3px}
+.lkbar .who{font-weight:700;color:var(--ink-2)}.lkbar .cnt{min-width:10.5em;text-align:right;font-family:var(--f-num);font-weight:600;font-size:11.5px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}@media (max-width:640px){.lkbar{grid-template-columns:5.5em minmax(0,1fr)}.lkbar .cnt{grid-column:2;text-align:left;min-width:0}}
 .seg{display:flex;height:22px;border-radius:11px;overflow:hidden;background:var(--sunk)}
 .seg i{display:flex;align-items:center;justify-content:center;font-style:normal;font-family:var(--f-num);font-weight:700;font-size:11px;color:var(--on-accent);min-width:0;overflow:hidden;white-space:nowrap}
 .seg i.neu{background:var(--neu);color:var(--ink)} .seg i.neg{background:var(--neg);color:var(--ink)}
@@ -425,8 +425,8 @@ function dumbbell(rows,{sort=true}={}){
 function pbars(rows,{hot}={}){
   return `<div class="pbars">${rows.map(x=>`<div class="pb ${hot&&hot===x.label?'hot':''}">
     <div class="lab">${esc(x.label)}</div>
-    <div class="row"><span class="who">Miyama</span><span class="b"><i style="width:${x.mi}%;background:var(--mi)"></i></span><span class="v">${x.mi.toFixed(1)}%</span></div>
-    <div class="row"><span class="who">Denmark</span><span class="b"><i style="width:${x.dk}%;background:var(--dk)"></i></span><span class="v">${x.dk.toFixed(1)}%</span></div>
+    <div class="row"><span class="who">Miyama</span><span class="b"><i style="width:${x.mi}%;background:var(--mi)"></i></span><span class="v">${x.mi.toFixed(1)}%${x.cmi!=null?`<small>${x.cmi}</small>`:''}</span></div>
+    <div class="row"><span class="who">Denmark</span><span class="b"><i style="width:${x.dk}%;background:var(--dk)"></i></span><span class="v">${x.dk.toFixed(1)}%${x.cdk!=null?`<small>${x.cdk}</small>`:''}</span></div>
   </div>`).join('')}</div>`;
 }
 function seg(c,n,color){
@@ -437,17 +437,18 @@ function seg(c,n,color){
     <i class="neu" style="width:${p[1]}%" title="Neither agree nor disagree: ${c[1]}">${p[1]>=12?p[1].toFixed(1):''}</i>
     <i class="neg" style="width:${p[2]}%" title="Disagree: ${c[2]}">${p[2]>=12?p[2].toFixed(1):''}</i></span>`;
 }
+const cntl=c=>`<span class="cnt">Agree ${c[0]} · Neutral ${c[1]} · Disagree ${c[2]}</span>`;
 function likert(set,keys){
   const T=D.likert[set], rows=keys?T.rows.filter(r=>keys.includes(r.q)):T.rows;
   return `<div class="legend"><span><i style="background:var(--mi)"></i><i style="background:var(--dk);margin-left:-4px"></i>Agree</span><span><i style="background:var(--neu)"></i>Neither agree nor disagree</span><span><i style="background:var(--neg)"></i>Disagree</span></div>
   <div class="lk">${rows.map(r=>`<div class="lkrow"><div class="lab">Q${r.q}. ${esc(r.text)}</div>
-    <div class="lkbar"><span class="who">Miyama ${T.nMi}</span>${seg(r.mi,T.nMi,'var(--mi)')}</div>
-    <div class="lkbar"><span class="who">Denmark ${T.nDk}</span>${seg(r.dk,T.nDk,'var(--dk)')}</div>
+    <div class="lkbar"><span class="who">Miyama ${T.nMi}</span>${seg(r.mi,T.nMi,'var(--mi)')}${cntl(r.mi)}</div>
+    <div class="lkbar"><span class="who">Denmark ${T.nDk}</span>${seg(r.dk,T.nDk,'var(--dk)')}${cntl(r.dk)}</div>
     ${r.note?`<div class="fine">${esc(r.note)}</div>`:''}</div>`).join('')}</div>`;
 }
 function multi(set){
   const T=D.multi[set];
-  return pbars(T.rows.map(r=>({label:r.label,mi:+pct(r.mi,T.nMi),dk:+pct(r.dk,T.nDk)})),{hot:T.hot});
+  return pbars(T.rows.map(r=>({label:r.label,mi:+pct(r.mi,T.nMi),dk:+pct(r.dk,T.nDk),cmi:r.mi,cdk:r.dk})),{hot:T.hot});
 }
 function slope(){
   const R=D.multi.q7.rows.filter(r=>r.label!=='Other');
@@ -486,7 +487,7 @@ D.themes = [
    ${P('“Too busy with daily duties to take on anything new.” This barrier was named by <strong>86.7%</strong> of teachers in Miyama and <strong>82.6%</strong> in Denmark. Busyness is common to both. The difference appears in what comes next: “space.”',
        'In Miyama, 0 of 15 teachers said they have the time and mental room to put new educational ideas into practice. Half (8) said they do not, and the rest were neutral. In Denmark, 7 of 23 (30.4%) said they do.')}
    ${chart('Do you have room to take on something new? (teachers, Q12)', likert('teacher',[12]), 'Source: Appendix A, Tables A-7 and A-10')}
-   ${chart('What is the biggest barrier? (teachers, Q15, up to 2)', LEG+pbars(D.multi.q15.rows.filter(noOther).map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23)}))), 'Source: Appendix A, Tables A-9 and A-12')}
+   ${chart('What is the biggest barrier? (teachers, Q15, up to 2)', LEG+pbars(D.multi.q15.rows.filter(noOther).map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23),cmi:r.mi,cdk:r.dk}))), 'Source: Appendix A, Tables A-9 and A-12')}
    ${P('At the Danish school we were told about systems that protect teachers’ time. Teachers with roles such as subject coordinator teach fewer lessons, and “co-teaching,” where several teachers teach one class, is used.',
        'But Denmark has its barriers too. Responding to children who avoid school is left to individual agreements between teachers and parents, and supporting older students who do not speak Danish depends on individual teachers’ efforts. 34.8% of Danish teachers named “a gap in awareness between the school and parents/community” as a barrier, more than in Miyama (6.7%).')}
    <div class="chart"><h4>How Denmark protects teachers’ time</h4><div class="facts">
@@ -542,7 +543,7 @@ D.themes = [
   body:()=>`
    ${P('The issue Miyama parents named most often was “the school’s policies and daily life are hard to see, and there are not enough channels or opportunities to consult” (26.9%). In Denmark it was 3.7%.',
        'In Miyama, “hard to see / not enough channels” and “not enough support for diverse needs” were tied at 26.9%. In Denmark, “no particular issue” was the most common answer at 40.7%, followed by “not enough support for diverse needs” (33.3%). Supporting children with school avoidance, developmental traits or multicultural backgrounds is a challenge shared by both areas.')}
-   ${chart('Issues parents feel in their relationship with the school (Q6, up to 2)', LEG+pbars(D.multi.q6.rows.filter(noOther).map(r=>({label:r.label,mi:+pct(r.mi,26),dk:+pct(r.dk,27)})),{hot:D.multi.q6.hot}), 'The item with the largest gap is highlighted. Source: Appendix A, Tables A-2 and A-5')}
+   ${chart('Issues parents feel in their relationship with the school (Q6, up to 2)', LEG+pbars(D.multi.q6.rows.filter(noOther).map(r=>({label:r.label,mi:+pct(r.mi,26),dk:+pct(r.dk,27),cmi:r.mi,cdk:r.dk})),{hot:D.multi.q6.hot}), 'The item with the largest gap is highlighted. Source: Appendix A, Tables A-2 and A-5')}
    ${P('The free-text answers reveal “considerate reticence”: parents holding back from consulting teachers out of concern for how busy they are. What fills teachers’ days may be hard to see from home. Several parents also wrote about their confusion at how the relationship changes when children move from elementary to junior high school.')}
    <div class="chart"><h4>How teachers feel, and how it looks from home (Miyama)</h4><div class="facts">
      <div class="fact" style="background:var(--mi-soft)"><span class="n num">86.7<small>%</small></span><span class="l">of teachers say they are “caught up in daily duties” (teachers, Q15, 15 people)</span></div>
@@ -572,7 +573,7 @@ D.themes = [
   body:()=>`
    ${P('Making the community a place of learning, and drawing on children’s voices in shaping the school: teachers in both areas see these as shared strengths.',
        'In Miyama, community-rooted learning continues, centred on the integrated study programme “Miyama Studies.” For three years, fifth- and sixth-graders have been exploring “what we want to keep in Miyama ten years from now,” and in May 2026 the “Machigoto School Meeting” brought together residents, parents and teachers. The initiative teachers focus on most is “gathering students’ views through the student council and committees” (73.3%).')}
-   ${chart('Initiatives teachers focus on (Q14, multiple choice)', LEG+pbars(D.multi.q14.rows.filter(noOther).map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23)}))), 'Source: Appendix A, Tables A-8 and A-11')}
+   ${chart('Initiatives teachers focus on (Q14, multiple choice)', LEG+pbars(D.multi.q14.rows.filter(noOther).map(r=>({label:r.label,mi:+pct(r.mi,15),dk:+pct(r.dk,23),cmi:r.mi,cdk:r.dk}))), 'Source: Appendix A, Tables A-8 and A-11')}
    ${chart('Links with the community (teacher questionnaire)', likert('teacher',[7,9,10]), 'Source: Appendix A, Tables A-7 and A-10')}
    ${P('However, 40.0% of Miyama teachers said systems for children to take part in local problem-solving or volunteering are in place, and 40.0% said they are not. Some noted that junior high students have limited time because of club activities and so on.',
        'What Danish teachers focus on most is “everyday conversations and counselling” (56.5%). There is also “Juniormesterlære,” work experience run with local companies and vocational schools.')}
@@ -851,7 +852,7 @@ function renderInterview(){
 let dset='teacher';
 ROUTES.data=()=>crumbs([{t:'Summary',h:'top'},{t:'Appendix A: Survey data'}])+`<div class="wrap">
   <div class="page-head"><span class="eyebrow">Appendix A <span class="layer-tag" style="margin-left:8px">LAYER 3</span></span><h1>Survey data</h1>
-  <p>Results of the teacher and parent questionnaires in Miyama and Denmark (Gribskov). For five-point scales, “agree / strongly agree” are grouped as Agree and “disagree / strongly disagree” as Disagree. Hover over a bar to see the number of people.</p></div>
+  <p>Results of the teacher and parent questionnaires in Miyama and Denmark (Gribskov). For five-point scales, “agree / strongly agree” are grouped as Agree and “disagree / strongly disagree” as Disagree. The number of people is shown beside each bar.</p></div>
   <div class="filters"><span class="seg-ctl" id="dset"><button data-v="teacher">Teachers (Miyama 15, Denmark 23)</button><button data-v="parent">Parents (Miyama 26, Denmark 27)</button></span></div>
   <div id="dout"></div></div>`;
 function renderData(){
